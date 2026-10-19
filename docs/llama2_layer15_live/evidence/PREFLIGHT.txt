@@ -1,0 +1,43 @@
+HBFSim Llama2 layer15 ctx32 live pilot：启动预检 v1
+实验ID：HBFSIM-LLAMA2-L15-C32-LIVE-PILOT
+状态：PENDING_USER_APPROVAL；执行就绪性 BLOCKED；GPU作业启动数0。
+清单内容SHA256：6f3d6d350f4ca73e6c73efc3d3c59771de571d676c53b5a543dd83f1e7c8236c
+这是带阻塞项的规划清单，不是通过EQ3 gate的canonical_manifest_hash，也不是用户批准文件。
+
+目标与证据
+运行原单层workload，真实GPU计算+HBF Timing等待。保留真实checkpoint、FP16、layer15、batch1、context32、query1、seed1、warmup0。只将9个参数/404766720B新arena注册HBF，KV/activation保留普通显存。随机hidden/K/V沿用原脚本，非完整模型生成。CPU校验PASS；10个checkpoint tensor含额外128B旧RoPE buffer，不能伪报为9个参数大小变化。
+
+代码与环境
+HBFSim d2e6ce239c117c640fe68c8b5b2a7c77cf184da6，工作区未改。原两份workload脚本、config/index/权重manifest/profile已复制到frozen并核对哈希。所需10个tensor原始字节分别哈希，见input_identity.json。
+GPU0 V100 16GiB，UUID GPU-ae7dd120-ae20-505b-e58d-e208a5708f36，sm70，driver565.57.01；GPU1不用。Torch2.4.0、Transformers4.57.1、safetensors0.6.2。
+初始CMake3.22.1不满足要求；已在本目录安装独立CMake3.31.10，不改全局环境。再次configure明确报错CUDA Toolkit需>=12.8，本机12.1。无可用HBFSim core/gate/daemon/agent运行产物。
+
+PTX适用域
+cuobjdump静态清点：libcublas.so.12有191个PTX成员，libcublasLt.so.12有95个，全部目标sm90；libtorch_cuda.so无嵌入PTX。它们的现有PTX不能作为V100 sm70插桩入口。此处不代表普通CUDA原生算子不能在V100运行，也不声称其它未知库绝对无适用PTX。
+需要识别并绑定实际kernel的可兼容PTX；不能仅修改.target或声称注册成功就是全覆盖。替换算子、SASS lifting或换GPU平台暂未执行。
+
+器件/拓扑/物理与模型
+计划使用单媒体Timing，不是四拓扑/热实验。nominal输入：1TiB、16KiB页、10us读、100us编程、32channel、8die/channel、4plane/die、256page/block、QD128、512GB/s。均为项目媒体情景，不是本V100封装或FLINT硬件标定。独立pilot-profile仅name和time_scale从100改1，等待实验确认；不改原profile。
+功率、热网络、可靠性、维护控制均NOT_USED。未知idle、ECC等不填零。
+
+计划点数/方法
+初步native1次+instrumented FAST1次，先native再FAST；REFERENCE与参数扫描延后。两臂相同inputs与原算子，未批准不发GPU。没有已验证的本路径zero-wait适配，因此不预设第三个zero-wait臂。
+精确native命令argv保存在manifest.commands.native_unsubmitted_argv；HBF命令和二进制哈希尚不能冻结，所以本版不具备提交条件。
+
+时长/资源/停止
+每臂一个forward，无热仿真时长。native估计120s内，FAST实际耗时UNKNOWN，watchdog600s；总GPU预算提案15min。CPU构建并行2，OMP/BLAS1，主机RAM16GiB、显存6GiB、任务磁盘12GiB；启动前主机可用>=32GiB、目标盘空闲>=50GiB、显存空闲>=8GiB；只用GPU0且无其它GPU作业，设备UUID锁定。监控每5s，GPU>=80C/资源超限/进程超时/非有限输出/daemon故障停止。所有边界是这次pilot提案，非旧campaign上限恢复。
+当前data盘空闲约5.8TiB，主机可用约237GiB；系统根盘仅约17GiB可用，所以大工件统一写data盘。无需驱动、系统CUDA或全局Python环境变更。
+
+指标与验收
+保存完整输出数值、max abs/relative误差，allclose(atol=1e-3,rtol=1e-3)固定不自松；CUDA event、wall time、初始化耗时分别报告；保存逐权重区间active/addressed modeled与bypass/unsupported字节、请求/完成、timeout/fault。完整层结论必须9个参数区间均有实际覆盖；partial只诊断。相同输出/进程成功不能替代延迟证据。模拟器开销不当HBF硬件减速。
+
+输出与状态
+输出目录：/home/data/long/hbfsim-runs/llama2-layer15-ctx32-live-v1-20261019
+已有host_audit/input_identity/ptx_inventory/cpu_input_validation/configure_probe/configure_probe_cmake331及冻结inputs。原raw和原trace未修改。当前无本任务GPU进程。
+未来启动记录实际PID/session，独立DONE/FAILED；完成通知尚未配置，不声称已启用。未提交/未后台启动native或HBF臂；用户确认前不制造approval记录。
+
+最小后续方案（待运行可行性闭合，不扩核心）
+1. 若可找到兼容sm70的真实kernel PTX，先冻结来源与entry身份，使用独立CUDA>=12.8构建目录，core/public ABI/原profile/原算子不改。
+2. CPU编译并固定检查core/gate/daemon/agent与PTX映射，记录真实binary hash。
+3. 预检更新为执行版本，按AGENTS与experiment_approval契约取得确认后才发GPU。
+若原算子没有可用PTX，需另行决策：保留原算子停止该分支，或允许保持模型/权重/形状但替换部分算子实现。不能擅自替换后声称旧55kernel路径复现。

@@ -32,6 +32,9 @@ this file says where each kind of document lives.
   entry states what goes wrong concretely if the defect is not fixed.
 - [`eq3_thermal/`](eq3_thermal/) — the thermal and reliability model: design, verification against
   the specification, and its current status.
+- [`llama2_layer15_live/BLOCKERS.md`](llama2_layer15_live/BLOCKERS.md) — the Llama2 layer15,
+  context32 live-run readiness check, retained CPU receipts, and steps for trying another machine.
+  GPU execution has not started; this is not a successful HBF workload result.
 - [`reference/`](reference/) — reference notes, including the CUDA architecture compatibility audit.
 - [`ref_article/`](ref_article/) — the papers and specification captures HBFSim's claims are checked
   against. [`ref_article/README.md`](ref_article/README.md) records, for each one, the full citation,

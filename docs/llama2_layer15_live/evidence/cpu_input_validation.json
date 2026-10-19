@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "/home/long/anaconda3/envs/cloudos/bin/python",
+    "-B",
+    "/home/data/long/hbfsim-runs/llama2-layer15-ctx32-live-v1-20261019/frozen/trace_flint_decoder_layer.py",
+    "--model-dir",
+    "/home/data/llama2-7b-hf-chat",
+    "--manifest",
+    "/home/data/long/hbfsim-runs/llama2-layer15-ctx32-live-v1-20261019/NOT_CREATED_GPU_MANIFEST.json",
+    "--layer-index",
+    "15",
+    "--context-length",
+    "32",
+    "--validate-only"
+  ],
+  "returncode": 0,
+  "stdout": "validated layer=15 context=32 weights=10 fp16_bytes=404766848\n",
+  "stderr": ""
+}

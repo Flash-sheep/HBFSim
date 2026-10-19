@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "/usr/bin/cmake",
+    "-S",
+    "/home/long/allsim/simulator_src/HBFSim",
+    "-B",
+    "/home/data/long/hbfsim-runs/llama2-layer15-ctx32-live-v1-20261019/configure-probe",
+    "-G",
+    "Ninja",
+    "-DHBFSIM_ENABLE_CUDA=ON",
+    "-DCMAKE_CUDA_ARCHITECTURES=70",
+    "-DCUDAToolkit_ROOT=/usr/local/cuda-12.1",
+    "-DHBFSIM_ENABLE_MQSIM=ON",
+    "-DHBFSIM_ENABLE_TIMING_FUTURES=OFF",
+    "-DBUILD_TESTING=OFF"
+  ],
+  "returncode": 1,
+  "stdout": "-- Configuring incomplete, errors occurred!\n",
+  "stderr": "CMake Error at CMakeLists.txt:1 (cmake_minimum_required):\n  CMake 3.25 or higher is required.  You are running version 3.22.1\n\n\n"
+}

@@ -1,0 +1,122 @@
+{
+  "alignment_bytes": 256,
+  "batch_size": 1,
+  "context_length": 32,
+  "dtype": "float16",
+  "hbf_base_addr": 139718742245376,
+  "hbf_size": 404766720,
+  "layer_index": 15,
+  "model_dir": "/home/data/llama2-7b-hf-chat",
+  "query_length": 1,
+  "schema": "flint-contiguous-weight-arena-v1",
+  "tensor_count": 9,
+  "tensors": [
+    {
+      "address": 139718742245376,
+      "dtype": "torch.float16",
+      "end_address_exclusive": 139718775799808,
+      "name": "self_attn.q_proj.weight",
+      "offset_bytes": 0,
+      "shape": [
+        4096,
+        4096
+      ],
+      "size_bytes": 33554432
+    },
+    {
+      "address": 139718775799808,
+      "dtype": "torch.float16",
+      "end_address_exclusive": 139718809354240,
+      "name": "self_attn.k_proj.weight",
+      "offset_bytes": 33554432,
+      "shape": [
+        4096,
+        4096
+      ],
+      "size_bytes": 33554432
+    },
+    {
+      "address": 139718809354240,
+      "dtype": "torch.float16",
+      "end_address_exclusive": 139718842908672,
+      "name": "self_attn.v_proj.weight",
+      "offset_bytes": 67108864,
+      "shape": [
+        4096,
+        4096
+      ],
+      "size_bytes": 33554432
+    },
+    {
+      "address": 139718842908672,
+      "dtype": "torch.float16",
+      "end_address_exclusive": 139718876463104,
+      "name": "self_attn.o_proj.weight",
+      "offset_bytes": 100663296,
+      "shape": [
+        4096,
+        4096
+      ],
+      "size_bytes": 33554432
+    },
+    {
+      "address": 139718876463104,
+      "dtype": "torch.float16",
+      "end_address_exclusive": 139718966640640,
+      "name": "mlp.gate_proj.weight",
+      "offset_bytes": 134217728,
+      "shape": [
+        11008,
+        4096
+      ],
+      "size_bytes": 90177536
+    },
+    {
+      "address": 139718966640640,
+      "dtype": "torch.float16",
+      "end_address_exclusive": 139719056818176,
+      "name": "mlp.up_proj.weight",
+      "offset_bytes": 224395264,
+      "shape": [
+        11008,
+        4096
+      ],
+      "size_bytes": 90177536
+    },
+    {
+      "address": 139719056818176,
+      "dtype": "torch.float16",
+      "end_address_exclusive": 139719146995712,
+      "name": "mlp.down_proj.weight",
+      "offset_bytes": 314572800,
+      "shape": [
+        4096,
+        11008
+      ],
+      "size_bytes": 90177536
+    },
+    {
+      "address": 139719146995712,
+      "dtype": "torch.float16",
+      "end_address_exclusive": 139719147003904,
+      "name": "input_layernorm.weight",
+      "offset_bytes": 404750336,
+      "shape": [
+        4096
+      ],
+      "size_bytes": 8192
+    },
+    {
+      "address": 139719147003904,
+      "dtype": "torch.float16",
+      "end_address_exclusive": 139719147012096,
+      "name": "post_attention_layernorm.weight",
+      "offset_bytes": 404758528,
+      "shape": [
+        4096
+      ],
+      "size_bytes": 8192
+    }
+  ],
+  "weight_payload_bytes": 404766720
+}

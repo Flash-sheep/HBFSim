@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "/home/data/long/hbfsim-runs/llama2-layer15-ctx32-live-v1-20261019/cpu-tools/cmake/data/bin/cmake",
+    "-S",
+    "/home/long/allsim/simulator_src/HBFSim",
+    "-B",
+    "/home/data/long/hbfsim-runs/llama2-layer15-ctx32-live-v1-20261019/configure-probe-cmake331",
+    "-G",
+    "Ninja",
+    "-DHBFSIM_ENABLE_CUDA=ON",
+    "-DCMAKE_CUDA_ARCHITECTURES=70",
+    "-DCUDAToolkit_ROOT=/usr/local/cuda-12.1",
+    "-DHBFSIM_ENABLE_MQSIM=ON",
+    "-DHBFSIM_ENABLE_TIMING_FUTURES=OFF",
+    "-DBUILD_TESTING=OFF"
+  ],
+  "returncode": 1,
+  "stdout": "-- The CXX compiler identification is GNU 11.4.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /usr/bin/c++ - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- bpftime pinned commit: ec26daecc8e787fb80fd95dd596a576404a5e36e\n-- MQSim pinned commit: 51f0f2d3fed92d88ef4a0fa61a38024b07bf9d16\n-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version \"3.0.2\") found components: Crypto\n-- Configuring incomplete, errors occurred!\n",
+  "stderr": "CMake Warning at CMakeLists.txt:48 (message):\n  sm_70 is a non-reference HBFSim target.  A successful build does not\n  establish live host/GPU control protocol validation on that platform.\n\n\nCMake Error at CMakeLists.txt:763 (message):\n  HBFSIM_ENABLE_CUDA requires CUDA Toolkit 12.8 or newer\n\n\n"
+}

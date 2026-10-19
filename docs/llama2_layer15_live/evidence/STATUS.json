@@ -1,0 +1,14 @@
+{
+  "status": "PENDING_USER_APPROVAL",
+  "execution_readiness": "BLOCKED",
+  "gpu_workload_launched": false,
+  "manifest_content_sha256": "6f3d6d350f4ca73e6c73efc3d3c59771de571d676c53b5a543dd83f1e7c8236c",
+  "cpu_validation": "PASSED",
+  "cmake": "LOCAL_3.31.10_READY",
+  "blocking": [
+    "CUDA Toolkit12.1<12.8",
+    "No bound compatible sm70 PTX for original weight kernels",
+    "HBFSim runtime/agent not built"
+  ],
+  "background_jobs": []
+}

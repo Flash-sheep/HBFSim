@@ -1,0 +1,260 @@
+{
+  "schema_version": "hbfsim-live-layer-preflight-draft-v1",
+  "experiment_id": "HBFSIM-LLAMA2-L15-C32-LIVE-PILOT",
+  "version": "1",
+  "approval_status": "PENDING_USER_APPROVAL",
+  "execution_readiness": "BLOCKED",
+  "gpu_workload_launched": false,
+  "hash_rule": "SHA256 of sorted compact UTF8 JSON with ensure_ascii=False, excluding manifest_content_sha256; planning digest only, not an eq3 READY gate digest",
+  "research_question_and_hypothesis": {
+    "question": "Can the original Llama2 layer15 ctx32 FP16 workload execute with address-accounted HBF timing on this V100 host?",
+    "hypothesis": "Matched native and instrumented runs preserve output; if weight paths are supported, covered accesses incur modeled delay. A slowdown alone is insufficient evidence."
+  },
+  "evidence_type_and_limits": {
+    "native": "MEASURED_GPU only after an approved run",
+    "hbf": "SIMULATED_TIMING_ON_REAL_COMPUTE; not hardware HBF, not FLINT-equivalent",
+    "coverage": "All nine parameter ranges require dynamic addressed coverage for a full-layer HBF claim. Partial coverage is diagnostic only.",
+    "historical_trace": "Not replayed; original manifests and scripts are identity references."
+  },
+  "code": {
+    "root": "/home/long/allsim/simulator_src/HBFSim",
+    "revision": "d2e6ce239c117c640fe68c8b5b2a7c77cf184da6",
+    "dirty_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "preparation_sha256": "74236a20e4b90df47bb28f0fb9728b539e6c6d690c8aab90757558842c1ede7c",
+    "workload_files": [
+      {
+        "source": "/home/long/allsim/simulator_src/accel-sim-hbf/test/flint/trace_flint_decoder_layer.py",
+        "snapshot": "/home/data/long/hbfsim-runs/llama2-layer15-ctx32-live-v1-20261019/frozen/trace_flint_decoder_layer.py",
+        "sha256": "508bb22d1f0a2a83abb2bb2d2fa6a1b4364311a97a2fea53d771368ab0f7ed67",
+        "size_bytes": 8895
+      },
+      {
+        "source": "/home/long/allsim/simulator_src/accel-sim-hbf/test/llama2_decode_trace/scripts/trace_decoder_layer.py",
+        "snapshot": "/home/data/long/hbfsim-runs/llama2-layer15-ctx32-live-v1-20261019/frozen/trace_decoder_layer.py",
+        "sha256": "add394d8e2d8f079386b744658a2f96a44270b9e0883334221a7b79b4cc8a61f",
+        "size_bytes": 12425
+      }
+    ]
+  },
+  "environment": {
+    "python": {
+      "torch": "2.4.0",
+      "transformers": "4.57.1",
+      "safetensors": "0.6.2"
+    },
+    "python_executable": "/home/long/anaconda3/envs/cloudos/bin/python",
+    "installed_cuda": "12.1",
+    "required_cuda": ">=12.8 (CODE_OBSERVED CMake)",
+    "cmake_initial": "3.22.1",
+    "cmake_local": "3.31.10 under task directory only",
+    "driver": "565.57.01",
+    "hbf_binaries": "MISSING; future hashes must be frozen before launch"
+  },
+  "device_topology": {
+    "target_index": 0,
+    "target_uuid": "GPU-ae7dd120-ae20-505b-e58d-e208a5708f36",
+    "name": "Tesla V100-SXM2-16GB",
+    "compute_target": "sm_70",
+    "gpu1": "NOT_USED",
+    "hbfsim_topology": "single media profile Timing mode; no UCIe/EQ3 four-topology or physical package claim"
+  },
+  "geometry_materials_boundaries": {
+    "thermal": "NOT_USED",
+    "geometry": "nominal Profile channels32/dies_per_channel8/planes_per_die4/pages_per_block256; scenario inputs, not a physical V100 package",
+    "cache_capacity": "8GiB profile field; no Capacity-mode paging in this pilot"
+  },
+  "workload_and_initial_state": {
+    "model": "/home/data/llama2-7b-hf-chat",
+    "layer_index": 15,
+    "context_length": 32,
+    "query_length": 1,
+    "past_length": 31,
+    "batch_size": 1,
+    "dtype": "FP16",
+    "hidden_size": 4096,
+    "intermediate_size": 11008,
+    "attention_heads": 32,
+    "kv_heads": 32,
+    "seed": 1,
+    "warmup_steps": 0,
+    "inputs": "Fixed-seed random hidden/K/V from original script, real checkpoint layer weights. Not full-model generation.",
+    "parameter_count": 9,
+    "parameter_bytes": 404766720,
+    "checkpoint_tensor_count": 10,
+    "checkpoint_tensor_bytes": 404766848,
+    "buffer_difference": "128B rotary inv_freq; source script accepts legacy non-parameter buffer.",
+    "identity_file_sha256": "0fc935c3248056fdc3feb4ab5998c7931efa1fef89f838dae81a290337a6a268",
+    "address_identity": "New arena base discovered at runtime; never reuse captured GPU address."
+  },
+  "power_reliability_control": {
+    "power": "NOT_USED",
+    "thermal_feedback": "NOT_USED",
+    "retention_ecc": "NOT_USED",
+    "HBF_timing_profile": {
+      "path": "/home/data/long/hbfsim-runs/llama2-layer15-ctx32-live-v1-20261019/frozen/pilot-profile.json",
+      "sha256": "c85a6e63d6b9cc58ad9e537a4261b341df573a61f3205e470c0a295cc760b219",
+      "evidence": "SCENARIO_ASSUMPTION; copied nominal except name and time_scale=1",
+      "read_ns": 10000,
+      "program_ns": 100000,
+      "page_bytes": 16384,
+      "aggregate_Bps": 512000000000,
+      "qd": 128,
+      "capacity_bytes": 1099511627776
+    }
+  },
+  "scan_matrix_and_repetitions": {
+    "proposed": "Native baseline once, supported instrumented FAST once; REFERENCE deferred until this pilot closes. No parameter scan.",
+    "status": "Neither GPU arm submitted; instrumented runner and dependency binding not ready.",
+    "zero_wait_arm": "NOT_PLANNED: no validated zero-wait adapter for this chosen path."
+  },
+  "time_and_numerics": {
+    "modeled_horizon": "One decoder forward per arm, no preset simulated seconds",
+    "gpu_observation": "CUDA events plus process wall time; separate initialization and forward",
+    "estimated_wall": "Native under 120s target; instrumented unknown, watchdog600s. These are planning estimates, not measurements.",
+    "numeric_acceptance": "Finite output, matching shape; max abs/relative and allclose(atol=1e-3,rtol=1e-3) against matched native inputs; preserve raw output, never relax automatically."
+  },
+  "resource_plan": {
+    "proposal_not_approved": true,
+    "build_parallelism": 2,
+    "omp_blas_threads": 1,
+    "host_ram_limit_GiB": 16,
+    "gpu_vram_limit_GiB": 6,
+    "gpu_device_count": 1,
+    "gpu_minutes_total_limit": 15,
+    "per_process_watchdog_s": {
+      "native": 120,
+      "instrumented": 600
+    },
+    "disk_task_limit_GiB": 12,
+    "output_mount_min_free_GiB": 50,
+    "host_min_available_GiB": 32,
+    "gpu_min_free_before_launch_GiB": 8,
+    "monitor_interval_s": 5,
+    "system_root_no_build": "All large artifacts on /home/data; no driver/system dependency changes",
+    "limits_role": "New finite pilot proposal based on host audit, not restoration of old campaign fixed ceilings"
+  },
+  "controls_ablations_observations": {
+    "arms": [
+      "native",
+      "instrumented FAST only after full readiness"
+    ],
+    "observations": [
+      "output values/errors",
+      "CUDA event and wall time",
+      "arena tensor coverage",
+      "modeled/bypass/unsupported bytes",
+      "request and completion counts",
+      "timeouts and daemon faults",
+      "raw logs and source/input/binary identity"
+    ],
+    "interpretation": "No complete-HBF claim if weight paths are opaque, regardless of workload success."
+  },
+  "acceptance_abort_and_outputs": {
+    "pass": "Approved exact execution revision; full input/binary identity; native correctness; addressed active coverage for nine weights; no faults; correct timing semantics.",
+    "failure": "Missing sm70 PTX or source identity => stop affected instrumented path. No unapproved kernel replacement.",
+    "safety_stop": [
+      "Other GPU job detected before launch",
+      "Device UUID changes",
+      "VRAM/RAM/disk budget exceeded",
+      "GPU temperature>=80C",
+      "watchdog expires",
+      "nonfinite output",
+      "daemon timeout/fault"
+    ],
+    "outputs": "/home/data/long/hbfsim-runs/llama2-layer15-ctx32-live-v1-20261019",
+    "raw_preservation": "No overwrite/delete existing raw; each arm gets a new directory.",
+    "notifications": "NOT_CONFIGURED; record actual session/PID and DONE/FAILED on future launch, ETA-based AI checks."
+  },
+  "prerequisites": [
+    {
+      "id": "checkpoint_cpu_validation",
+      "status": "PASSED",
+      "receipt": "cpu_input_validation.json"
+    },
+    {
+      "id": "local_CMake331",
+      "status": "PASSED",
+      "receipt": "configure_probe_cmake331.json",
+      "scope": "CMake invokes compiler and finds locked submodules; whole configure still fails."
+    },
+    {
+      "id": "CUDA128_toolchain",
+      "status": "BLOCKED",
+      "receipt": "configure_probe_cmake331.json"
+    },
+    {
+      "id": "sm70_weight_PTX",
+      "status": "BLOCKED",
+      "receipt": "ptx_inventory.json",
+      "detail": "cublas191/cublasLt95 PTX members all sm90; libtorch_cuda0 PTX. Existing inventory cannot supply an sm70 PTX path."
+    },
+    {
+      "id": "source_built_runtime_gate_agent",
+      "status": "NOT_BUILT"
+    },
+    {
+      "id": "GPU_version_bound_user_confirmation",
+      "status": "PENDING_USER_APPROVAL"
+    }
+  ],
+  "commands": {
+    "CPU_completed": [
+      "prepare_cpu.py",
+      "isolated CMake configure, both receipts retained"
+    ],
+    "native_unsubmitted_argv": [
+      "/home/long/anaconda3/envs/cloudos/bin/python",
+      "-B",
+      "/home/data/long/hbfsim-runs/llama2-layer15-ctx32-live-v1-20261019/frozen/trace_flint_decoder_layer.py",
+      "--model-dir",
+      "/home/data/llama2-7b-hf-chat",
+      "--manifest",
+      "/home/data/long/hbfsim-runs/llama2-layer15-ctx32-live-v1-20261019/native/deployment/weight_manifest.json",
+      "--layer-index",
+      "15",
+      "--context-length",
+      "32",
+      "--warmup-steps",
+      "0",
+      "--seed",
+      "1",
+      "--timing-only",
+      "--repeats",
+      "1",
+      "--timing-output",
+      "/home/data/long/hbfsim-runs/llama2-layer15-ctx32-live-v1-20261019/native/metrics/gpu_timing.json"
+    ],
+    "instrumented": "NOT_READY; no speculative command or binary path treated as executable"
+  },
+  "required_decisions": {
+    "kernel_strategy": "Keep original workload/backend until a compatible PTX source is identified; replacing cuBLAS/Torch kernels, SASS lifting, porting to another workload, or changing platform is a separate concrete decision.",
+    "approval": "This draft cannot pass existing EQ3 launch gate while prerequisites are blocked; do not fabricate PASSED or approval records."
+  },
+  "receipts": [
+    {
+      "path": "host_audit.json",
+      "sha256": "f35264bf324d745aa1654774b7f049baf5325fce618f42813cbae82184bb7654"
+    },
+    {
+      "path": "input_identity.json",
+      "sha256": "0fc935c3248056fdc3feb4ab5998c7931efa1fef89f838dae81a290337a6a268"
+    },
+    {
+      "path": "ptx_inventory.json",
+      "sha256": "4b9da46fabfe13789fb3e3d4632229df670022aa2795eea97db8c2849b23ade0"
+    },
+    {
+      "path": "cpu_input_validation.json",
+      "sha256": "f2c90a87e5ff1cb0ea151cfae9d314a479c228d96d52bae002df73e4b6064704"
+    },
+    {
+      "path": "configure_probe.json",
+      "sha256": "be9d9497a6a59b232026b88be6dfd1d7fd132af5d51c2d10ab6248f530bc28de"
+    },
+    {
+      "path": "configure_probe_cmake331.json",
+      "sha256": "d1754e1bfc7c2d08f1669e5fad1f87c9b2c057f2808b421a5aae37520c83300b"
+    }
+  ],
+  "manifest_content_sha256": "6f3d6d350f4ca73e6c73efc3d3c59771de571d676c53b5a543dd83f1e7c8236c"
+}

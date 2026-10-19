@@ -1,0 +1,120 @@
+{
+  "git": {
+    "argv": [
+      "git",
+      "-C",
+      "/home/long/allsim/simulator_src/HBFSim",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stdout": "d2e6ce239c117c640fe68c8b5b2a7c77cf184da6\n",
+    "stderr": ""
+  },
+  "git_status": {
+    "argv": [
+      "git",
+      "-C",
+      "/home/long/allsim/simulator_src/HBFSim",
+      "status",
+      "--porcelain"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "submodules": {
+    "argv": [
+      "git",
+      "-C",
+      "/home/long/allsim/simulator_src/HBFSim",
+      "submodule",
+      "status",
+      "--recursive",
+      "--",
+      "third_party/bpftime",
+      "third_party/mqsim"
+    ],
+    "returncode": 0,
+    "stdout": " ec26daecc8e787fb80fd95dd596a576404a5e36e third_party/bpftime (v0.2.0-95-gec26dae)\n fd85b8a6ac2c0cb5621d9c1f38368089d616b8b9 third_party/bpftime/bpftime-verifier/ebpf-verifier (v0.1-alpha-950-gfd85b8a6)\n e052151f8cf3b3d65bfaade6255318a566457fbb third_party/bpftime/bpftime-verifier/ebpf-verifier/ebpf-samples (v0.1-alpha-50-ge052151)\n 9820a2f47a7b5e034fff3095f17041175b2e8b21 third_party/bpftime/bpftime-verifier/ebpf-verifier/ebpf-samples/bpf_cilium_test (heads/master)\n 73a241079a040710481e9b840248ec0425e46c7c third_party/bpftime/bpftime-verifier/ebpf-verifier/external/ELFIO (Release_3.7-261-g73a2410)\n 78df87a6e85d4051d6bc1c92b1b6c05d7195cf05 third_party/bpftime/bpftime-verifier/ebpf-verifier/external/bpf_conformance (v0.0.4-7-g78df87a)\n 8ae6cec5d60495822ecd57d736f66149da9b1830 third_party/bpftime/bpftime-verifier/ebpf-verifier/external/bpf_conformance/external/elfio (Release_3.7-259-g8ae6cec)\n f5fab5a0b36869c104fa45a6ffb6c87295a22888 third_party/bpftime/bpftime-verifier/ebpf-verifier/external/libbtf (0.0.1-15-gf5fab5a)\n e6486118e4997a9780a30fd4bfeedcefd1567c8b third_party/bpftime/bpftime-verifier/ebpf-verifier/external/libbtf/external/ebpf-samples (v0.1-alpha-49-ge648611)\n 9820a2f47a7b5e034fff3095f17041175b2e8b21 third_party/bpftime/bpftime-verifier/ebpf-verifier/external/libbtf/external/ebpf-samples/bpf_cilium_test (heads/master)\n f8bc846ef1f00ee43af2ddc04af67d2e44d50685 third_party/bpftime/bpftime-verifier/ebpf-verifier/external/radix_tree (heads/master)\n 6e79e682b726f524310d55dec8ddac4e9c52fb5f third_party/bpftime/third_party/Catch2 (v3.4.0)\n 69dabd88a8e6680b1a1a18397eb3e165e4019ce6 third_party/bpftime/third_party/argparse (v3.0-3-g69dabd8)\n 53c1852920c8a8f8ccedb7a64e3d9852949792c7 third_party/bpftime/third_party/bpftool (v7.6.0-22-g53c1852)\n 3f077472ee7e703b733c2c9ae15ef3f4c13ee25b third_party/bpftime/third_party/bpftool/libbpf (v1.6.0-25-g3f07747)\n 48bcf39a661a13be22666ac64db8a7f886f2637e third_party/bpftime/third_party/spdlog (v1.2.1-2497-g48bcf39a)\n 39872ad471c206051407d89ab8ed62d9ba0d7310 third_party/bpftime/third_party/ubpf (remotes/origin/strings-277-g39872ad4)\n 73b6ea325b8b48ebdb17f2382c25ec38183154f8 third_party/bpftime/third_party/ubpf/external/bpf_conformance (v0.0.6-15-g73b6ea3)\n 8a08b5be22456ff5879c30d82b9715f40f40b98f third_party/bpftime/third_party/ubpf/external/bpf_conformance/external/elfio (Release_3.7-294-g8a08b5b)\n 29a86ef6ce6b0ef22742ba0ba7ef7d71c96da578 third_party/bpftime/third_party/ubpf/vm/compat/libraries/win-c/src (v1.0-2-g29a86ef)\n 9ea0180d15a688ac14d6a642994f8cca017f928d third_party/bpftime/vm/llvm-jit (remotes/origin/fix-xliner-6-g9ea0180)\n 51f0f2d3fed92d88ef4a0fa61a38024b07bf9d16 third_party/mqsim (heads/master)\n",
+    "stderr": ""
+  },
+  "gpu_inventory": {
+    "argv": [
+      "nvidia-smi",
+      "--query-gpu=index,uuid,name,driver_version,memory.total,memory.used,utilization.gpu",
+      "--format=csv,noheader"
+    ],
+    "returncode": 0,
+    "stdout": "0, GPU-ae7dd120-ae20-505b-e58d-e208a5708f36, Tesla V100-SXM2-16GB, 565.57.01, 16384 MiB, 3 MiB, 0 %\n1, GPU-7dedbb28-7796-b58d-7480-c3fdd51778a9, Tesla V100-SXM2-16GB, 565.57.01, 16384 MiB, 3 MiB, 0 %\n",
+    "stderr": ""
+  },
+  "gpu_processes": {
+    "argv": [
+      "nvidia-smi",
+      "--query-compute-apps=pid,process_name,used_gpu_memory",
+      "--format=csv,noheader"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "nvcc": {
+    "argv": [
+      "/usr/local/cuda/bin/nvcc",
+      "--version"
+    ],
+    "returncode": 0,
+    "stdout": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2023 NVIDIA Corporation\nBuilt on Tue_Feb__7_19:32:13_PST_2023\nCuda compilation tools, release 12.1, V12.1.66\nBuild cuda_12.1.r12.1/compiler.32415258_0\n",
+    "stderr": ""
+  },
+  "memory": {
+    "argv": [
+      "free",
+      "-b"
+    ],
+    "returncode": 0,
+    "stdout": "               total        used        free      shared  buff/cache   available\nMem:     270050185216 12680089600 218832592896   247963648 38537502720 255221407744\nSwap:     8589930496           0  8589930496\n",
+    "stderr": ""
+  },
+  "disk": {
+    "argv": [
+      "df",
+      "-B1",
+      "/home/data/long/hbfsim-runs/llama2-layer15-ctx32-live-v1-20261019",
+      "/tmp",
+      "/dev/shm"
+    ],
+    "returncode": 0,
+    "stdout": "Filesystem         1B-blocks          Used     Available Use% Mounted on\n/dev/sdc       7936733040640 1244921614336 6291745292288  17% /home/data\n/dev/sda2       982807273472  915279118336   17528856576  99% /\ntmpfs           135025090560          4096  135025086464   1% /dev/shm\n",
+    "stderr": ""
+  },
+  "ptx_summary": {
+    "nvidia/cublas/lib/libcublas.so.12": {
+      "returncode": 0,
+      "member_count": 191,
+      "targets": [
+        "90"
+      ]
+    },
+    "nvidia/cublas/lib/libcublasLt.so.12": {
+      "returncode": 0,
+      "member_count": 95,
+      "targets": [
+        "90"
+      ]
+    },
+    "torch/lib/libtorch_cuda.so": {
+      "returncode": 0,
+      "member_count": 0,
+      "targets": []
+    }
+  },
+  "packages": {
+    "torch": "2.4.0",
+    "transformers": "4.57.1",
+    "safetensors": "0.6.2"
+  },
+  "captured_at_utc": "2026-10-19T04:48:59.158296+00:00",
+  "gpu_workload_launched": false
+}

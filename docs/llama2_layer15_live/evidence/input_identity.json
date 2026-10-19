@@ -1,0 +1,167 @@
+{
+  "files": [
+    {
+      "source": "/home/long/allsim/simulator_src/accel-sim-hbf/test/flint/trace_flint_decoder_layer.py",
+      "snapshot": "/home/data/long/hbfsim-runs/llama2-layer15-ctx32-live-v1-20261019/frozen/trace_flint_decoder_layer.py",
+      "sha256": "508bb22d1f0a2a83abb2bb2d2fa6a1b4364311a97a2fea53d771368ab0f7ed67",
+      "size_bytes": 8895
+    },
+    {
+      "source": "/home/long/allsim/simulator_src/accel-sim-hbf/test/llama2_decode_trace/scripts/trace_decoder_layer.py",
+      "snapshot": "/home/data/long/hbfsim-runs/llama2-layer15-ctx32-live-v1-20261019/frozen/trace_decoder_layer.py",
+      "sha256": "add394d8e2d8f079386b744658a2f96a44270b9e0883334221a7b79b4cc8a61f",
+      "size_bytes": 12425
+    },
+    {
+      "source": "/home/data/llama2-7b-hf-chat/config.json",
+      "snapshot": "/home/data/long/hbfsim-runs/llama2-layer15-ctx32-live-v1-20261019/frozen/config.json",
+      "sha256": "958cdb0decc112046a6bb0741aa3afa5df5929bbaae2d56cea9eae47c95cc564",
+      "size_bytes": 657
+    },
+    {
+      "source": "/home/data/llama2-7b-hf-chat/model.safetensors.index.json",
+      "snapshot": "/home/data/long/hbfsim-runs/llama2-layer15-ctx32-live-v1-20261019/frozen/model.safetensors.index.json",
+      "sha256": "11b694a9d4bffdac71733db7f782be0df1f87a65fb9ef05bcf6d317029c22364",
+      "size_bytes": 26788
+    },
+    {
+      "source": "/home/data/long/accel-sim-hbf-runs/flint_layer15_ctx32_manifest_v1/deployment/weight_manifest.json",
+      "snapshot": "/home/data/long/hbfsim-runs/llama2-layer15-ctx32-live-v1-20261019/frozen/original_weight_manifest.json",
+      "sha256": "415f7c275a33cdcbe5d889c2974abea13f5f098ff8e3ea51977152dfa82d30a9",
+      "size_bytes": 2869
+    },
+    {
+      "source": "/home/long/allsim/simulator_src/HBFSim/configs/profiles/nominal.json",
+      "snapshot": "/home/data/long/hbfsim-runs/llama2-layer15-ctx32-live-v1-20261019/frozen/nominal-original.json",
+      "sha256": "d4b009fded6f2b78218d4a99f8acf8cd5154a4660f1030c9bab85bba4b1f35a0",
+      "size_bytes": 528
+    },
+    {
+      "source": "DERIVED_FROM_NOMINAL_ONLY_NAME_AND_TIME_SCALE_CHANGED",
+      "snapshot": "/home/data/long/hbfsim-runs/llama2-layer15-ctx32-live-v1-20261019/frozen/pilot-profile.json",
+      "sha256": "c85a6e63d6b9cc58ad9e537a4261b341df573a61f3205e470c0a295cc760b219",
+      "size_bytes": 549
+    }
+  ],
+  "layer15_checkpoint_tensors": [
+    {
+      "name": "model.layers.15.input_layernorm.weight",
+      "shard": "/home/data/llama2-7b-hf-chat/model-00001-of-00002.safetensors",
+      "dtype": "F16",
+      "shape": [
+        4096
+      ],
+      "data_offset": 3095539736,
+      "size_bytes": 8192,
+      "sha256": "16c3bd8aba5985efe9973bd63229398c7dda306afe764fd8e4eb11e45698e1ed"
+    },
+    {
+      "name": "model.layers.15.mlp.down_proj.weight",
+      "shard": "/home/data/llama2-7b-hf-chat/model-00001-of-00002.safetensors",
+      "dtype": "F16",
+      "shape": [
+        4096,
+        11008
+      ],
+      "data_offset": 3095547928,
+      "size_bytes": 90177536,
+      "sha256": "1afd01da66a62d756e5066e068d9c1720b88ed24c7f889031427b003bad5ba84"
+    },
+    {
+      "name": "model.layers.15.mlp.gate_proj.weight",
+      "shard": "/home/data/llama2-7b-hf-chat/model-00001-of-00002.safetensors",
+      "dtype": "F16",
+      "shape": [
+        11008,
+        4096
+      ],
+      "data_offset": 3185725464,
+      "size_bytes": 90177536,
+      "sha256": "25eeed365e29aebc61092df2463fa0b1508dbe18a718ea58387bd8da0ffd7879"
+    },
+    {
+      "name": "model.layers.15.mlp.up_proj.weight",
+      "shard": "/home/data/llama2-7b-hf-chat/model-00001-of-00002.safetensors",
+      "dtype": "F16",
+      "shape": [
+        11008,
+        4096
+      ],
+      "data_offset": 3275903000,
+      "size_bytes": 90177536,
+      "sha256": "3ba04e67b7ed1ad5c6adc79b5404fef48335820da268f8b3c77e1384be29ffc0"
+    },
+    {
+      "name": "model.layers.15.post_attention_layernorm.weight",
+      "shard": "/home/data/llama2-7b-hf-chat/model-00001-of-00002.safetensors",
+      "dtype": "F16",
+      "shape": [
+        4096
+      ],
+      "data_offset": 3366080536,
+      "size_bytes": 8192,
+      "sha256": "591c67bbc4cafaa8866881bd3aa096dc799908a17be7f7cfa6117f2a10ce59c5"
+    },
+    {
+      "name": "model.layers.15.self_attn.k_proj.weight",
+      "shard": "/home/data/llama2-7b-hf-chat/model-00001-of-00002.safetensors",
+      "dtype": "F16",
+      "shape": [
+        4096,
+        4096
+      ],
+      "data_offset": 3366088728,
+      "size_bytes": 33554432,
+      "sha256": "774fb3fad58f4bd0fa4ba8048f514791a223827994e492834ffc26fa017bb3f9"
+    },
+    {
+      "name": "model.layers.15.self_attn.o_proj.weight",
+      "shard": "/home/data/llama2-7b-hf-chat/model-00001-of-00002.safetensors",
+      "dtype": "F16",
+      "shape": [
+        4096,
+        4096
+      ],
+      "data_offset": 3399643160,
+      "size_bytes": 33554432,
+      "sha256": "3fdfbc8fdb2f485bef0c0a5a172116904d40d28d09f78b931a3742041019578b"
+    },
+    {
+      "name": "model.layers.15.self_attn.q_proj.weight",
+      "shard": "/home/data/llama2-7b-hf-chat/model-00001-of-00002.safetensors",
+      "dtype": "F16",
+      "shape": [
+        4096,
+        4096
+      ],
+      "data_offset": 3433197592,
+      "size_bytes": 33554432,
+      "sha256": "567314da8612aec258b8c7613d75d59fa034f04bf90be360503e06695b09a8bc"
+    },
+    {
+      "name": "model.layers.15.self_attn.rotary_emb.inv_freq",
+      "shard": "/home/data/llama2-7b-hf-chat/model-00001-of-00002.safetensors",
+      "dtype": "F16",
+      "shape": [
+        64
+      ],
+      "data_offset": 3466752024,
+      "size_bytes": 128,
+      "sha256": "c060eb12019f8cb67139029855ead952cbbf747ecab788be7748c2a3d3bae6a7"
+    },
+    {
+      "name": "model.layers.15.self_attn.v_proj.weight",
+      "shard": "/home/data/llama2-7b-hf-chat/model-00001-of-00002.safetensors",
+      "dtype": "F16",
+      "shape": [
+        4096,
+        4096
+      ],
+      "data_offset": 3466752152,
+      "size_bytes": 33554432,
+      "sha256": "f08a1a45b3286590ac05b8e0f147d39efea22f5c242a94d53e719eb956a6ff86"
+    }
+  ],
+  "raw_tensor_bytes": 404766848,
+  "note": "Checkpoint buffer count differs from registered parameter count; preserve both."
+}

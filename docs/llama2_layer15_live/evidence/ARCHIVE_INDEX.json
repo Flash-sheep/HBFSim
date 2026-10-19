@@ -1,0 +1,88 @@
+{
+  "schema_version": "hbfsim-blocker-archive-v1",
+  "source_directory": "/home/data/long/hbfsim-runs/llama2-layer15-ctx32-live-v1-20261019",
+  "snapshot_date": "2026-10-19",
+  "source_revision": "d2e6ce239c117c640fe68c8b5b2a7c77cf184da6",
+  "archive_scope": "Documentation and exact copies of CPU/read-only receipts and small JSON inputs; not an executable reproduction bundle or user approval.",
+  "files": [
+    {
+      "path": "PREFLIGHT.txt",
+      "size_bytes": 5025,
+      "sha256": "70f517644abf77aed31b0528bce369a25d4c1707364391611d39fb1c84b9d1c6"
+    },
+    {
+      "path": "preflight_manifest.json",
+      "size_bytes": 11152,
+      "sha256": "c0cb0e43154b9401277ec4186ead9792a4e3330f9e20b08a721de85716e1c885"
+    },
+    {
+      "path": "STATUS.json",
+      "size_bytes": 446,
+      "sha256": "9233a1f567a663641fe26bc1acceed5e9dc5131bb606dff793439a4c7be9c33d"
+    },
+    {
+      "path": "host_audit.json",
+      "size_bytes": 5935,
+      "sha256": "f35264bf324d745aa1654774b7f049baf5325fce618f42813cbae82184bb7654"
+    },
+    {
+      "path": "input_identity.json",
+      "size_bytes": 6159,
+      "sha256": "0fc935c3248056fdc3feb4ab5998c7931efa1fef89f838dae81a290337a6a268"
+    },
+    {
+      "path": "ptx_inventory.json",
+      "size_bytes": 13308,
+      "sha256": "4b9da46fabfe13789fb3e3d4632229df670022aa2795eea97db8c2849b23ade0"
+    },
+    {
+      "path": "cpu_input_validation.json",
+      "size_bytes": 568,
+      "sha256": "f2c90a87e5ff1cb0ea151cfae9d314a479c228d96d52bae002df73e4b6064704"
+    },
+    {
+      "path": "configure_probe.json",
+      "size_bytes": 663,
+      "sha256": "be9d9497a6a59b232026b88be6dfd1d7fd132af5d51c2d10ab6248f530bc28de"
+    },
+    {
+      "path": "configure_probe_cmake331.json",
+      "size_bytes": 1433,
+      "sha256": "d1754e1bfc7c2d08f1669e5fad1f87c9b2c057f2808b421a5aae37520c83300b"
+    },
+    {
+      "path": "frozen/config.json",
+      "size_bytes": 657,
+      "sha256": "958cdb0decc112046a6bb0741aa3afa5df5929bbaae2d56cea9eae47c95cc564"
+    },
+    {
+      "path": "frozen/model.safetensors.index.json",
+      "size_bytes": 26788,
+      "sha256": "11b694a9d4bffdac71733db7f782be0df1f87a65fb9ef05bcf6d317029c22364"
+    },
+    {
+      "path": "frozen/nominal-original.json",
+      "size_bytes": 528,
+      "sha256": "d4b009fded6f2b78218d4a99f8acf8cd5154a4660f1030c9bab85bba4b1f35a0"
+    },
+    {
+      "path": "frozen/original_weight_manifest.json",
+      "size_bytes": 2869,
+      "sha256": "415f7c275a33cdcbe5d889c2974abea13f5f098ff8e3ea51977152dfa82d30a9"
+    },
+    {
+      "path": "frozen/pilot-profile.json",
+      "size_bytes": 549,
+      "sha256": "c85a6e63d6b9cc58ad9e537a4261b341df573a61f3205e470c0a295cc760b219"
+    }
+  ],
+  "excluded": [
+    "model checkpoint payloads",
+    "original raw GPU traces",
+    "CUDA toolkit or local CMake installation",
+    "build artifacts and compiled binaries",
+    "original donor workload Python sources; hashes/paths remain in input_identity.json",
+    "CPU preparation script; hash remains in planning manifest"
+  ],
+  "gpu_workload_launched": false
+}
