@@ -6,6 +6,8 @@
 
 **English** | [中文](README.zh-CN.md)
 
+[original 分支环境配置与运行说明（中文）](docs/ORIGINAL_ENVIRONMENT_AND_RUN.md)
+
 HBFSim is an evaluation platform for High-Bandwidth Flash (**HBF**), a memory tier that
 stacks NAND flash inside the accelerator package, one tier below high-bandwidth memory. HBF
 parts cannot be bought today: the first technical specification was published by SanDisk and
