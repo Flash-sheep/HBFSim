@@ -1,0 +1,21 @@
+{
+  "status": "SCOPED_READY_CPU_NOT_GPU_VALIDATED",
+  "selected_entries": 19,
+  "selected_members": 11,
+  "excluded": [
+    {
+      "module_sha256": "6fed9c64b663edb9ff8a4b3950b286e844b7d87fec424a3198d1f24bd35a5782",
+      "entries": [
+        "_ZN2at6native13reduce_kernelILi512ELi1ENS0_8ReduceOpIfNS0_7MeanOpsIffffEEjfLi4EEEEEvT1_"
+      ],
+      "reason": "Transform not supported; raw receipts preserved",
+      "receipt": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/observed-torch-finish-v1/6fed9c64b663edb9ff8a4b3950b286e844b7d87fec424a3198d1f24bd35a5782/TRANSFORM_RESULT.json"
+    }
+  ],
+  "PTX_target": "sm_80",
+  "derived_version": "8.7",
+  "whole_layer_ready": false,
+  "HBF_timing_validated": false,
+  "GPU_tasks_started": 0,
+  "limits": "Read-only source/derived identity join only; selected-entry assembly is not full runtime linking/load validation"
+}

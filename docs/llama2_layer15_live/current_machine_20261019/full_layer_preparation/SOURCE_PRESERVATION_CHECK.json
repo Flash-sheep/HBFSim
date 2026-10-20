@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "scope": "source preservation audit during CPU build",
+  "root_tracked_diff": [],
+  "root_status": "?? docs/llama2_layer15_live/CURRENT_MACHINE_ENVIRONMENT.md\n?? docs/llama2_layer15_live/FULL_LAYER_PREPARATION.md\n?? docs/llama2_layer15_live/GPU_SM80_SAMPLE_RESULT.md\n?? docs/llama2_layer15_live/MINIMAL_CUDART11_PLAN.md\n?? docs/llama2_layer15_live/current_machine_20261019/\n",
+  "agent_head": "ec26daecc8e787fb80fd95dd596a576404a5e36e",
+  "existing_patch_sha256": "63f4820fa41bdf6538ec45d805f3c68e3dea9a3e605ffbd65f3b88788c51121f",
+  "original_patch_reverse_check": "PASS",
+  "CUDA11_changes_implemented": false,
+  "source_preparation_receipt": "/home/yjl/HBFSim/artifacts/llama2-layer15-full-validation-v1/evidence/AGENT_SOURCE_PREPARE.json"
+}

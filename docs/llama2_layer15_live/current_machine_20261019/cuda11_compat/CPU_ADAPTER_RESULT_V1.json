@@ -1,0 +1,83 @@
+{
+  "status": "CPU_ADAPTER_VALIDATED_GPU_NOT_RUN",
+  "approval": {
+    "status": "USER_CONFIRMED",
+    "scope": "MINIMAL_CUDART11_PLAN.md as presented; isolated default-off compatibility implementation and fixed CPU validation only",
+    "plan_sha256": "7ceb358d6e3e64a0642a630fb3efb55363d16c850ae593f8d4b61228e6d2df99",
+    "user_verbatim": "\u6279\u51c6",
+    "not_authorized": [
+      "GPU launch",
+      "driver/global changes",
+      "push/merge"
+    ],
+    "recorded_at_utc": "2026-10-19T11:28:17.493818+00:00"
+  },
+  "builds": [
+    "gate OFF",
+    "gate ON",
+    "agent OFF",
+    "agent ON"
+  ],
+  "gate_regression_cases": {
+    "OFF": 12,
+    "ON": 12
+  },
+  "CUDA11_gate_cases": 8,
+  "additional_gate_boundaries": [
+    "default OFF exports no CUDA11 launch",
+    "ON exports no nonexistent CUDA11 private launch",
+    "non-strict CUDA11 launch rejects"
+  ],
+  "registry_cases": "real Gum registration callbacks for domains11/12/13; same numeric handle isolation; unknown handle, reuse, generation, unregister; wrong domain/entry/container rejects; unready/non-strict CUDA11 launch rejects",
+  "initial_registry_failure": "CPU fixture dropped agent version script and exposed static NVPTXCompiler symbols; actual failure retained. Fixed fixture visibility, normal exit then passed. Production cleanup unchanged.",
+  "actual_GPU_launches": 0,
+  "positive_real_PTX_binding": "NOT_VALIDATED",
+  "framework_build": "NOT_STARTED_SOURCE_DEPENDENCIES_IN_PROGRESS",
+  "code_files": [
+    {
+      "path": "experiments/llama2_sm80_cuda11/test_cpu.py",
+      "sha256": "a647a51c079c6bbe4a8e803274e1ede456de2705c1885f65a051afc275f8c4dc",
+      "bytes": 11479
+    },
+    {
+      "path": "experiments/llama2_sm80_cuda11/apply_compat.py",
+      "sha256": "8469a76e0647aa148a1e045ca0a27b6c2fa123be7795ed1bb10077fbc1a149b7",
+      "bytes": 12380
+    },
+    {
+      "path": "experiments/llama2_sm80_cuda11/source_identity.json",
+      "sha256": "0ab5117a5fb86c2b478ca8085145e198014e934fea95b36e8b6264ad9a476b99",
+      "bytes": 2666
+    },
+    {
+      "path": "experiments/llama2_sm80_cuda11/build_cpu.py",
+      "sha256": "ad50d5203e15fc905ab8c6e3e114ed353275b86554f7dd255f4ce128cc68c191",
+      "bytes": 4682
+    },
+    {
+      "path": "experiments/llama2_sm80_cuda11/framework_cpu.py",
+      "sha256": "77a1930b13a1a92be355acd964a39dce8f7069dd511e91b6082f5dfbed8c950f",
+      "bytes": 7112
+    },
+    {
+      "path": "experiments/llama2_sm80_cuda11/sync_torch_sources.py",
+      "sha256": "bbfeb6d0d21525d94d70b9297537eaa0d19140c4ef8881779b412b3fffd4ceed",
+      "bytes": 2861
+    },
+    {
+      "path": "experiments/llama2_sm80_cuda11/tests/registry_cpu.cpp",
+      "sha256": "81979e60401926cb54b0851c76b5eb6ff7663367a7d463f614091cfbca1f7ae2",
+      "bytes": 6791
+    },
+    {
+      "path": "experiments/llama2_sm80_cuda11/patches/agent-cuda11.patch",
+      "sha256": "86186588c92b12a1ee8907b0277157b58a191a84ac6d4ba97253951beeb64785",
+      "bytes": 10891
+    },
+    {
+      "path": "experiments/llama2_sm80_cuda11/patches/gate-cuda11.patch",
+      "sha256": "ef62d9834dd48fccbd24eb7087fcf534c1b4b247ed5af1fe198447bee735bf2e",
+      "bytes": 10195
+    }
+  ]
+}

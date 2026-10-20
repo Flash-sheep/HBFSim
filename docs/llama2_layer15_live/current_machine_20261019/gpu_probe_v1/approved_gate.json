@@ -1,0 +1,7 @@
+{
+  "status": "READY_FOR_SUBMISSION",
+  "experiment_id": "LLAMA2-SM80-PTX-GPU-PROBE",
+  "version": "1",
+  "canonical_manifest_hash": "a54ce76c6ee340533c953a407d126f44b257014b61481e27be8ffc797e5c297f",
+  "launch_performed": false
+}

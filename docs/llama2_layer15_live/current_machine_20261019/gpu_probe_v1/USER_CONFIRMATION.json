@@ -1,0 +1,16 @@
+{
+  "schema_version": "eq3-user-confirmation-v1",
+  "record_kind": "USER_CONFIRMATION",
+  "experiment_id": "LLAMA2-SM80-PTX-GPU-PROBE",
+  "version": "1",
+  "canonical_manifest_hash": "a54ce76c6ee340533c953a407d126f44b257014b61481e27be8ffc797e5c297f",
+  "evidence_class": "USER_CONFIRMED",
+  "is_test_fixture": false,
+  "source": {
+    "type": "codex_user_message",
+    "reference": "Current Codex conversation, explicit user confirmation after preflight v1; verbatim copy: artifacts/llama2-sm80-gpu-probe-v1/USER_SOURCE.txt",
+    "captured_at": "2026-10-19T08:42:26.885976+00:00",
+    "statement": "批准 experiment_id=LLAMA2-SM80-PTX-GPU-PROBE version=1 canonical_manifest_hash=a54ce76c6ee340533c953a407d126f44b257014b61481e27be8ffc797e5c297f",
+    "statement_sha256": "c9a142fd57304bec89e829da7c14a7b0065673d9eb7b3f84afa59b833115681c"
+  }
+}

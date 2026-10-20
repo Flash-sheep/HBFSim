@@ -1,0 +1,210 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,6 +4,7 @@
+ 
+ option(HBFSIM_ENABLE_CUDA "Build CUDA instrumentation and runtime components" ON)
+ option(HBFSIM_ENABLE_MQSIM "Build the MQSim-backed host service" ON)
++option(HBFSIM_EXPERIMENTAL_CUDART11 "Isolated experimental CUDA11 launch identity adapter" OFF)
+ option(HBFSIM_GATE_TEST_HOOKS "Enable tested CUDA launch gate ABI hooks" OFF)
+ set(HBFSIM_GATE_CUDART_VERSION_MAP "" CACHE FILEPATH "CUDA runtime symbol version map for launch gate")
+ option(HBFSIM_ENABLE_LLM_TESTS "Enable llama.cpp and vLLM integration tests" OFF)
+@@ -622,7 +623,11 @@
+ 
+     add_library(hbfsim_launch_gate SHARED src/cuda_runtime/launch_gate.cpp)
+     target_link_libraries(hbfsim_launch_gate PRIVATE hbfsim_core ${CMAKE_DL_LIBS} OpenSSL::Crypto CUDA::cudart CUDA::cuda_driver)
+-    if(HBFSIM_GATE_CUDART_VERSION_MAP)
++    if(HBFSIM_EXPERIMENTAL_CUDART11)
++        target_compile_definitions(hbfsim_launch_gate PRIVATE HBFSIM_EXPERIMENTAL_CUDART11=1)
++        target_link_options(hbfsim_launch_gate PRIVATE "LINKER:--version-script=${CMAKE_CURRENT_SOURCE_DIR}/cmake/cudart11-experiment.map")
++        set_property(TARGET hbfsim_launch_gate APPEND PROPERTY LINK_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cudart11-experiment.map")
++    elseif(HBFSIM_GATE_CUDART_VERSION_MAP)
+         if(NOT EXISTS "${HBFSIM_GATE_CUDART_VERSION_MAP}")
+             message(FATAL_ERROR "HBFSIM_GATE_CUDART_VERSION_MAP does not exist: ${HBFSIM_GATE_CUDART_VERSION_MAP}")
+         endif()
+--- /dev/null
++++ b/cmake/cudart11-experiment.map
+@@ -0,0 +1,3 @@
++libcudart.so.11.0 {};
++libcudart.so.12 {} libcudart.so.11.0;
++libcudart.so.13 {} libcudart.so.12;
+--- a/src/cuda_runtime/launch_gate.cpp
++++ b/src/cuda_runtime/launch_gate.cpp
+@@ -2252,12 +2252,34 @@
+         function);
+ }
+ 
+-enum class RuntimeDomain { Cudart12, Cudart13 };
++enum class RuntimeDomain { Cudart12, Cudart13
++#if HBFSIM_EXPERIMENTAL_CUDART11
++    , Cudart11
++#endif
++};
+ 
+ const char* runtime_version(RuntimeDomain domain) noexcept
+ {
++#if HBFSIM_EXPERIMENTAL_CUDART11
++    if (domain == RuntimeDomain::Cudart11) return "libcudart.so.11.0";
++#endif
+     return domain == RuntimeDomain::Cudart12 ? "libcudart.so.12"
+                                               : "libcudart.so.13";
++}
++
++const char* runtime_domain_name(RuntimeDomain domain) noexcept
++{
++#if HBFSIM_EXPERIMENTAL_CUDART11
++    if (domain == RuntimeDomain::Cudart11) return "cudart11";
++#endif
++    return domain == RuntimeDomain::Cudart12 ? "cudart12" : "cudart13";
++}
++int runtime_domain_id(RuntimeDomain domain) noexcept
++{
++#if HBFSIM_EXPERIMENTAL_CUDART11
++    if (domain == RuntimeDomain::Cudart11) return 11;
++#endif
++    return domain == RuntimeDomain::Cudart12 ? 12 : 13;
+ }
+ 
+ const char* runtime_soname(RuntimeDomain domain) noexcept
+@@ -2280,6 +2302,13 @@
+ 
+ const RuntimeLibrary& runtime_library(RuntimeDomain domain) noexcept
+ {
++#if HBFSIM_EXPERIMENTAL_CUDART11
++    if (domain == RuntimeDomain::Cudart11) {
++        static const RuntimeLibrary cudart11{
++            dlopen("libcudart.so.11.0", RTLD_NOW | RTLD_LOCAL)};
++        return cudart11;
++    }
++#endif
+     if (domain == RuntimeDomain::Cudart12) {
+         static const RuntimeLibrary cudart12{
+             dlopen("libcudart.so.12", RTLD_NOW | RTLD_LOCAL)};
+@@ -2387,7 +2416,14 @@
+ extern "C" std::uint64_t hbfsim_strict_original_begin_v1(
+     const void* function, int domain, int api_kind) noexcept
+ {
+-    if (function == nullptr || (domain != 12 && domain != 13) ||
++    if (function == nullptr || (domain != 12 && domain != 13
++#if HBFSIM_EXPERIMENTAL_CUDART11
++        && domain != 11
++#endif
++        ) ||
++#if HBFSIM_EXPERIMENTAL_CUDART11
++        (domain == 11 && api_kind != 1) ||
++#endif
+         (api_kind != 1 && api_kind != 2)) return 0;
+     const auto token = strict_original_next_token.fetch_add(
+         1, std::memory_order_relaxed);
+@@ -2992,7 +3028,7 @@
+                                 &resolved_function);
+     if (!approve(decision)) {
+         strict_denial_stop_if_enabled(decision, symbol,
+-            domain == RuntimeDomain::Cudart12 ? "cudart12" : "cudart13",
++            runtime_domain_name(domain),
+             runtime_version(domain), reinterpret_cast<const void*>(original),
+             reinterpret_cast<const void*>(runtime_get_function_symbol(domain)),
+             function);
+@@ -3009,14 +3045,18 @@
+                 rejected.allowed = false;
+                 rejected.reason = std::move(reason);
+                 strict_denial_stop_if_enabled(rejected, symbol,
+-                    domain == RuntimeDomain::Cudart12 ? "cudart12" : "cudart13",
++                    runtime_domain_name(domain),
+                     runtime_version(domain),
+                     reinterpret_cast<const void*>(original),
+                     reinterpret_cast<const void*>(
+                         runtime_get_function_symbol(domain)), function);
+                 return finish(result);
+             };
+-        if (domain != RuntimeDomain::Cudart12)
++        if (domain != RuntimeDomain::Cudart12
++#if HBFSIM_EXPERIMENTAL_CUDART11
++            && domain != RuntimeDomain::Cudart11
++#endif
++            )
+             return reject_after_approval("strict_direct_wrong_runtime_domain",
+                                          cudaErrorNotSupported);
+         if (std::strcmp(symbol, "cudaLaunchKernel") != 0)
+@@ -3033,7 +3073,7 @@
+             const auto result = original(function, grid, block, arguments,
+                                          shared_memory, stream);
+             complete_strict_original(function,
+-                domain == RuntimeDomain::Cudart12 ? 12 : 13, 1, 1, result);
++                runtime_domain_id(domain), 1, 1, result);
+             if (align_proof.has_value()) {
+                 static std::mutex log_mutex;
+                 std::lock_guard log_lock(log_mutex);
+@@ -3142,7 +3182,7 @@
+         inspect_kernel_launch(kernel, arguments, &resolved_function);
+     if (!approve(decision)) {
+         strict_denial_stop_if_enabled(decision, symbol,
+-            domain == RuntimeDomain::Cudart12 ? "cudart12" : "cudart13",
++            runtime_domain_name(domain),
+             runtime_version(domain), reinterpret_cast<const void*>(original),
+             nullptr, reinterpret_cast<const void*>(kernel));
+         return finish(cudaErrorNotSupported);
+@@ -3159,7 +3199,7 @@
+                 rejected.allowed = false;
+                 rejected.reason = std::move(reason);
+                 strict_denial_stop_if_enabled(rejected, symbol,
+-                    domain == RuntimeDomain::Cudart12 ? "cudart12" : "cudart13",
++                    runtime_domain_name(domain),
+                     runtime_version(domain),
+                     reinterpret_cast<const void*>(original), nullptr,
+                     reinterpret_cast<const void*>(kernel));
+@@ -3182,7 +3222,7 @@
+             const auto result = original(kernel, grid, block, arguments,
+                                          shared_memory, stream);
+             complete_strict_original(reinterpret_cast<const void*>(kernel),
+-                domain == RuntimeDomain::Cudart12 ? 12 : 13, 2, 1, result);
++                runtime_domain_id(domain), 2, 1, result);
+             return finish(result);
+         }
+         if (resolved_function == nullptr)
+@@ -3608,6 +3648,37 @@
+ 
+ #define HBFSIM_RUNTIME_DOMAIN_ENTRY(export_name, implementation_name, domain,                                      symbol_name)                                   extern "C" cudaError_t implementation_name(                                       const void* function, dim3 grid, dim3 block, void** arguments,                 std::size_t shared_memory, cudaStream_t stream)                            {                                                                                  return runtime_launch(domain, symbol_name, function, grid, block,                                    arguments, shared_memory, stream);                   }
+ 
++#if HBFSIM_EXPERIMENTAL_CUDART11
++// CUDA11 supports only the reviewed public host-stub launch route here.
++extern "C" cudaError_t hbfsim_cudaLaunchKernel_11(
++    const void* function, dim3 grid, dim3 block, void** arguments,
++    std::size_t shared_memory, cudaStream_t stream)
++{
++    if (!strict_instrumentation_requested()) return cudaErrorNotSupported;
++    return runtime_launch(RuntimeDomain::Cudart11, "cudaLaunchKernel",
++                          function, grid, block, arguments, shared_memory, stream);
++}
++extern "C" cudaError_t hbfsim_cudaGetFuncBySymbol_11(
++    cudaFunction_t* function, const void* symbol)
++{
++    auto original = runtime_get_function_symbol(RuntimeDomain::Cudart11);
++    if (original == nullptr) return cudaErrorInitializationError;
++    return original(function, symbol);
++}
++// Existing but unreviewed CUDA11 entry points reject, without calling cudart.
++#define HBFSIM_REJECT_CUDART11(name) \
++extern "C" cudaError_t hbfsim_##name##_11( \
++    const void*, dim3, dim3, void**, std::size_t, cudaStream_t) \
++{ return cudaErrorNotSupported; } \
++__asm__(".symver hbfsim_" #name "_11," #name "@libcudart.so.11.0");
++HBFSIM_REJECT_CUDART11(cudaLaunchKernel_ptsz)
++HBFSIM_REJECT_CUDART11(cudaLaunchCooperativeKernel)
++HBFSIM_REJECT_CUDART11(cudaLaunchCooperativeKernel_ptsz)
++#undef HBFSIM_REJECT_CUDART11
++__asm__(".symver hbfsim_cudaLaunchKernel_11,cudaLaunchKernel@libcudart.so.11.0");
++__asm__(".symver hbfsim_cudaGetFuncBySymbol_11,cudaGetFuncBySymbol@libcudart.so.11.0");
++#endif
++
+ HBFSIM_RUNTIME_DOMAIN_ENTRY(cudaLaunchKernel, hbfsim_cudaLaunchKernel_12,
+                             RuntimeDomain::Cudart12, "cudaLaunchKernel")
+ HBFSIM_RUNTIME_DOMAIN_ENTRY(cudaLaunchKernel, hbfsim_cudaLaunchKernel_13,
+@@ -3887,7 +3958,7 @@
+         inspect_symbol_launch(domain, function, arguments, &resolved_function);
+     if (!approve(decision)) {
+         strict_denial_stop_if_enabled(decision, symbol,
+-            domain == RuntimeDomain::Cudart12 ? "cudart12" : "cudart13",
++            runtime_domain_name(domain),
+             runtime_version(domain), reinterpret_cast<const void*>(original),
+             reinterpret_cast<const void*>(runtime_get_function_symbol(domain)),
+             function);

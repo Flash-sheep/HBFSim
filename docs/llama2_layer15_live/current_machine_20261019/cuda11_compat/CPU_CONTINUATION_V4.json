@@ -1,0 +1,15 @@
+{
+  "UTC": "2026-10-20T01:34:22.487394+00:00",
+  "status": "CPU_PREPARATION_PASS_GPU_NOT_RUN",
+  "framework_build": "PASS",
+  "new_environment_CPU_forward": "PASS",
+  "torch_sm80_PTX_members": 239,
+  "remaining_runtime_build": "PASS after private libbpf pkg-config repair",
+  "original_postbuild_failure_preserved": "framework-cpu/postbuild-v1.json",
+  "CPU_numerical_identity_to_old_wheel": "DIFFERENT, max_abs0.001953125; new GPU baseline must use the same new environment",
+  "GPU_tasks_started": 0,
+  "pending_preflight": "artifacts/llama2-sm80-native-discovery-v1/manifest.json",
+  "approval_status": "PENDING_USER_APPROVAL",
+  "canonical_manifest_hash": "42c3241e952213a04f3d8875808890a8ca5df4a6ec08984f119ccfaa463dfedb",
+  "full_HBF_layer_validation": "NOT_RUN"
+}

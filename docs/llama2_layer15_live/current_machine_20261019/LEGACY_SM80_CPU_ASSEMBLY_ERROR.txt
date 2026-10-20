@@ -1,0 +1,2 @@
+ptxas /var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/legacy-sm80-ptx-software-check-v1/staged.ptx, line 1293; error   : Feature 'used_bytes_mask' requires PTX ISA .version 8.3 or later
+ptxas fatal   : Ptx assembly aborted due to errors

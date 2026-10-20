@@ -1,0 +1,1047 @@
+{
+  "status": "OBSERVED_TORCH_SUBSET_SOURCE_JOIN",
+  "collector_path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/postbuild-v1/torch-cuda-original-collection/native-ptx-manifest.json",
+  "collector_sha256": "acec9acd4bc0db9eb31dba718d6bc8bc7ea93f5ae970240e2e6d9736bdf8d4a2",
+  "capture_sha256": "bd42762b8932741ab201cfc61a245aa4bade13f5234ebca65c57ccd8f80bd918",
+  "launches": [
+    {
+      "call_id": 1,
+      "kernel": "_ZN2at6native40_GLOBAL__N__6fd89146_8_Shape_cu_49f7391c19CatArrayBatchedCopyINS1_10OpaqueTypeILj2EEEjLi4ELi64ELi64EEEvPT_NS1_25CatArrInputTensorMetadataIS5_T0_XT2_EXT3_EEENS1_16TensorSizeStrideIS8_Lj4EEEiS8_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f482dca0",
+        "object": "0x7fdc24a260a0",
+        "generation": 137,
+        "symbol": "_ZN2at6native40_GLOBAL__N__6fd89146_8_Shape_cu_49f7391c19CatArrayBatchedCopyINS1_10OpaqueTypeILj2EEEjLi4ELi64ELi64EEEvPT_NS1_25CatArrInputTensorMetadataIS5_T0_XT2_EXT3_EEENS1_16TensorSizeStrideIS8_Lj4EEEiS8_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0137",
+        "member_sha256": "bae60176bbd657ca2c2954173e406b509b9fd453f55d1bba2fada29a0c36e355",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 2,
+      "kernel": "_ZN2at6native40_GLOBAL__N__6fd89146_8_Shape_cu_49f7391c19CatArrayBatchedCopyINS1_10OpaqueTypeILj2EEEjLi4ELi64ELi64EEEvPT_NS1_25CatArrInputTensorMetadataIS5_T0_XT2_EXT3_EEENS1_16TensorSizeStrideIS8_Lj4EEEiS8_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f482dca0",
+        "object": "0x7fdc24a260a0",
+        "generation": 137,
+        "symbol": "_ZN2at6native40_GLOBAL__N__6fd89146_8_Shape_cu_49f7391c19CatArrayBatchedCopyINS1_10OpaqueTypeILj2EEEjLi4ELi64ELi64EEEvPT_NS1_25CatArrInputTensorMetadataIS5_T0_XT2_EXT3_EEENS1_16TensorSizeStrideIS8_Lj4EEEiS8_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0137",
+        "member_sha256": "bae60176bbd657ca2c2954173e406b509b9fd453f55d1bba2fada29a0c36e355",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 3,
+      "kernel": "_ZN2at6native27unrolled_elementwise_kernelIZZZNS0_23direct_copy_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE1_clEvENKUlvE5_clEvEUlfE_NS_6detail5ArrayIPcLi2EEE23TrivialOffsetCalculatorILi1EjESC_NS0_6memory12LoadWithCastILi1EEENSD_13StoreWithCastILi1EEEEEviT_T0_T1_T2_T3_T4_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f43b85e0",
+        "object": "0x7fdc23b774a0",
+        "generation": 49,
+        "symbol": "_ZN2at6native27unrolled_elementwise_kernelIZZZNS0_23direct_copy_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE1_clEvENKUlvE5_clEvEUlfE_NS_6detail5ArrayIPcLi2EEE23TrivialOffsetCalculatorILi1EjESC_NS0_6memory12LoadWithCastILi1EEENSD_13StoreWithCastILi1EEEEEviT_T0_T1_T2_T3_T4_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0049",
+        "member_sha256": "0fecca25493bbb058bae9a5fd29775faf3a8a0ebf3db6f043757209d501aff6a",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 4,
+      "kernel": "_ZN2at6native40_GLOBAL__N__6fd89146_8_Shape_cu_49f7391c36CatArrayBatchedCopy_aligned16_contigINS1_10OpaqueTypeILj4EEEjLi3ELi128ELi1EEEvPT_NS1_25CatArrInputTensorMetadataIS5_T0_XT2_EXT3_EEENS1_16TensorSizeStrideIS8_Lj4EEEiS8_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f482dca0",
+        "object": "0x7fdc24a296d0",
+        "generation": 137,
+        "symbol": "_ZN2at6native40_GLOBAL__N__6fd89146_8_Shape_cu_49f7391c36CatArrayBatchedCopy_aligned16_contigINS1_10OpaqueTypeILj4EEEjLi3ELi128ELi1EEEvPT_NS1_25CatArrInputTensorMetadataIS5_T0_XT2_EXT3_EEENS1_16TensorSizeStrideIS8_Lj4EEEiS8_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0137",
+        "member_sha256": "bae60176bbd657ca2c2954173e406b509b9fd453f55d1bba2fada29a0c36e355",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 5,
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4EZZZNS0_15cos_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE0_clEvENKUlvE0_clEvEUlfE_NS_6detail5ArrayIPcLi2EEEEEviT0_T1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f4a7d480",
+        "object": "0x7fdc24ee7000",
+        "generation": 163,
+        "symbol": "_ZN2at6native29vectorized_elementwise_kernelILi4EZZZNS0_15cos_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE0_clEvENKUlvE0_clEvEUlfE_NS_6detail5ArrayIPcLi2EEEEEviT0_T1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0163",
+        "member_sha256": "c843155b67ecc43534e3a1b2fe4d8cd1b42975c9ecccec015bc75cad7e77e1d1",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 6,
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_13AUnaryFunctorIfffNS0_15binary_internal10MulFunctorIfEEEENS_6detail5ArrayIPcLi2EEEEEviT0_T1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f430f6e0",
+        "object": "0x7fdc239bdd40",
+        "generation": 39,
+        "symbol": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_13AUnaryFunctorIfffNS0_15binary_internal10MulFunctorIfEEEENS_6detail5ArrayIPcLi2EEEEEviT0_T1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0039",
+        "member_sha256": "7229d98bca57a9a1c422ed2ff01f5a93c0947b9eaca12eeb0355b24e81ea64ea",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 7,
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4EZZZNS0_15sin_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE0_clEvENKUlvE0_clEvEUlfE_NS_6detail5ArrayIPcLi2EEEEEviT0_T1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f4ab61a0",
+        "object": "0x7fdc24efd210",
+        "generation": 165,
+        "symbol": "_ZN2at6native29vectorized_elementwise_kernelILi4EZZZNS0_15sin_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE0_clEvENKUlvE0_clEvEUlfE_NS_6detail5ArrayIPcLi2EEEEEviT0_T1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0165",
+        "member_sha256": "24caee641e5f77de284a0a0f7a9272238e0e92d370b90e808e2ca71440045ea3",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 8,
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_13AUnaryFunctorIfffNS0_15binary_internal10MulFunctorIfEEEENS_6detail5ArrayIPcLi2EEEEEviT0_T1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f430f6e0",
+        "object": "0x7fdc239bdd40",
+        "generation": 39,
+        "symbol": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_13AUnaryFunctorIfffNS0_15binary_internal10MulFunctorIfEEEENS_6detail5ArrayIPcLi2EEEEEviT0_T1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0039",
+        "member_sha256": "7229d98bca57a9a1c422ed2ff01f5a93c0947b9eaca12eeb0355b24e81ea64ea",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 9,
+      "kernel": "_ZN2at6native27unrolled_elementwise_kernelIZZZNS0_23direct_copy_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE1_clEvENKUlvE8_clEvEUlN3c104HalfEE_NS_6detail5ArrayIPcLi2EEE23TrivialOffsetCalculatorILi1EjESE_NS0_6memory12LoadWithCastILi1EEENSF_13StoreWithCastILi1EEEEEviT_T0_T1_T2_T3_T4_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f43b85e0",
+        "object": "0x7fdc23b77bc0",
+        "generation": 49,
+        "symbol": "_ZN2at6native27unrolled_elementwise_kernelIZZZNS0_23direct_copy_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE1_clEvENKUlvE8_clEvEUlN3c104HalfEE_NS_6detail5ArrayIPcLi2EEE23TrivialOffsetCalculatorILi1EjESE_NS0_6memory12LoadWithCastILi1EEENSF_13StoreWithCastILi1EEEEEviT_T0_T1_T2_T3_T4_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0049",
+        "member_sha256": "0fecca25493bbb058bae9a5fd29775faf3a8a0ebf3db6f043757209d501aff6a",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 10,
+      "kernel": "_ZN2at6native27unrolled_elementwise_kernelIZZZNS0_23direct_copy_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE1_clEvENKUlvE8_clEvEUlN3c104HalfEE_NS_6detail5ArrayIPcLi2EEE23TrivialOffsetCalculatorILi1EjESE_NS0_6memory12LoadWithCastILi1EEENSF_13StoreWithCastILi1EEEEEviT_T0_T1_T2_T3_T4_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f43b85e0",
+        "object": "0x7fdc23b77bc0",
+        "generation": 49,
+        "symbol": "_ZN2at6native27unrolled_elementwise_kernelIZZZNS0_23direct_copy_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE1_clEvENKUlvE8_clEvEUlN3c104HalfEE_NS_6detail5ArrayIPcLi2EEE23TrivialOffsetCalculatorILi1EjESE_NS0_6memory12LoadWithCastILi1EEENSF_13StoreWithCastILi1EEEEEviT_T0_T1_T2_T3_T4_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0049",
+        "member_sha256": "0fecca25493bbb058bae9a5fd29775faf3a8a0ebf3db6f043757209d501aff6a",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 11,
+      "kernel": "_ZN2at6native27unrolled_elementwise_kernelIZZZNS0_23direct_copy_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE1_clEvENKUlvE5_clEvEUlfE_NS_6detail5ArrayIPcLi2EEE23TrivialOffsetCalculatorILi1EjESC_NS0_6memory12LoadWithCastILi1EEENSD_13StoreWithCastILi1EEEEEviT_T0_T1_T2_T3_T4_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f43b85e0",
+        "object": "0x7fdc23b774a0",
+        "generation": 49,
+        "symbol": "_ZN2at6native27unrolled_elementwise_kernelIZZZNS0_23direct_copy_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE1_clEvENKUlvE5_clEvEUlfE_NS_6detail5ArrayIPcLi2EEE23TrivialOffsetCalculatorILi1EjESC_NS0_6memory12LoadWithCastILi1EEENSD_13StoreWithCastILi1EEEEEviT_T0_T1_T2_T3_T4_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0049",
+        "member_sha256": "0fecca25493bbb058bae9a5fd29775faf3a8a0ebf3db6f043757209d501aff6a",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 12,
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4EZNS0_53_GLOBAL__N__3ae0c82e_12_PowKernel_cu_346661a8_333990529pow_tensor_scalar_kernel_implIffEEvRNS_18TensorIteratorBaseET0_EUlfE_NS_6detail5ArrayIPcLi2EEEEEviS6_T1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f47713b0",
+        "object": "0x7fdc247c8110",
+        "generation": 115,
+        "symbol": "_ZN2at6native29vectorized_elementwise_kernelILi4EZNS0_53_GLOBAL__N__3ae0c82e_12_PowKernel_cu_346661a8_333990529pow_tensor_scalar_kernel_implIffEEvRNS_18TensorIteratorBaseET0_EUlfE_NS_6detail5ArrayIPcLi2EEEEEviS6_T1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0115",
+        "member_sha256": "ded5a89154d45e7a25d4b2d8b663d300ba052056e55ce60b1af74af476d884e2",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 13,
+      "kernel": "_ZN2at6native13reduce_kernelILi512ELi1ENS0_8ReduceOpIfNS0_7MeanOpsIffffEEjfLi4EEEEEvT1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f47e48a0",
+        "object": "0x7fdc2491f710",
+        "generation": 127,
+        "symbol": "_ZN2at6native13reduce_kernelILi512ELi1ENS0_8ReduceOpIfNS0_7MeanOpsIffffEEjfLi4EEEEEvT1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0127",
+        "member_sha256": "6fed9c64b663edb9ff8a4b3950b286e844b7d87fec424a3198d1f24bd35a5782",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 14,
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_21CUDAFunctorOnSelf_addIfEENS_6detail5ArrayIPcLi2EEEEEviT0_T1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f50f6e20",
+        "object": "0x7fdc256a79c0",
+        "generation": 238,
+        "symbol": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_21CUDAFunctorOnSelf_addIfEENS_6detail5ArrayIPcLi2EEEEEviT0_T1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0238",
+        "member_sha256": "bfa769a44f4164c0d4a55f300b39c933a62d6f0da78e1db1f98d02792afe4ba9",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 15,
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4EZZZNS0_17rsqrt_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE0_clEvENKUlvE0_clEvEUlfE_NS_6detail5ArrayIPcLi2EEEEEviT0_T1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f4b50330",
+        "object": "0x7fdc24f832e0",
+        "generation": 170,
+        "symbol": "_ZN2at6native29vectorized_elementwise_kernelILi4EZZZNS0_17rsqrt_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE0_clEvENKUlvE0_clEvEUlfE_NS_6detail5ArrayIPcLi2EEEEEviT0_T1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0170",
+        "member_sha256": "4d96b955915055c748fec540330cf26796ef128da3fc017b28d98d00851cddc1",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 16,
+      "kernel": "_ZN2at6native18elementwise_kernelILi128ELi2EZNS0_22gpu_kernel_impl_nocastINS0_13BinaryFunctorIfffNS0_15binary_internal10MulFunctorIfEEEEEEvRNS_18TensorIteratorBaseERKT_EUliE_EEviT1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f430f6e0",
+        "object": "0x7fdc239bfa90",
+        "generation": 39,
+        "symbol": "_ZN2at6native18elementwise_kernelILi128ELi2EZNS0_22gpu_kernel_impl_nocastINS0_13BinaryFunctorIfffNS0_15binary_internal10MulFunctorIfEEEEEEvRNS_18TensorIteratorBaseERKT_EUliE_EEviT1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0039",
+        "member_sha256": "7229d98bca57a9a1c422ed2ff01f5a93c0947b9eaca12eeb0355b24e81ea64ea",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 17,
+      "kernel": "_ZN2at6native27unrolled_elementwise_kernelIZZZNS0_23direct_copy_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE1_clEvENKUlvE8_clEvEUlN3c104HalfEE_NS_6detail5ArrayIPcLi2EEE23TrivialOffsetCalculatorILi1EjESE_NS0_6memory12LoadWithCastILi1EEENSF_13StoreWithCastILi1EEEEEviT_T0_T1_T2_T3_T4_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f43b85e0",
+        "object": "0x7fdc23b77bc0",
+        "generation": 49,
+        "symbol": "_ZN2at6native27unrolled_elementwise_kernelIZZZNS0_23direct_copy_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE1_clEvENKUlvE8_clEvEUlN3c104HalfEE_NS_6detail5ArrayIPcLi2EEE23TrivialOffsetCalculatorILi1EjESE_NS0_6memory12LoadWithCastILi1EEENSF_13StoreWithCastILi1EEEEEviT_T0_T1_T2_T3_T4_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0049",
+        "member_sha256": "0fecca25493bbb058bae9a5fd29775faf3a8a0ebf3db6f043757209d501aff6a",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 18,
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_13BinaryFunctorIN3c104HalfES4_S4_NS0_15binary_internal10MulFunctorIfEEEENS_6detail5ArrayIPcLi3EEEEEviT0_T1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f430f6e0",
+        "object": "0x7fdc239bd440",
+        "generation": 39,
+        "symbol": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_13BinaryFunctorIN3c104HalfES4_S4_NS0_15binary_internal10MulFunctorIfEEEENS_6detail5ArrayIPcLi3EEEEEviT0_T1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0039",
+        "member_sha256": "7229d98bca57a9a1c422ed2ff01f5a93c0947b9eaca12eeb0355b24e81ea64ea",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 19,
+      "kernel": "_ZN2at6native18elementwise_kernelILi128ELi4EZNS0_22gpu_kernel_impl_nocastINS0_13BinaryFunctorIN3c104HalfES5_S5_NS0_15binary_internal10MulFunctorIfEEEEEEvRNS_18TensorIteratorBaseERKT_EUliE_EEviT1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f430f6e0",
+        "object": "0x7fdc239bf0d0",
+        "generation": 39,
+        "symbol": "_ZN2at6native18elementwise_kernelILi128ELi4EZNS0_22gpu_kernel_impl_nocastINS0_13BinaryFunctorIN3c104HalfES5_S5_NS0_15binary_internal10MulFunctorIfEEEEEEvRNS_18TensorIteratorBaseERKT_EUliE_EEviT1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0039",
+        "member_sha256": "7229d98bca57a9a1c422ed2ff01f5a93c0947b9eaca12eeb0355b24e81ea64ea",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 20,
+      "kernel": "_ZN2at6native18elementwise_kernelILi128ELi4EZNS0_22gpu_kernel_impl_nocastIZZZNS0_15neg_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE0_clEvENKUlvE6_clEvEUlN3c104HalfEE_EEvS4_RKT_EUliE_EEviT1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f4b9cc50",
+        "object": "0x7fdc250208a0",
+        "generation": 171,
+        "symbol": "_ZN2at6native18elementwise_kernelILi128ELi4EZNS0_22gpu_kernel_impl_nocastIZZZNS0_15neg_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE0_clEvENKUlvE6_clEvEUlN3c104HalfEE_EEvS4_RKT_EUliE_EEviT1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0171",
+        "member_sha256": "8e2f5d297295d06439a7bf3e196dd752bc40f6d43d256a26158282ee49547352",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 21,
+      "kernel": "_ZN2at6native40_GLOBAL__N__6fd89146_8_Shape_cu_49f7391c19CatArrayBatchedCopyINS1_10OpaqueTypeILj2EEEjLi4ELi64ELi64EEEvPT_NS1_25CatArrInputTensorMetadataIS5_T0_XT2_EXT3_EEENS1_16TensorSizeStrideIS8_Lj4EEEiS8_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f482dca0",
+        "object": "0x7fdc24a260a0",
+        "generation": 137,
+        "symbol": "_ZN2at6native40_GLOBAL__N__6fd89146_8_Shape_cu_49f7391c19CatArrayBatchedCopyINS1_10OpaqueTypeILj2EEEjLi4ELi64ELi64EEEvPT_NS1_25CatArrInputTensorMetadataIS5_T0_XT2_EXT3_EEENS1_16TensorSizeStrideIS8_Lj4EEEiS8_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0137",
+        "member_sha256": "bae60176bbd657ca2c2954173e406b509b9fd453f55d1bba2fada29a0c36e355",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 22,
+      "kernel": "_ZN2at6native18elementwise_kernelILi128ELi4EZNS0_22gpu_kernel_impl_nocastINS0_13BinaryFunctorIN3c104HalfES5_S5_NS0_15binary_internal10MulFunctorIfEEEEEEvRNS_18TensorIteratorBaseERKT_EUliE_EEviT1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f430f6e0",
+        "object": "0x7fdc239bf0d0",
+        "generation": 39,
+        "symbol": "_ZN2at6native18elementwise_kernelILi128ELi4EZNS0_22gpu_kernel_impl_nocastINS0_13BinaryFunctorIN3c104HalfES5_S5_NS0_15binary_internal10MulFunctorIfEEEEEEvRNS_18TensorIteratorBaseERKT_EUliE_EEviT1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0039",
+        "member_sha256": "7229d98bca57a9a1c422ed2ff01f5a93c0947b9eaca12eeb0355b24e81ea64ea",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 23,
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_15CUDAFunctor_addIN3c104HalfEEENS_6detail5ArrayIPcLi3EEEEEviT0_T1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f50f6e20",
+        "object": "0x7fdc256a9ca0",
+        "generation": 238,
+        "symbol": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_15CUDAFunctor_addIN3c104HalfEEENS_6detail5ArrayIPcLi3EEEEEviT0_T1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0238",
+        "member_sha256": "bfa769a44f4164c0d4a55f300b39c933a62d6f0da78e1db1f98d02792afe4ba9",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 24,
+      "kernel": "_ZN2at6native18elementwise_kernelILi128ELi4EZNS0_22gpu_kernel_impl_nocastINS0_13BinaryFunctorIN3c104HalfES5_S5_NS0_15binary_internal10MulFunctorIfEEEEEEvRNS_18TensorIteratorBaseERKT_EUliE_EEviT1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f430f6e0",
+        "object": "0x7fdc239bf0d0",
+        "generation": 39,
+        "symbol": "_ZN2at6native18elementwise_kernelILi128ELi4EZNS0_22gpu_kernel_impl_nocastINS0_13BinaryFunctorIN3c104HalfES5_S5_NS0_15binary_internal10MulFunctorIfEEEEEEvRNS_18TensorIteratorBaseERKT_EUliE_EEviT1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0039",
+        "member_sha256": "7229d98bca57a9a1c422ed2ff01f5a93c0947b9eaca12eeb0355b24e81ea64ea",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 25,
+      "kernel": "_ZN2at6native18elementwise_kernelILi128ELi4EZNS0_22gpu_kernel_impl_nocastIZZZNS0_15neg_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE0_clEvENKUlvE6_clEvEUlN3c104HalfEE_EEvS4_RKT_EUliE_EEviT1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f4b9cc50",
+        "object": "0x7fdc250208a0",
+        "generation": 171,
+        "symbol": "_ZN2at6native18elementwise_kernelILi128ELi4EZNS0_22gpu_kernel_impl_nocastIZZZNS0_15neg_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE0_clEvENKUlvE6_clEvEUlN3c104HalfEE_EEvS4_RKT_EUliE_EEviT1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0171",
+        "member_sha256": "8e2f5d297295d06439a7bf3e196dd752bc40f6d43d256a26158282ee49547352",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 26,
+      "kernel": "_ZN2at6native40_GLOBAL__N__6fd89146_8_Shape_cu_49f7391c19CatArrayBatchedCopyINS1_10OpaqueTypeILj2EEEjLi4ELi64ELi64EEEvPT_NS1_25CatArrInputTensorMetadataIS5_T0_XT2_EXT3_EEENS1_16TensorSizeStrideIS8_Lj4EEEiS8_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f482dca0",
+        "object": "0x7fdc24a260a0",
+        "generation": 137,
+        "symbol": "_ZN2at6native40_GLOBAL__N__6fd89146_8_Shape_cu_49f7391c19CatArrayBatchedCopyINS1_10OpaqueTypeILj2EEEjLi4ELi64ELi64EEEvPT_NS1_25CatArrInputTensorMetadataIS5_T0_XT2_EXT3_EEENS1_16TensorSizeStrideIS8_Lj4EEEiS8_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0137",
+        "member_sha256": "bae60176bbd657ca2c2954173e406b509b9fd453f55d1bba2fada29a0c36e355",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 27,
+      "kernel": "_ZN2at6native18elementwise_kernelILi128ELi4EZNS0_22gpu_kernel_impl_nocastINS0_13BinaryFunctorIN3c104HalfES5_S5_NS0_15binary_internal10MulFunctorIfEEEEEEvRNS_18TensorIteratorBaseERKT_EUliE_EEviT1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f430f6e0",
+        "object": "0x7fdc239bf0d0",
+        "generation": 39,
+        "symbol": "_ZN2at6native18elementwise_kernelILi128ELi4EZNS0_22gpu_kernel_impl_nocastINS0_13BinaryFunctorIN3c104HalfES5_S5_NS0_15binary_internal10MulFunctorIfEEEEEEvRNS_18TensorIteratorBaseERKT_EUliE_EEviT1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0039",
+        "member_sha256": "7229d98bca57a9a1c422ed2ff01f5a93c0947b9eaca12eeb0355b24e81ea64ea",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 28,
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_15CUDAFunctor_addIN3c104HalfEEENS_6detail5ArrayIPcLi3EEEEEviT0_T1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f50f6e20",
+        "object": "0x7fdc256a9ca0",
+        "generation": 238,
+        "symbol": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_15CUDAFunctor_addIN3c104HalfEEENS_6detail5ArrayIPcLi3EEEEEviT0_T1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0238",
+        "member_sha256": "bfa769a44f4164c0d4a55f300b39c933a62d6f0da78e1db1f98d02792afe4ba9",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 29,
+      "kernel": "_ZN2at6native40_GLOBAL__N__6fd89146_8_Shape_cu_49f7391c26CatArrayBatchedCopy_contigINS1_10OpaqueTypeILj2EEEjLi4ELi128ELi1EEEvPT_NS1_25CatArrInputTensorMetadataIS5_T0_XT2_EXT3_EEENS1_16TensorSizeStrideIS8_Lj4EEEiS8_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f482dca0",
+        "object": "0x7fdc24a27b30",
+        "generation": 137,
+        "symbol": "_ZN2at6native40_GLOBAL__N__6fd89146_8_Shape_cu_49f7391c26CatArrayBatchedCopy_contigINS1_10OpaqueTypeILj2EEEjLi4ELi128ELi1EEEvPT_NS1_25CatArrInputTensorMetadataIS5_T0_XT2_EXT3_EEENS1_16TensorSizeStrideIS8_Lj4EEEiS8_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0137",
+        "member_sha256": "bae60176bbd657ca2c2954173e406b509b9fd453f55d1bba2fada29a0c36e355",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 30,
+      "kernel": "_ZN2at6native40_GLOBAL__N__6fd89146_8_Shape_cu_49f7391c26CatArrayBatchedCopy_contigINS1_10OpaqueTypeILj2EEEjLi4ELi128ELi1EEEvPT_NS1_25CatArrInputTensorMetadataIS5_T0_XT2_EXT3_EEENS1_16TensorSizeStrideIS8_Lj4EEEiS8_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f482dca0",
+        "object": "0x7fdc24a27b30",
+        "generation": 137,
+        "symbol": "_ZN2at6native40_GLOBAL__N__6fd89146_8_Shape_cu_49f7391c26CatArrayBatchedCopy_contigINS1_10OpaqueTypeILj2EEEjLi4ELi128ELi1EEEvPT_NS1_25CatArrInputTensorMetadataIS5_T0_XT2_EXT3_EEENS1_16TensorSizeStrideIS8_Lj4EEEiS8_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0137",
+        "member_sha256": "bae60176bbd657ca2c2954173e406b509b9fd453f55d1bba2fada29a0c36e355",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 31,
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_13AUnaryFunctorIN3c104HalfES4_S4_NS0_15binary_internal10MulFunctorIfEEEENS_6detail5ArrayIPcLi2EEEEEviT0_T1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f430f6e0",
+        "object": "0x7fdc239bc580",
+        "generation": 39,
+        "symbol": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_13AUnaryFunctorIN3c104HalfES4_S4_NS0_15binary_internal10MulFunctorIfEEEENS_6detail5ArrayIPcLi2EEEEEviT0_T1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0039",
+        "member_sha256": "7229d98bca57a9a1c422ed2ff01f5a93c0947b9eaca12eeb0355b24e81ea64ea",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 32,
+      "kernel": "_ZN43_GLOBAL__N__420b926e_10_SoftMax_cu_9f978f6320softmax_warp_forwardIN3c104HalfEffLi5ELb0ELb0EEEvPT0_PKT_iiiPKbib",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f483f940",
+        "object": "0x7fdc24a44880",
+        "generation": 138,
+        "symbol": "_ZN43_GLOBAL__N__420b926e_10_SoftMax_cu_9f978f6320softmax_warp_forwardIN3c104HalfEffLi5ELb0ELb0EEEvPT0_PKT_iiiPKbib",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0138",
+        "member_sha256": "6bbd570060aea9c1bdcaf1b72e6a9d111b2091d83bf802a685a3283791d175d4",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 33,
+      "kernel": "_ZN2at6native27unrolled_elementwise_kernelIZZZNS0_23direct_copy_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE1_clEvENKUlvE8_clEvEUlN3c104HalfEE_NS_6detail5ArrayIPcLi2EEE23TrivialOffsetCalculatorILi1EjESE_NS0_6memory12LoadWithCastILi1EEENSF_13StoreWithCastILi1EEEEEviT_T0_T1_T2_T3_T4_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f43b85e0",
+        "object": "0x7fdc23b77bc0",
+        "generation": 49,
+        "symbol": "_ZN2at6native27unrolled_elementwise_kernelIZZZNS0_23direct_copy_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE1_clEvENKUlvE8_clEvEUlN3c104HalfEE_NS_6detail5ArrayIPcLi2EEE23TrivialOffsetCalculatorILi1EjESE_NS0_6memory12LoadWithCastILi1EEENSF_13StoreWithCastILi1EEEEEviT_T0_T1_T2_T3_T4_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0049",
+        "member_sha256": "0fecca25493bbb058bae9a5fd29775faf3a8a0ebf3db6f043757209d501aff6a",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 34,
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_15CUDAFunctor_addIN3c104HalfEEENS_6detail5ArrayIPcLi3EEEEEviT0_T1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f50f6e20",
+        "object": "0x7fdc256a9ca0",
+        "generation": 238,
+        "symbol": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_15CUDAFunctor_addIN3c104HalfEEENS_6detail5ArrayIPcLi3EEEEEviT0_T1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0238",
+        "member_sha256": "bfa769a44f4164c0d4a55f300b39c933a62d6f0da78e1db1f98d02792afe4ba9",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 35,
+      "kernel": "_ZN2at6native27unrolled_elementwise_kernelIZZZNS0_23direct_copy_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE1_clEvENKUlvE5_clEvEUlfE_NS_6detail5ArrayIPcLi2EEE23TrivialOffsetCalculatorILi1EjESC_NS0_6memory12LoadWithCastILi1EEENSD_13StoreWithCastILi1EEEEEviT_T0_T1_T2_T3_T4_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f43b85e0",
+        "object": "0x7fdc23b774a0",
+        "generation": 49,
+        "symbol": "_ZN2at6native27unrolled_elementwise_kernelIZZZNS0_23direct_copy_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE1_clEvENKUlvE5_clEvEUlfE_NS_6detail5ArrayIPcLi2EEE23TrivialOffsetCalculatorILi1EjESC_NS0_6memory12LoadWithCastILi1EEENSD_13StoreWithCastILi1EEEEEviT_T0_T1_T2_T3_T4_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0049",
+        "member_sha256": "0fecca25493bbb058bae9a5fd29775faf3a8a0ebf3db6f043757209d501aff6a",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 36,
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4EZNS0_53_GLOBAL__N__3ae0c82e_12_PowKernel_cu_346661a8_333990529pow_tensor_scalar_kernel_implIffEEvRNS_18TensorIteratorBaseET0_EUlfE_NS_6detail5ArrayIPcLi2EEEEEviS6_T1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f47713b0",
+        "object": "0x7fdc247c8110",
+        "generation": 115,
+        "symbol": "_ZN2at6native29vectorized_elementwise_kernelILi4EZNS0_53_GLOBAL__N__3ae0c82e_12_PowKernel_cu_346661a8_333990529pow_tensor_scalar_kernel_implIffEEvRNS_18TensorIteratorBaseET0_EUlfE_NS_6detail5ArrayIPcLi2EEEEEviS6_T1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0115",
+        "member_sha256": "ded5a89154d45e7a25d4b2d8b663d300ba052056e55ce60b1af74af476d884e2",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 37,
+      "kernel": "_ZN2at6native13reduce_kernelILi512ELi1ENS0_8ReduceOpIfNS0_7MeanOpsIffffEEjfLi4EEEEEvT1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f47e48a0",
+        "object": "0x7fdc2491f710",
+        "generation": 127,
+        "symbol": "_ZN2at6native13reduce_kernelILi512ELi1ENS0_8ReduceOpIfNS0_7MeanOpsIffffEEjfLi4EEEEEvT1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0127",
+        "member_sha256": "6fed9c64b663edb9ff8a4b3950b286e844b7d87fec424a3198d1f24bd35a5782",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 38,
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_21CUDAFunctorOnSelf_addIfEENS_6detail5ArrayIPcLi2EEEEEviT0_T1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f50f6e20",
+        "object": "0x7fdc256a79c0",
+        "generation": 238,
+        "symbol": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_21CUDAFunctorOnSelf_addIfEENS_6detail5ArrayIPcLi2EEEEEviT0_T1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0238",
+        "member_sha256": "bfa769a44f4164c0d4a55f300b39c933a62d6f0da78e1db1f98d02792afe4ba9",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 39,
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4EZZZNS0_17rsqrt_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE0_clEvENKUlvE0_clEvEUlfE_NS_6detail5ArrayIPcLi2EEEEEviT0_T1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f4b50330",
+        "object": "0x7fdc24f832e0",
+        "generation": 170,
+        "symbol": "_ZN2at6native29vectorized_elementwise_kernelILi4EZZZNS0_17rsqrt_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE0_clEvENKUlvE0_clEvEUlfE_NS_6detail5ArrayIPcLi2EEEEEviT0_T1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0170",
+        "member_sha256": "4d96b955915055c748fec540330cf26796ef128da3fc017b28d98d00851cddc1",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 40,
+      "kernel": "_ZN2at6native18elementwise_kernelILi128ELi2EZNS0_22gpu_kernel_impl_nocastINS0_13BinaryFunctorIfffNS0_15binary_internal10MulFunctorIfEEEEEEvRNS_18TensorIteratorBaseERKT_EUliE_EEviT1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f430f6e0",
+        "object": "0x7fdc239bfa90",
+        "generation": 39,
+        "symbol": "_ZN2at6native18elementwise_kernelILi128ELi2EZNS0_22gpu_kernel_impl_nocastINS0_13BinaryFunctorIfffNS0_15binary_internal10MulFunctorIfEEEEEEvRNS_18TensorIteratorBaseERKT_EUliE_EEviT1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0039",
+        "member_sha256": "7229d98bca57a9a1c422ed2ff01f5a93c0947b9eaca12eeb0355b24e81ea64ea",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 41,
+      "kernel": "_ZN2at6native27unrolled_elementwise_kernelIZZZNS0_23direct_copy_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE1_clEvENKUlvE8_clEvEUlN3c104HalfEE_NS_6detail5ArrayIPcLi2EEE23TrivialOffsetCalculatorILi1EjESE_NS0_6memory12LoadWithCastILi1EEENSF_13StoreWithCastILi1EEEEEviT_T0_T1_T2_T3_T4_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f43b85e0",
+        "object": "0x7fdc23b77bc0",
+        "generation": 49,
+        "symbol": "_ZN2at6native27unrolled_elementwise_kernelIZZZNS0_23direct_copy_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE1_clEvENKUlvE8_clEvEUlN3c104HalfEE_NS_6detail5ArrayIPcLi2EEE23TrivialOffsetCalculatorILi1EjESE_NS0_6memory12LoadWithCastILi1EEENSF_13StoreWithCastILi1EEEEEviT_T0_T1_T2_T3_T4_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0049",
+        "member_sha256": "0fecca25493bbb058bae9a5fd29775faf3a8a0ebf3db6f043757209d501aff6a",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 42,
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_13BinaryFunctorIN3c104HalfES4_S4_NS0_15binary_internal10MulFunctorIfEEEENS_6detail5ArrayIPcLi3EEEEEviT0_T1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f430f6e0",
+        "object": "0x7fdc239bd440",
+        "generation": 39,
+        "symbol": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_13BinaryFunctorIN3c104HalfES4_S4_NS0_15binary_internal10MulFunctorIfEEEENS_6detail5ArrayIPcLi3EEEEEviT0_T1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0039",
+        "member_sha256": "7229d98bca57a9a1c422ed2ff01f5a93c0947b9eaca12eeb0355b24e81ea64ea",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 43,
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4EZZZNS0_64_GLOBAL__N__3d152190_23_ActivationSiluKernel_cu_346661a8_333093811silu_kernelERNS_18TensorIteratorBaseEENKUlvE_clEvENKUlvE3_clEvEUlN3c104HalfEE_NS_6detail5ArrayIPcLi2EEEEEviT0_T1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f41cd7e0",
+        "object": "0x7fdc236d20c0",
+        "generation": 20,
+        "symbol": "_ZN2at6native29vectorized_elementwise_kernelILi4EZZZNS0_64_GLOBAL__N__3d152190_23_ActivationSiluKernel_cu_346661a8_333093811silu_kernelERNS_18TensorIteratorBaseEENKUlvE_clEvENKUlvE3_clEvEUlN3c104HalfEE_NS_6detail5ArrayIPcLi2EEEEEviT0_T1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0020",
+        "member_sha256": "933ec703e58ba4bfaca0c7388eb14faa38f832b621b7aab3bde19d17e7ce8b9a",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 44,
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_13BinaryFunctorIN3c104HalfES4_S4_NS0_15binary_internal10MulFunctorIfEEEENS_6detail5ArrayIPcLi3EEEEEviT0_T1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f430f6e0",
+        "object": "0x7fdc239bd440",
+        "generation": 39,
+        "symbol": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_13BinaryFunctorIN3c104HalfES4_S4_NS0_15binary_internal10MulFunctorIfEEEENS_6detail5ArrayIPcLi3EEEEEviT0_T1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0039",
+        "member_sha256": "7229d98bca57a9a1c422ed2ff01f5a93c0947b9eaca12eeb0355b24e81ea64ea",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    },
+    {
+      "call_id": 45,
+      "kernel": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_15CUDAFunctor_addIN3c104HalfEEENS_6detail5ArrayIPcLi3EEEEEviT0_T1_",
+      "native_registration": {
+        "schema_version": 1,
+        "event": "register_function",
+        "status": "EXACT_HANDLE",
+        "runtime_domain": "cudart11",
+        "fatbin_handle": "0x55e1f50f6e20",
+        "object": "0x7fdc256a9ca0",
+        "generation": 238,
+        "symbol": "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_15CUDAFunctor_addIN3c104HalfEEENS_6detail5ArrayIPcLi3EEEEEviT0_T1_",
+        "object_dso": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so"
+      },
+      "member_membership": {
+        "member_id": "member-0238",
+        "member_sha256": "bfa769a44f4164c0d4a55f300b39c933a62d6f0da78e1db1f98d02792afe4ba9",
+        "container_sha256": "88c811d3f43772b4c461635e0567d351273af58ae70ff25176baabb9d9fe1bf4",
+        "ptx_version": "7.7",
+        "target": "sm_80",
+        "target_directive": "sm_80"
+      }
+    }
+  ],
+  "unique_entries": 20,
+  "member_count": 12,
+  "whole_layer_kernel_inventory_complete": false,
+  "limitation": "cuBLAS launch/identity not observed in this channel"
+}

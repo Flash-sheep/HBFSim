@@ -1,0 +1,156 @@
+{
+  "status": "PASS",
+  "scope": "Real Git subprocesses with inert CPU constructor; no CUDA library or GPU workload",
+  "defect_reproduced": true,
+  "fixed_git_preload_count": 0,
+  "rows": [
+    {
+      "case": "before",
+      "returncode": 0,
+      "events": [
+        {
+          "pid": "3525679",
+          "ppid": "3525673",
+          "exe": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/bin/python3.11"
+        },
+        {
+          "pid": "3525680",
+          "ppid": "3525679",
+          "exe": "/usr/bin/git"
+        },
+        {
+          "pid": "3525681",
+          "ppid": "3525679",
+          "exe": "/usr/bin/git"
+        },
+        {
+          "pid": "3525685",
+          "ppid": "3525681",
+          "exe": "/usr/lib/git-core/git"
+        },
+        {
+          "pid": "3525686",
+          "ppid": "3525685",
+          "exe": "/usr/lib/git-core/git"
+        },
+        {
+          "pid": "3525687",
+          "ppid": "3525686",
+          "exe": "/usr/lib/git-core/git"
+        },
+        {
+          "pid": "3525688",
+          "ppid": "3525687",
+          "exe": "/usr/lib/git-core/git"
+        },
+        {
+          "pid": "3525689",
+          "ppid": "3525686",
+          "exe": "/usr/lib/git-core/git"
+        },
+        {
+          "pid": "3525690",
+          "ppid": "3525686",
+          "exe": "/usr/lib/git-core/git"
+        },
+        {
+          "pid": "3525691",
+          "ppid": "3525690",
+          "exe": "/usr/lib/git-core/git"
+        },
+        {
+          "pid": "3525692",
+          "ppid": "3525686",
+          "exe": "/usr/lib/git-core/git"
+        },
+        {
+          "pid": "3525693",
+          "ppid": "3525692",
+          "exe": "/usr/lib/git-core/git"
+        },
+        {
+          "pid": "3525694",
+          "ppid": "3525693",
+          "exe": "/usr/lib/git-core/git"
+        },
+        {
+          "pid": "3525695",
+          "ppid": "3525686",
+          "exe": "/usr/lib/git-core/git"
+        },
+        {
+          "pid": "3525696",
+          "ppid": "3525685",
+          "exe": "/usr/lib/git-core/git"
+        },
+        {
+          "pid": "3525697",
+          "ppid": "3525685",
+          "exe": "/usr/lib/git-core/git"
+        },
+        {
+          "pid": "3525698",
+          "ppid": "3525685",
+          "exe": "/usr/lib/git-core/git"
+        },
+        {
+          "pid": "3525699",
+          "ppid": "3525698",
+          "exe": "/usr/lib/git-core/git"
+        },
+        {
+          "pid": "3525700",
+          "ppid": "3525685",
+          "exe": "/usr/lib/git-core/git"
+        },
+        {
+          "pid": "3525701",
+          "ppid": "3525685",
+          "exe": "/usr/lib/git-core/git"
+        },
+        {
+          "pid": "3525702",
+          "ppid": "3525701",
+          "exe": "/usr/lib/git-core/git"
+        },
+        {
+          "pid": "3525703",
+          "ppid": "3525702",
+          "exe": "/usr/lib/git-core/git"
+        },
+        {
+          "pid": "3525704",
+          "ppid": "3525701",
+          "exe": "/usr/lib/git-core/git"
+        },
+        {
+          "pid": "3525705",
+          "ppid": "3525685",
+          "exe": "/usr/lib/git-core/git"
+        },
+        {
+          "pid": "3525706",
+          "ppid": "3525681",
+          "exe": "/usr/lib/git-core/git"
+        }
+      ],
+      "git_children_loading_preload": 24
+    },
+    {
+      "case": "fixed",
+      "returncode": 0,
+      "events": [
+        {
+          "pid": "3525707",
+          "ppid": "3525673",
+          "exe": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/bin/python3.11"
+        }
+      ],
+      "git_children_loading_preload": 0
+    }
+  ],
+  "GPU_tasks_started": 0,
+  "production_core_or_ABI_changed": false,
+  "marker_sha256": "aac517ffdde620e14f24ae746741204bc9969fb0ed740f8484b2b69bc46b7d9d",
+  "v2_source_sha256": "98908b378c175626cc0ee6b5850784aceab7e52ee55b7eb1366dea7dbfff67af"
+}

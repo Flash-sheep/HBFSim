@@ -1,0 +1,7 @@
+{
+  "status": "READY_FOR_SUBMISSION",
+  "experiment_id": "LLAMA2-SM80-NATIVE-DISCOVERY",
+  "version": "1",
+  "canonical_manifest_hash": "0da675dcfdbcf84395b09fb524335af87bfba0581620df056e218fba87b97222",
+  "launch_performed": false
+}

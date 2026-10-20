@@ -1,0 +1,33 @@
+{
+  "scope": "One fixed CPU-only version-directive compatibility check; no GPU execution or installed-library replacement",
+  "input_hashes": {
+    "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/alternate-library-audit-20261019T081156Z/raw-cublas/libcublas.so.11.10.3.1.sm_80.ptx": "321d1b5f2cdc4adcfb65ee7e6d4763d5724d66701c3886df79a5690128677934",
+    "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/legacy-sm80-ptx-software-check-v1/staged.ptx": "82826429b6cf57adbe7f4143d1988704f03dc83823d4e56cb2f03c8a428d4453",
+    "/usr/local/cuda-11.7/targets/x86_64-linux/lib/libcublas.so.11.10.3.66": "f154544f9074e63d780476d1e8df66b410008c6babcd44c7180f6b5e11b08d17",
+    "/usr/local/cuda-11.7/targets/x86_64-linux/lib/libcublasLt.so.11.10.3.66": "85f144dfe7b2ef588d2b688abf3fdd51a8e26a14e41a011c12d41fe8afc9a041"
+  },
+  "compiler": {
+    "path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/cuda/bin/ptxas",
+    "sha256": "acc38601cf89412a4518545d548eff8c6f437496c6f8858194c360c0d610c61b"
+  },
+  "planned_change": {
+    "copies_only": true,
+    "version_from": "7.7",
+    "version_to": "8.7",
+    "target_preserved": "sm_80",
+    "all_non_version_bytes_preserved": true
+  },
+  "resources": {
+    "serial_cpu_subprocesses": true,
+    "omp_blas_threads": 1,
+    "per_command_timeout_s": 120,
+    "per_child_address_space_gib": 4
+  },
+  "gpu_workload_launched": false,
+  "limitations": [
+    "One sample module/entry; not established as Llama workload-selected kernel",
+    "Compilation only; no driver loading, plugin ABI binding, numerical equivalence or performance verification",
+    "PTX language-version change is not a proof of semantic equivalence",
+    "Earlier unmodified staged compile failure remains immutable"
+  ]
+}

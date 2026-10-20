@@ -1,0 +1,47 @@
+{
+  "schema": "llama2-layer15-continuation-v7",
+  "captured_at_utc": "2026-10-20T02:21:55.206171+00:00",
+  "user_goal": "Original full Llama2 layer15 numerical and eventual full HBF Timing validation",
+  "native_v1": "PASS; immutable FP16 output528e30d35ba48d50b8aa98d8b01f4e3165a5de75522eaaa60f7170e00e6b9aea",
+  "capture_v2": {
+    "status": "FAILED",
+    "approved_hash": "1a979d2b4624385fa10eb6f7518a0150c28062858e98e9e924b1090a950d57ba",
+    "forward_calls": 1,
+    "wall_seconds": 35.11936249001883,
+    "outcome": "All45 unversioned runtime calls rejected801; coverage0/bridge0; all4096 output elements differ",
+    "raw": "/home/yjl/HBFSim/artifacts/llama2-sm80-native-discovery-v2/execution-v1",
+    "retries": 0
+  },
+  "CPU_fix": {
+    "status": "PASS",
+    "scope": "ON-only map relink; same frozen object bodies; HBF and explicit CUDA aliases unchanged",
+    "gate": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-launch-lookup-v2/libhbfsim_launch_gate.so",
+    "gate_sha256": "1dc9125011fc97a8195cf289a4b6c4942fff77505e5b4341680888c675b4f19b",
+    "evidence": "/home/yjl/HBFSim/artifacts/llama2-sm80-native-discovery-v2/analysis-v1",
+    "limitation": "CPU mock-provider ELF proof; GPU correctness unverified"
+  },
+  "v3": {
+    "status": "PENDING_USER_APPROVAL",
+    "canonical_manifest_hash": "b179eb21beaf9bb8a24ebf06f5f19f7953d22e52d6ea76cadcd6463460ea116f",
+    "GPU_tasks_started": 0,
+    "planned_new_forward_calls": 1,
+    "exact_command": [
+      "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/bin/python",
+      "-B",
+      "/home/yjl/HBFSim/experiments/llama2_sm80_cuda11/native_discovery_v3.py",
+      "--bundle",
+      "/home/yjl/HBFSim/artifacts/llama2-sm80-native-discovery-v3",
+      "--execute",
+      "--approval",
+      "/home/yjl/HBFSim/artifacts/llama2-sm80-native-discovery-v3/USER_CONFIRMATION.json"
+    ],
+    "readable": "/home/yjl/HBFSim/docs/llama2_layer15_live/NATIVE_DISCOVERY_PREFLIGHT_V3.md",
+    "new_criteria": "Existing authenticated ORIGINAL completion permits driver_calls0; any driver_calls1 requires matching successful bridge; preserve exact numeric and safety thresholds"
+  },
+  "HBF_timing_validated": false,
+  "production_changes": false,
+  "global_environment_changes": false,
+  "active_jobs": [],
+  "next_action": "Await actual version3 ID/version/hash user confirmation; never fabricate approval, reuse v2 approval or auto-retry GPU",
+  "independent_followup": "No new production/core changes; actual PTX/member binding, cuBLAS launch visibility and nine-weight modeled normal service remain future dependencies"
+}

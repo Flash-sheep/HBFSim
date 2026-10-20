@@ -1,0 +1,15 @@
+{
+  "scope": "default-off CUDA11 provider acquisition; no CUDA12/13 lookup or lifecycle implementation changes",
+  "files": [
+    {
+      "path": "attach/nv_attach_impl/nv_attach_impl.cpp",
+      "before_sha256": "4e62a9092327b918fdb97effef8fcdbfa91c4269c4bc83c7f7782a61455fef12",
+      "after_sha256": "32f2248ca22567c4f1e9df3ebdc8a94496b00eecde4da8b1dba535677a45ece1"
+    },
+    {
+      "path": "runtime/agent/agent.cpp",
+      "before_sha256": "7c2b896ea02954583a573f119e53683e295dca72d680dcdc43f810edcd3c6ea2",
+      "after_sha256": "164c374a6348972c5a5c94b1ec9c0c70d31683379cd488365ce0efd6de1a2482"
+    }
+  ]
+}

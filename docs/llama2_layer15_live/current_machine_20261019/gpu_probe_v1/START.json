@@ -1,0 +1,13 @@
+{
+  "parent_pid": 3194446,
+  "gpu_uuid": "GPU-5302a497-ea8c-bb7b-7235-f7464792093e",
+  "snapshot": {
+    "uuid": "GPU-5302a497-ea8c-bb7b-7235-f7464792093e",
+    "name": "NVIDIA A100-PCIE-40GB",
+    "driver": "565.57.01",
+    "memory_mib": 135,
+    "utilization_percent": 0,
+    "temperature_c": 43
+  },
+  "time": 1792399347.2360938
+}

@@ -1,0 +1,28 @@
+{
+  "status": "CPU_FOLLOWUP_FINISHED",
+  "results": [
+    {
+      "module": "0fecca25493bbb058bae9a5fd29775faf3a8a0ebf3db6f043757209d501aff6a",
+      "kind": "static_diagnostic_call_proof_and_transform",
+      "returncode": 0
+    },
+    {
+      "module": "7229d98bca57a9a1c422ed2ff01f5a93c0947b9eaca12eeb0355b24e81ea64ea",
+      "kind": "existing_max_register_compile_option",
+      "returncode": 0
+    },
+    {
+      "module": "6fed9c64b663edb9ff8a4b3950b286e844b7d87fec424a3198d1f24bd35a5782",
+      "kind": "static_diagnostic_call_proof_and_transform",
+      "returncode": 1
+    },
+    {
+      "module": "8e2f5d297295d06439a7bf3e196dd752bc40f6d43d256a26158282ee49547352",
+      "kind": "existing_max_register_compile_option",
+      "returncode": 0
+    }
+  ],
+  "wall_seconds": 41.87753775995225,
+  "GPU_tasks_started": 0,
+  "limitation": "Selected-entry relocatable assembly, not runtime full-module linking or GPU/HBF correctness"
+}

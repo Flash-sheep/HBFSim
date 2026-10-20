@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "GPU_tasks_started": 0,
+  "rows": [
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-launch-lookup-v2/libhbfsim_launch_gate.so",
+      "stdout": "\tlinux-vdso.so.1 (0x00007fff619a7000)\n\tlibcrypto.so.1.1 => /lib/x86_64-linux-gnu/libcrypto.so.1.1 (0x00007f2a9e740000)\n\tlibcudart.so.12 => /var/tmp/hbfsim-yjl/llama2-layer15-full-v1/agent-deps/lib/libcudart.so.12 (0x00007f2a9e400000)\n\tlibstdc++.so.6 => /var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/libstdc++.so.6 (0x00007f2a9e20b000)\n\tlibgcc_s.so.1 => /var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/libgcc_s.so.1 (0x00007f2a9e71e000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f2a9dfe3000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f2a9eab4000)\n\tlibdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f2a9e719000)\n\tlibpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f2a9e714000)\n\tlibrt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007f2a9e70f000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f2a9defc000)\n",
+      "stderr": "/bin/bash: /var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/libtinfo.so.6: no version information available (required by /bin/bash)\n"
+    }
+  ],
+  "unchanged_other_closure": "/home/yjl/HBFSim/artifacts/llama2-sm80-native-discovery-v1/ldd-closure.json"
+}

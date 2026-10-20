@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cupti-observer-v2/libllama2_cupti_observer.so",
+  "stdout": "\tlinux-vdso.so.1 (0x00007fffbab94000)\n\tlibcupti.so.11.7 => /usr/local/cuda-11.7/extras/CUPTI/lib64/libcupti.so.11.7 (0x00007f893e000000)\n\tlibstdc++.so.6 => /var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/libstdc++.so.6 (0x00007f893de0b000)\n\tlibgcc_s.so.1 => /var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/libgcc_s.so.1 (0x00007f893ea7e000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f893dbe3000)\n\tlibpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f893ea5c000)\n\tlibrt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007f893ea57000)\n\tlibdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f893ea52000)\n\tlibutil.so.1 => /lib/x86_64-linux-gnu/libutil.so.1 (0x00007f893ea4d000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f893e966000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f893eaa7000)\n",
+  "stderr": "/bin/bash: /var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/libtinfo.so.6: no version information available (required by /bin/bash)\n",
+  "GPU_tasks_started": 0
+}

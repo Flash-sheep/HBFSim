@@ -1,0 +1,138 @@
+{
+  "captured_at_utc": "2026-10-19T09:45:14.076229+00:00",
+  "status": "PASS",
+  "workload_directory": "/mnt/hbfsim-workload",
+  "model_directory": "/mnt/llama2-7b",
+  "files": [
+    {
+      "path": "/mnt/hbfsim-workload/trace_flint_decoder_layer.py",
+      "bytes": 8895,
+      "sha256": "508bb22d1f0a2a83abb2bb2d2fa6a1b4364311a97a2fea53d771368ab0f7ed67",
+      "archive_match": true
+    },
+    {
+      "path": "/mnt/hbfsim-workload/trace_decoder_layer.py",
+      "bytes": 12425,
+      "sha256": "add394d8e2d8f079386b744658a2f96a44270b9e0883334221a7b79b4cc8a61f",
+      "archive_match": true
+    },
+    {
+      "path": "/mnt/hbfsim-workload/config.json",
+      "bytes": 657,
+      "sha256": "958cdb0decc112046a6bb0741aa3afa5df5929bbaae2d56cea9eae47c95cc564",
+      "archive_match": true
+    },
+    {
+      "path": "/mnt/hbfsim-workload/model.safetensors.index.json",
+      "bytes": 26788,
+      "sha256": "11b694a9d4bffdac71733db7f782be0df1f87a65fb9ef05bcf6d317029c22364",
+      "archive_match": true
+    },
+    {
+      "path": "/mnt/hbfsim-workload/original_weight_manifest.json",
+      "bytes": 2869,
+      "sha256": "415f7c275a33cdcbe5d889c2974abea13f5f098ff8e3ea51977152dfa82d30a9",
+      "archive_match": true
+    },
+    {
+      "path": "/mnt/hbfsim-workload/nominal-original.json",
+      "bytes": 528,
+      "sha256": "d4b009fded6f2b78218d4a99f8acf8cd5154a4660f1030c9bab85bba4b1f35a0",
+      "archive_match": true
+    },
+    {
+      "path": "/mnt/hbfsim-workload/pilot-profile.json",
+      "bytes": 549,
+      "sha256": "c85a6e63d6b9cc58ad9e537a4261b341df573a61f3205e470c0a295cc760b219",
+      "archive_match": true
+    },
+    {
+      "path": "/mnt/llama2-7b/config.json",
+      "bytes": 657,
+      "sha256": "958cdb0decc112046a6bb0741aa3afa5df5929bbaae2d56cea9eae47c95cc564",
+      "archive_match": true
+    },
+    {
+      "path": "/mnt/llama2-7b/model.safetensors.index.json",
+      "bytes": 26788,
+      "sha256": "11b694a9d4bffdac71733db7f782be0df1f87a65fb9ef05bcf6d317029c22364",
+      "archive_match": true
+    }
+  ],
+  "tensors": [
+    {
+      "name": "model.layers.15.input_layernorm.weight",
+      "bytes": 8192,
+      "sha256": "16c3bd8aba5985efe9973bd63229398c7dda306afe764fd8e4eb11e45698e1ed",
+      "archive_match": true,
+      "shard": "/mnt/llama2-7b/model-00001-of-00002.safetensors"
+    },
+    {
+      "name": "model.layers.15.mlp.down_proj.weight",
+      "bytes": 90177536,
+      "sha256": "1afd01da66a62d756e5066e068d9c1720b88ed24c7f889031427b003bad5ba84",
+      "archive_match": true,
+      "shard": "/mnt/llama2-7b/model-00001-of-00002.safetensors"
+    },
+    {
+      "name": "model.layers.15.mlp.gate_proj.weight",
+      "bytes": 90177536,
+      "sha256": "25eeed365e29aebc61092df2463fa0b1508dbe18a718ea58387bd8da0ffd7879",
+      "archive_match": true,
+      "shard": "/mnt/llama2-7b/model-00001-of-00002.safetensors"
+    },
+    {
+      "name": "model.layers.15.mlp.up_proj.weight",
+      "bytes": 90177536,
+      "sha256": "3ba04e67b7ed1ad5c6adc79b5404fef48335820da268f8b3c77e1384be29ffc0",
+      "archive_match": true,
+      "shard": "/mnt/llama2-7b/model-00001-of-00002.safetensors"
+    },
+    {
+      "name": "model.layers.15.post_attention_layernorm.weight",
+      "bytes": 8192,
+      "sha256": "591c67bbc4cafaa8866881bd3aa096dc799908a17be7f7cfa6117f2a10ce59c5",
+      "archive_match": true,
+      "shard": "/mnt/llama2-7b/model-00001-of-00002.safetensors"
+    },
+    {
+      "name": "model.layers.15.self_attn.k_proj.weight",
+      "bytes": 33554432,
+      "sha256": "774fb3fad58f4bd0fa4ba8048f514791a223827994e492834ffc26fa017bb3f9",
+      "archive_match": true,
+      "shard": "/mnt/llama2-7b/model-00001-of-00002.safetensors"
+    },
+    {
+      "name": "model.layers.15.self_attn.o_proj.weight",
+      "bytes": 33554432,
+      "sha256": "3fdfbc8fdb2f485bef0c0a5a172116904d40d28d09f78b931a3742041019578b",
+      "archive_match": true,
+      "shard": "/mnt/llama2-7b/model-00001-of-00002.safetensors"
+    },
+    {
+      "name": "model.layers.15.self_attn.q_proj.weight",
+      "bytes": 33554432,
+      "sha256": "567314da8612aec258b8c7613d75d59fa034f04bf90be360503e06695b09a8bc",
+      "archive_match": true,
+      "shard": "/mnt/llama2-7b/model-00001-of-00002.safetensors"
+    },
+    {
+      "name": "model.layers.15.self_attn.rotary_emb.inv_freq",
+      "bytes": 128,
+      "sha256": "c060eb12019f8cb67139029855ead952cbbf747ecab788be7748c2a3d3bae6a7",
+      "archive_match": true,
+      "shard": "/mnt/llama2-7b/model-00001-of-00002.safetensors"
+    },
+    {
+      "name": "model.layers.15.self_attn.v_proj.weight",
+      "bytes": 33554432,
+      "sha256": "f08a1a45b3286590ac05b8e0f147d39efea22f5c242a94d53e719eb956a6ff86",
+      "archive_match": true,
+      "shard": "/mnt/llama2-7b/model-00001-of-00002.safetensors"
+    }
+  ],
+  "total_tensor_bytes": 404766848,
+  "gpu_workload_launched": false,
+  "scope": "Input identity and original validate-only CPU check; no forward or input regeneration",
+  "validate_only_stdout": "validated layer=15 context=32 weights=10 fp16_bytes=404766848\n"
+}

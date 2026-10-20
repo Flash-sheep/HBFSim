@@ -1,0 +1,107 @@
+{
+  "status": "PASS",
+  "scope": "Single fixed CPU forward with original loader/call preparation; not GPU numerical equivalence",
+  "torch": "2.4.0+cu117.sm80ptx",
+  "torch_git": "e4ee3be4063b7c430974252fdf7db42273388d86",
+  "gpu_initialized": false,
+  "dtype": "torch.float16",
+  "shape": [
+    1,
+    1,
+    4096
+  ],
+  "parameter_count": 9,
+  "parameter_bytes": 404766720,
+  "layout_matches_archive": true,
+  "layout": [
+    {
+      "name": "self_attn.q_proj.weight",
+      "shape": [
+        4096,
+        4096
+      ],
+      "offset_bytes": 0,
+      "size_bytes": 33554432
+    },
+    {
+      "name": "self_attn.k_proj.weight",
+      "shape": [
+        4096,
+        4096
+      ],
+      "offset_bytes": 33554432,
+      "size_bytes": 33554432
+    },
+    {
+      "name": "self_attn.v_proj.weight",
+      "shape": [
+        4096,
+        4096
+      ],
+      "offset_bytes": 67108864,
+      "size_bytes": 33554432
+    },
+    {
+      "name": "self_attn.o_proj.weight",
+      "shape": [
+        4096,
+        4096
+      ],
+      "offset_bytes": 100663296,
+      "size_bytes": 33554432
+    },
+    {
+      "name": "mlp.gate_proj.weight",
+      "shape": [
+        11008,
+        4096
+      ],
+      "offset_bytes": 134217728,
+      "size_bytes": 90177536
+    },
+    {
+      "name": "mlp.up_proj.weight",
+      "shape": [
+        11008,
+        4096
+      ],
+      "offset_bytes": 224395264,
+      "size_bytes": 90177536
+    },
+    {
+      "name": "mlp.down_proj.weight",
+      "shape": [
+        4096,
+        11008
+      ],
+      "offset_bytes": 314572800,
+      "size_bytes": 90177536
+    },
+    {
+      "name": "input_layernorm.weight",
+      "shape": [
+        4096
+      ],
+      "offset_bytes": 404750336,
+      "size_bytes": 8192
+    },
+    {
+      "name": "post_attention_layernorm.weight",
+      "shape": [
+        4096
+      ],
+      "offset_bytes": 404758528,
+      "size_bytes": 8192
+    }
+  ],
+  "wall_forward_s": 0.20187949296087027,
+  "output_sha256": "87b68d4a34bc31a3a29f458e1bec87cba4e5817854dcce7263ec35ef4ef3eb03",
+  "all_finite": true,
+  "input_generation": "Original CPU generator seed1, FP16 hidden and past K/V; context32/query1/batch1",
+  "does_not_validate": [
+    "GPU arena placement",
+    "GPU kernels",
+    "HBF requests/timing",
+    "PTX coverage"
+  ]
+}

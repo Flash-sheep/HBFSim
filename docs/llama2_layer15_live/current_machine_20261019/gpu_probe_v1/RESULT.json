@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "gpu_uuid": "GPU-5302a497-ea8c-bb7b-7235-f7464792093e",
+  "arms": [
+    {
+      "arm": "raw77",
+      "launches": 1,
+      "launch_and_sync_wall_s": 3.6278972402215004e-05,
+      "output_sha256": "7b85d3fa26b3b390f124c4e659969274a561705b8d2c036ada43e7b60fae88df",
+      "zero_output": true,
+      "guards_unchanged": true,
+      "matches_expected": true
+    },
+    {
+      "arm": "raw87",
+      "launches": 1,
+      "launch_and_sync_wall_s": 2.4005072191357613e-05,
+      "output_sha256": "7b85d3fa26b3b390f124c4e659969274a561705b8d2c036ada43e7b60fae88df",
+      "zero_output": true,
+      "guards_unchanged": true,
+      "matches_expected": true
+    },
+    {
+      "arm": "staged87",
+      "launches": 1,
+      "launch_and_sync_wall_s": 4.191999323666096e-05,
+      "output_sha256": "7b85d3fa26b3b390f124c4e659969274a561705b8d2c036ada43e7b60fae88df",
+      "zero_output": true,
+      "guards_unchanged": true,
+      "matches_expected": true
+    }
+  ],
+  "evidence_type": "GPU_ENGINEERING_FIXTURE",
+  "hbf_control": "UNBOUND_PASSTHROUGH",
+  "hbf_timing_validated": false,
+  "llama_workload_validated": false
+}

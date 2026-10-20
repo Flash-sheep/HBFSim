@@ -1,0 +1,19 @@
+{
+  "status": "NATIVE_FORWARD_PASS_HBF_NOT_RUN",
+  "arm": "capture",
+  "gpu_uuid": "GPU-5302a497-ea8c-bb7b-7235-f7464792093e",
+  "dtype": "float16",
+  "shape": [
+    1,
+    1,
+    4096
+  ],
+  "output_sha256": "528e30d35ba48d50b8aa98d8b01f4e3165a5de75522eaaa60f7170e00e6b9aea",
+  "forward_calls": 1,
+  "warmup_calls": 0,
+  "original_helper": true,
+  "registered_HBF_ranges": 0,
+  "HBF_timing_validated": false,
+  "host_forward_wall_seconds": 0.9951485670171678,
+  "limits": "Host time includes observation overhead; no GPU performance or physical calibration claim"
+}

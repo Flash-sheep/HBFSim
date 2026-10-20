@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "scope": "CPU framework configuration audit; not built wheel or actual PTX collection",
+  "CUDA": "11.7",
+  "CUDA_ARCH": "8.0+PTX",
+  "CXX11_ABI": 0,
+  "BLAS": "OpenBLAS",
+  "NVCC_flag_rows": 239,
+  "selected_cache": {
+    "CUDA_NVCC_EXECUTABLE": "/usr/local/cuda-11.7/bin/nvcc",
+    "CUDA_VERSION": "11.7",
+    "CUDA_TOOLKIT_ROOT_DIR": "/usr/local/cuda-11.7",
+    "GLIBCXX_USE_CXX11_ABI": "0",
+    "TORCH_CUDA_ARCH_LIST": "8.0+PTX",
+    "BLAS": "OpenBLAS",
+    "CMAKE_BUILD_TYPE": "Release",
+    "BUILD_TEST": "False",
+    "USE_CUDA": "1",
+    "USE_CUDNN": "OFF",
+    "USE_CUSPARSELT": "OFF",
+    "USE_DISTRIBUTED": "0",
+    "USE_FLASH_ATTENTION": "0",
+    "USE_MEM_EFF_ATTENTION": "0",
+    "USE_KINETO": "0",
+    "USE_FBGEMM": "OFF",
+    "USE_MKLDNN": "0",
+    "USE_NNPACK": "0",
+    "USE_PYTORCH_QNNPACK": "0",
+    "USE_XNNPACK": "0"
+  },
+  "unconsumed_CMake_fields_NOT_USED": [
+    "BUILD_CAFFE2",
+    "USE_MKL",
+    "USE_QNNPACK"
+  ],
+  "CMAKE_BUILD_PARALLEL_LEVEL": "not consumed as a project option; environment/build driver parallelism and affinity are separate engineering controls",
+  "actual_disable_consumers": {
+    "MKL": "BLAS=OpenBLAS",
+    "QNNPACK": "USE_PYTORCH_QNNPACK=0"
+  },
+  "cache_sha256": "b4178fe5cbc09655b72b0b9c5d5249eac1e67e1e0e104be46f470cfe192505ac",
+  "ninja_sha256": "a2bee2348693eb6153b39621e21d46017a544976d61bde9c6da1a3ad6715507c",
+  "GPU_tasks_started": 0
+}

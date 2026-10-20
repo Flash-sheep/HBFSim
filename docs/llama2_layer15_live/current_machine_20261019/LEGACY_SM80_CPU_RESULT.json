@@ -1,0 +1,86 @@
+{
+  "scope": "Fixed CPU-only software compatibility check; one selected entry in one already-extracted cuBLAS11.7 PTX module",
+  "not_a_workload_experiment": true,
+  "gpu_workload_launched": false,
+  "input": {
+    "path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/alternate-library-audit-20261019T081156Z/raw-cublas/libcublas.so.11.10.3.1.sm_80.ptx",
+    "sha256": "321d1b5f2cdc4adcfb65ee7e6d4763d5724d66701c3886df79a5690128677934",
+    "version": "7.7",
+    "target": "sm_80",
+    "selected_entry": "_Z18scal_64addr_kernelIffLi1ELb1ELi6ELi5ELi5ELi3EEv21cublasTransposeParamsIT0_EPKT_PS3_PKS1_"
+  },
+  "tools": {
+    "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/build/src/ptxpass_hbf/ptxpass_hbf": "2566753f21e10bb66337e604d156fcf0f140af857a583705c6a5a4da04e1cd18",
+    "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/cuda/bin/ptxas": "acc38601cf89412a4518545d548eff8c6f437496c6f8858194c360c0d610c61b"
+  },
+  "resources": {
+    "serial_cpu_subprocesses": true,
+    "omp_blas_threads": 1,
+    "per_command_timeout_s": 120,
+    "per_child_address_space_gib": 4
+  },
+  "limitations": [
+    "Sample kernel not shown to be selected by Llama workload",
+    "Uses transformer CLI, not bpftime agent or plugin parameter binding",
+    "No driver/module loading, GPU numerics, dynamic coverage or performance validation",
+    "No PTX directive edits or source changes"
+  ],
+  "transform_result": {
+    "coverage": {
+      "excluded_functions": 0,
+      "rewritten_instructions": 12,
+      "unsupported_instructions": 5,
+      "unsupported_opcodes": [
+        "ld.param.u64",
+        "ld.param.u32",
+        "ld.param.u32",
+        "ld.param.u32",
+        "ld.param.u32"
+      ]
+    },
+    "modified": true
+  },
+  "staged_ptx": {
+    "sha256": "82826429b6cf57adbe7f4143d1988704f03dc83823d4e56cb2f03c8a428d4453",
+    "version": "7.7",
+    "target": "sm_80"
+  },
+  "receipts": [
+    {
+      "label": "raw-ptxas",
+      "argv": [
+        "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/cuda/bin/ptxas",
+        "--compile-only",
+        "--gpu-name=sm_80",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/alternate-library-audit-20261019T081156Z/raw-cublas/libcublas.so.11.10.3.1.sm_80.ptx",
+        "-o",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/legacy-sm80-ptx-software-check-v1/raw.sm80.o"
+      ],
+      "returncode": 0,
+      "wall_s": 0.27338121295906603
+    },
+    {
+      "label": "transform",
+      "argv": [
+        "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/build/src/ptxpass_hbf/ptxpass_hbf"
+      ],
+      "returncode": 0,
+      "wall_s": 0.041955196065828204
+    },
+    {
+      "label": "staged-ptxas",
+      "argv": [
+        "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/cuda/bin/ptxas",
+        "--compile-only",
+        "--gpu-name=sm_80",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/legacy-sm80-ptx-software-check-v1/staged.ptx",
+        "-o",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/legacy-sm80-ptx-software-check-v1/staged.sm80.o"
+      ],
+      "returncode": 255,
+      "wall_s": 0.049586339155212045
+    }
+  ],
+  "status": "FAILED",
+  "completed_at_utc": "2026-10-19T08:25:45.185955+00:00"
+}

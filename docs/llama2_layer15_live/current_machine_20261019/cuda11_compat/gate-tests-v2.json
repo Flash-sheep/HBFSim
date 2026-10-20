@@ -1,0 +1,147 @@
+{
+  "scope": "CPU software fixtures with mock CUDA DSOs; no numerical GPU or HBF timing validation",
+  "GPU_tasks_started": 0,
+  "legacy_default_off": "PASS 12 /var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/legacy-default-off.json\n",
+  "legacy_enabled": "PASS 12 /var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/legacy-enabled.json\n",
+  "cuda11": {
+    "status": "PASS",
+    "rows": [
+      {
+        "case": "exact11_forward_and_return",
+        "result": 0,
+        "cross_domain_calls": 0
+      },
+      {
+        "case": "exact11_forward_and_return",
+        "result": 801,
+        "cross_domain_calls": 0
+      },
+      {
+        "case": "wrong_domain",
+        "status": "PASS"
+      },
+      {
+        "case": "wrong_function",
+        "status": "PASS"
+      },
+      {
+        "case": "cross_thread",
+        "status": "PASS"
+      },
+      {
+        "case": "unreviewed11_rejected",
+        "api": "cudaLaunchKernel_ptsz"
+      },
+      {
+        "case": "unreviewed11_rejected",
+        "api": "cudaLaunchCooperativeKernel"
+      },
+      {
+        "case": "unreviewed11_rejected",
+        "api": "cudaLaunchCooperativeKernel_ptsz"
+      }
+    ],
+    "hardware_gpu_used": false
+  },
+  "status": "PASS",
+  "wall_seconds": 0.3119261229876429,
+  "commands": [
+    [
+      "/usr/bin/nm",
+      "-D",
+      "--undefined-only",
+      "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/agent-build-v2/runtime/agent/libbpftime-agent.so"
+    ],
+    [
+      "/usr/bin/nm",
+      "-D",
+      "--undefined-only",
+      "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/build-gate-on/libhbfsim_launch_gate.so"
+    ],
+    [
+      "/usr/bin/gcc",
+      "-shared",
+      "-fPIC",
+      "-O0",
+      "-Wl,-soname,libcuda.so.1",
+      "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/fake_cuda.c",
+      "-o",
+      "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/libcuda.so.1"
+    ],
+    [
+      "/usr/bin/nm",
+      "-D",
+      "--undefined-only",
+      "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/agent-build-v2/runtime/agent/libbpftime-agent.so"
+    ],
+    [
+      "/usr/bin/nm",
+      "-D",
+      "--undefined-only",
+      "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/build-gate-on/libhbfsim_launch_gate.so"
+    ],
+    [
+      "/usr/bin/gcc",
+      "-shared",
+      "-fPIC",
+      "-O0",
+      "-Wl,-Bsymbolic",
+      "-Wl,-soname,libcudart.so.11.0",
+      "-Wl,--version-script=/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/libcudart.so.11.0.map",
+      "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/libcudart.so.11.0.c",
+      "-o",
+      "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/libcudart.so.11.0"
+    ],
+    [
+      "/usr/bin/gcc",
+      "-shared",
+      "-fPIC",
+      "-O0",
+      "-Wl,-Bsymbolic",
+      "-Wl,-soname,libcudart.so.12",
+      "-Wl,--version-script=/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/libcudart.so.12.map",
+      "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/libcudart.so.12.c",
+      "-o",
+      "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/libcudart.so.12"
+    ],
+    [
+      "/usr/bin/gcc",
+      "-shared",
+      "-fPIC",
+      "-O0",
+      "-Wl,-Bsymbolic",
+      "-Wl,-soname,libcudart.so.13",
+      "-Wl,--version-script=/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/libcudart.so.13.map",
+      "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/libcudart.so.13.c",
+      "-o",
+      "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/libcudart.so.13"
+    ],
+    [
+      "/home/fyf/anaconda3/bin/python3",
+      "/home/yjl/HBFSim/tests/integration/reproduction_gate_cpu/run.py",
+      "--gate",
+      "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/build-gate-off/libhbfsim_launch_gate.so",
+      "--receipt",
+      "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/legacy-default-off.json"
+    ],
+    [
+      "/home/fyf/anaconda3/bin/python3",
+      "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/legacy-on/run.py",
+      "--gate",
+      "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/build-gate-on/libhbfsim_launch_gate.so",
+      "--receipt",
+      "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/legacy-enabled.json"
+    ],
+    [
+      "/home/fyf/anaconda3/bin/python3",
+      "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/test11.py"
+    ],
+    [
+      "/usr/bin/readelf",
+      "--dyn-syms",
+      "--wide",
+      "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/build-gate-off/libhbfsim_launch_gate.so"
+    ]
+  ],
+  "output": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2"
+}

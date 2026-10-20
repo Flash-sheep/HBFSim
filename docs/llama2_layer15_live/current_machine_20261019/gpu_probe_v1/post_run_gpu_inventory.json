@@ -1,0 +1,5 @@
+{
+  "returncode": 0,
+  "stdout": "index, uuid, memory.used [MiB], utilization.gpu [%], temperature.gpu\n0, GPU-5a6f4752-9597-bca9-62d5-bf9fd25c0426, 36383 MiB, 0 %, 41\n1, GPU-5302a497-ea8c-bb7b-7235-f7464792093e, 135 MiB, 0 %, 43\n",
+  "stderr": ""
+}

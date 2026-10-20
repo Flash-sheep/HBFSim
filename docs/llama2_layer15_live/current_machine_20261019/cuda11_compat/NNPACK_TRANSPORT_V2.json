@@ -1,0 +1,10 @@
+{
+  "status": "EXACT_PIN_CHECKED_OUT",
+  "transport_url": "https://github.com/maratyszcza/nnpack.git",
+  "declared_repository": "https://github.com/Maratyszcza/NNPACK.git",
+  "global_or_gitmodule_config_changed": false,
+  "same_gitlink": "c07e3a0400713d546e0dea2d5466dd22ea389c73",
+  "current_HEAD": "c07e3a0400713d546e0dea2d5466dd22ea389c73",
+  "checkout_returncode": 0,
+  "fetch_log": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/nnpack-case-transport.stderr"
+}

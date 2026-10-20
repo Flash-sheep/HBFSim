@@ -1,0 +1,101 @@
+{
+  "wheel": {
+    "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/pytorch-src/dist/torch-2.4.0+cu117.sm80ptx-cp311-cp311-linux_x86_64.whl",
+    "sha256": "ffb5ca8e612b42b93ab3afd77a43066f616c9bc18ac4fba6d4ee7650ee6e9ef5",
+    "bytes": 286761859
+  },
+  "environment": {
+    "status": "PASS",
+    "torch": "2.4.0+cu117.sm80ptx",
+    "torch_git": "e4ee3be4063b7c430974252fdf7db42273388d86",
+    "cuda_build": "11.7",
+    "cxx11_abi": false,
+    "CUDA_initialized": false,
+    "GPU_tasks_started": 0,
+    "torch_cuda_library": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so",
+    "CPU_forward_receipt": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/postbuild-v1/cpu-forward/evidence/CPU_FULL_FORWARD.json"
+  },
+  "torch_ptx": {
+    "manifest": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/postbuild-v1/torch-cuda-original-collection/native-ptx-manifest.json",
+    "sha256": "acec9acd4bc0db9eb31dba718d6bc8bc7ea93f5ae970240e2e6d9736bdf8d4a2",
+    "members": 239,
+    "targets": [
+      "sm_80"
+    ],
+    "scope": "static source collection; runtime selected kernels and HBF coverage not validated"
+  },
+  "status": "FAILED",
+  "error": "remaining-hbf-artifacts failed; original stdout/stderr retained",
+  "GPU_tasks_started": 0,
+  "steps": [
+    {
+      "label": "install-local-wheel",
+      "command": [
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/pytorch-src/dist/torch-2.4.0+cu117.sm80ptx-cp311-cp311-linux_x86_64.whl"
+      ],
+      "returncode": 0
+    },
+    {
+      "label": "pip-check",
+      "command": [
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "returncode": 0
+    },
+    {
+      "label": "environment-and-forward",
+      "command": [
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/bin/python",
+        "-B",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/postbuild-v1/verify_and_forward.py",
+        "/home/yjl/HBFSim/artifacts/llama2-layer15-full-validation-v1",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/postbuild-v1/cpu-forward",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/postbuild-v1"
+      ],
+      "returncode": 0
+    },
+    {
+      "label": "collect-torch-ptx",
+      "command": [
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/bin/python",
+        "-B",
+        "/home/yjl/HBFSim/tools/native_ptx_reproduction/collector/collect_native_ptx.py",
+        "--container",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so",
+        "--cuobjdump",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/cuda/bin/cuobjdump",
+        "--output",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/postbuild-v1/torch-cuda-original-collection"
+      ],
+      "returncode": 0
+    },
+    {
+      "label": "remaining-hbf-artifacts",
+      "command": [
+        "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/build-tools/cmake/data/bin/cmake",
+        "--build",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/build-gate-on",
+        "--parallel",
+        "2",
+        "--target",
+        "hbfsim",
+        "hbfsimd",
+        "ptxpass_hbf",
+        "ptxpass_hbf_plugin",
+        "ptxpass_hbf_aggregate_plugin",
+        "hbfsim_bpftime_attach_loader",
+        "hbfsim_coverage_probe"
+      ],
+      "returncode": 1
+    }
+  ]
+}

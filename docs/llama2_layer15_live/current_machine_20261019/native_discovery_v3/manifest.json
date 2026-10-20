@@ -1,0 +1,329 @@
+{
+  "schema_version": "eq3-experiment-manifest-v1",
+  "experiment_id": "LLAMA2-SM80-NATIVE-DISCOVERY",
+  "version": "3",
+  "approval_status": "PENDING_USER_APPROVAL",
+  "scientific_config": {
+    "research_question_and_hypothesis": {
+      "question": "Does the corrected strict capture complete the original layer15 and preserve the successful immutable v1 native output?",
+      "hypothesis": "The original GPU forward succeeds; unbound strict observation selects original functions and preserves exact FP16 bytes.",
+      "evidence_identity": "Software engineering verification only"
+    },
+    "evidence_type_and_limits": {
+      "type": "Bounded native/control and runtime-discovery software validation",
+      "limits": [
+        "No HBF ranges or Timing requests",
+        "No instrumented PTX is loaded",
+        "Actual selected kernels may differ from old trace55",
+        "Discovery is a dependency of full HBF validation, not its PASS"
+      ]
+    },
+    "device_topology": {
+      "GPU_UUID": "GPU-5302a497-ea8c-bb7b-7235-f7464792093e",
+      "GPU": "A100-PCIE-40GB sm80",
+      "driver": "565.57.01",
+      "selection": "Both loader and target see only this UUID",
+      "GPU0": "Occupied, excluded; no changes or reset"
+    },
+    "geometry_materials_boundaries": {
+      "status": "NOT_USED",
+      "reason": "No package/thermal/physical HBF experiment"
+    },
+    "workload_and_initial_state": {
+      "model": "/mnt/llama2-7b",
+      "workload": "/mnt/hbfsim-workload",
+      "layer_index": 15,
+      "batch_query_context": [
+        1,
+        1,
+        32
+      ],
+      "dtype": "FP16",
+      "seed": 1,
+      "warmup": 0,
+      "forwards_per_arm": 1,
+      "fresh_processes": true,
+      "registered_parameters": 9,
+      "weight_bytes": 404766720,
+      "HBF_registration_count": 0,
+      "arena": "Original helper, new per-process addresses,256B alignment",
+      "input_kind": "Checkpoint weights; original fixed-seed synthetic hidden/KV",
+      "software_control_INFERRED": "CUDA_MODULE_LOADING=EAGER; eager original operators; TF32 disabled",
+      "task_cache": "Each arm uses its own fresh CUDA cache inside the output directory; TMPDIR also private",
+      "native_control_reused": {
+        "output": "artifacts/llama2-sm80-native-discovery-v1/execution-v1/native/hidden-output.bin",
+        "output_sha256": "528e30d35ba48d50b8aa98d8b01f4e3165a5de75522eaaa60f7170e00e6b9aea",
+        "result": "artifacts/llama2-sm80-native-discovery-v1/execution-v1/native/RESULT.json",
+        "reused_scope": "Same original input, helper, GPU UUID, driver and frozen environment; software output control only"
+      }
+    },
+    "power_reliability_control": {
+      "physical_power_reliability": "NOT_USED",
+      "safety": "Temperature and occupancy monitoring; no clock/power limit, driver or global environment changes"
+    },
+    "scan_matrix_and_repetitions": {
+      "arms": [
+        "strict agent+gate capture only"
+      ],
+      "repeats": 1,
+      "total_new_full_forwards": 1,
+      "native_control": "Reuse immutable successful v1 native, after identity/layout audit",
+      "automatic_retry": false,
+      "loader": "One fresh private-namespace server+loader on the same selected GPU"
+    },
+    "time_and_numerics": {
+      "simulated_time": "NOT_USED",
+      "expected_wall_seconds": "20–60 after CPU validation; v2 actual35.119s, but failed capture so no successful full capture duration",
+      "execution_watchdog_seconds": 180,
+      "cleanup_grace_seconds_per_actor": 5,
+      "GPU_budget_minutes_including_cleanup": 4,
+      "comparison": "Exact8192 FP16 output bytes; all finite; no tolerance relaxation",
+      "timing_limits": "Host forward+sync interval includes instrumentation and synchronization overhead; not performance benchmarking"
+    },
+    "controls_ablations_observations": {
+      "control": "Successful v1 native on the exact same frozen runtime/input/GPU; no native reexecution",
+      "observations": [
+        "GPU UUID/capability and resources",
+        "fresh9-weight arena addresses/layout",
+        "forward-scoped coverage and strict runtime/driver records",
+        "CUDA11 native registrations",
+        "loaded file paths",
+        "8192-byte output and SHA per arm",
+        "PID/exit/stop reason",
+        "Per-check GPU resource and allowlist samples",
+        "Explicit safety-stop reason and sample",
+        "Final actor exit codes",
+        "Task-local bpftime runtime log",
+        "Persist raw forward windows before validation; no fabricated Driver log for runtime Original completion"
+      ],
+      "AI_polling": "No per-kernel AI polling; parent safety monitoring every1s"
+    },
+    "acceptance_abort_and_outputs": {
+      "pass": "One capture succeeds with exact finite8192 FP16 bytes. Coverage nonempty/all allowed unmodeled; runtime nonempty with cudart11/all successful ORIGINAL decisions. Driver calls0 require authenticated original_completion and gate_runtime_result0; Driver calls1 require success/equal nonnull selected/original handles and matching bridge. Reject every other state; any bridge record must select successful ORIGINAL.",
+      "abort": [
+        "Any CUDA,output,identity,bridge or child failure stops subsequent actors",
+        "Target busy/foreign process; startup memory>=1024MiB or utilization!=0 or temperature>=75C",
+        "Runtime GPU memory>=12288MiB or temperature>=80C or foreign process",
+        "Actor-group RSS>16GiB or host available RAM<64GiB",
+        "Output>2GiB or filesystem free<2GiB",
+        "Work execution>180s; terminate only owned actors; parent-death kill guard",
+        "No automatic retry or fallback",
+        "Aggregate observed parent/actor/collected-child CPU time>720 seconds (0.2 CPU-hour)"
+      ],
+      "output": "/home/yjl/HBFSim/artifacts/llama2-sm80-native-discovery-v3/execution-v1",
+      "completion": [
+        "START.json",
+        "*PID.json",
+        "RESULT.json",
+        "DONE or FAILED"
+      ],
+      "state": "PENDING_USER_APPROVAL; no job submitted",
+      "exact_command": [
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/bin/python",
+        "-B",
+        "/home/yjl/HBFSim/experiments/llama2_sm80_cuda11/native_discovery_v3.py",
+        "--bundle",
+        "/home/yjl/HBFSim/artifacts/llama2-sm80-native-discovery-v3",
+        "--execute",
+        "--approval",
+        "/home/yjl/HBFSim/artifacts/llama2-sm80-native-discovery-v3/USER_CONFIRMATION.json"
+      ],
+      "repair_scope": "New isolated ON-only ELF version map for cudaLaunchKernel rejection stub; all function bodies/HBF exports unchanged. Original completion must be authenticated by existing strict gate handshake; any observed Driver call still needs matching successful bridge. Keep original numerical and safety thresholds."
+    }
+  },
+  "code": {
+    "repository_revision": "874a20f289b7bd587fa4048a788e12df2618444b",
+    "dirty_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts": [
+      {
+        "logical_id": "native_discovery_v3.py",
+        "semantic_role": "Capture-only v3 with authenticated original completion and pre-validation raw receipt retention",
+        "sha256": "17ac13dfebb1d43a4071725ec4022873f93641ac255a3f204053c04cfac31d16",
+        "path": "experiments/llama2_sm80_cuda11/native_discovery_v3.py"
+      },
+      {
+        "logical_id": "eq3_experiment_gate.py",
+        "semantic_role": "Frozen discovery code or original helper",
+        "sha256": "a49f4bce6bbf36045cbc881945bc5ebbb9a260f1f1d3147a67c0a21254003255",
+        "path": "tools/eq3_experiment_gate.py"
+      },
+      {
+        "logical_id": "trace_decoder_layer.py",
+        "semantic_role": "Frozen discovery code or original helper",
+        "sha256": "add394d8e2d8f079386b744658a2f96a44270b9e0883334221a7b79b4cc8a61f",
+        "path": "artifacts/llama2-layer15-full-validation-v1/frozen/trace_decoder_layer.py"
+      },
+      {
+        "logical_id": "trace_flint_decoder_layer.py",
+        "semantic_role": "Frozen discovery code or original helper",
+        "sha256": "508bb22d1f0a2a83abb2bb2d2fa6a1b4364311a97a2fea53d771368ab0f7ed67",
+        "path": "artifacts/llama2-layer15-full-validation-v1/frozen/trace_flint_decoder_layer.py"
+      },
+      {
+        "logical_id": "v3-checker-tests",
+        "semantic_role": "CPU receipt and approval rejection tests",
+        "path": "experiments/llama2_sm80_cuda11/tests/test_native_discovery_v3.py",
+        "sha256": "1992a5e4899f5c021f9b119f1bbfce360a23c7fd1c6c0abbb039abfdcd7ba9de"
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "logical_id": "runtime-identity",
+      "semantic_role": "Same mathematical environment and successful native control; new isolated gate map with frozen build inputs",
+      "path": "artifacts/llama2-sm80-native-discovery-v3/runtime-identity.json",
+      "sha256": "1422099a635c4710827f6a437b4aabe3f5b2f7ee577ccbfdff28ce5fdc3653de"
+    },
+    {
+      "logical_id": "ldd-closure",
+      "semantic_role": "Read-only dynamic dependency closure",
+      "sha256": "9d02f74e8edc4a8473c77e5060813aa76cdc58321547dfcb822b44d5e20c908d",
+      "path": "artifacts/llama2-sm80-native-discovery-v1/ldd-closure.json"
+    },
+    {
+      "logical_id": "new-gate-ldd",
+      "semantic_role": "Actual new gate dependency closure; no stubs",
+      "path": "artifacts/llama2-sm80-native-discovery-v3/ldd-closure.json",
+      "sha256": "daa400e458feeb54df47bb3cbce1253c960a5494d6343bf5726a814a28206e8c"
+    }
+  ],
+  "inputs": [
+    {
+      "logical_id": "original-inputs",
+      "semantic_role": "Original scripts/config and ten checkpoint tensor identities",
+      "sha256": "7041124f6dbdde8175c3198b29fd3cf561c0fab8281a3b22dbad2aa5d8551a73",
+      "path": "artifacts/llama2-layer15-full-validation-v1/evidence/INPUT_IDENTITY.json"
+    },
+    {
+      "logical_id": "original-layout",
+      "semantic_role": "Original9 weights; old addresses never reused",
+      "sha256": "415f7c275a33cdcbe5d889c2974abea13f5f098ff8e3ea51977152dfa82d30a9",
+      "path": "artifacts/llama2-layer15-full-validation-v1/frozen/original_weight_manifest.json"
+    },
+    {
+      "logical_id": "native-output-v1",
+      "semantic_role": "Immutable successful native GPU output; not an old CPU or other-device surrogate",
+      "path": "artifacts/llama2-sm80-native-discovery-v1/execution-v1/native/hidden-output.bin",
+      "sha256": "528e30d35ba48d50b8aa98d8b01f4e3165a5de75522eaaa60f7170e00e6b9aea"
+    }
+  ],
+  "resource_budget": {
+    "requested": {
+      "cpu_configurations": 1,
+      "executions_per_configuration": 1,
+      "cpu_hours": 0.2,
+      "build_threads": 0,
+      "ram_gib": 16,
+      "disk_gib": 2,
+      "gpu_compute_minutes": 4
+    },
+    "limits": {
+      "cpu_configurations": 1,
+      "executions_per_configuration": 1,
+      "cpu_hours": 0.2,
+      "build_threads": 0,
+      "ram_gib": 16,
+      "disk_gib": 2,
+      "gpu_compute_minutes": 4
+    }
+  },
+  "prerequisites": [
+    {
+      "id": "baseline-reuse",
+      "status": "PASSED",
+      "evidence": {
+        "logical_id": "baseline-reuse",
+        "semantic_role": "Current identity and layout audit of the immutable successful native GPU control",
+        "path": "artifacts/llama2-sm80-native-discovery-v3/BASELINE_REUSE_CPU.json",
+        "sha256": "cb6ec45343a09e986fa0cd9893437492c136c4ac416b3bd9d03acce3f1b72cea"
+      }
+    },
+    {
+      "id": "CPU-identity",
+      "status": "PASSED",
+      "evidence": {
+        "logical_id": "CPU-identity",
+        "semantic_role": "Actual new runtime/input CPU identity verification",
+        "path": "artifacts/llama2-sm80-native-discovery-v3/CPU_IDENTITY.json",
+        "sha256": "a77d1e91fa8e8c4aa045b83f0f6c5139c3378c3bcb98480d4083efc7fdc86450"
+      }
+    },
+    {
+      "id": "CPU-safety",
+      "status": "PASSED",
+      "evidence": {
+        "logical_id": "CPU-safety",
+        "semantic_role": "Eight capture-only wrapper CPU fixtures",
+        "path": "artifacts/llama2-sm80-native-discovery-v3/CPU_SAFETY_TESTS.json",
+        "sha256": "0a8aa99393a4df0c5f280a99ba6a49852c8c18356d6b11e321b92e35c1a2deb4"
+      }
+    },
+    {
+      "id": "preload-defect-fixed",
+      "status": "PASSED",
+      "evidence": {
+        "logical_id": "preload-defect-fixed",
+        "semantic_role": "Actual Git subprocess CPU-marker reproducer before/after; no GPU",
+        "path": "artifacts/llama2-sm80-native-discovery-v1/analysis-v1/PRELOAD_INHERITANCE_CPU.json",
+        "sha256": "59f0eee08de2ad6e112f4730ade62059c4adc43725b7ccdaf556ae19e04f9071"
+      }
+    },
+    {
+      "id": "runtime-build",
+      "status": "PASSED",
+      "evidence": {
+        "logical_id": "runtime-build",
+        "semantic_role": "Unchanged agent/server/plugin/framework build",
+        "path": "artifacts/llama2-layer15-full-validation-v1/framework-cpu/finish-build-v1.json",
+        "sha256": "2afe2a64e4ce2a2d06f002651e5434ef170b51b517aed82e28db357497fe2243"
+      }
+    },
+    {
+      "id": "elf-routing-fix",
+      "status": "PASSED",
+      "evidence": {
+        "logical_id": "elf-routing-fix",
+        "semantic_role": "Real ELF versioned consumer selects exact new gate11 with inert CUDA providers",
+        "path": "artifacts/llama2-sm80-native-discovery-v2/analysis-v1/ELF_LOOKUP_AFTER_CPU.json",
+        "sha256": "5ef37d1d42ce45ac2b7fd13dea26553bdcab4ede5c57e58aeb007b449047b7bd"
+      }
+    },
+    {
+      "id": "new-gate-build",
+      "status": "PASSED",
+      "evidence": {
+        "logical_id": "new-gate-build",
+        "semantic_role": "Map-only relink with frozen original objects and unchanged HBF exports",
+        "path": "artifacts/llama2-sm80-native-discovery-v2/analysis-v1/ELF_FIX_BUILD.json",
+        "sha256": "5b85a3c20be7ec5e7376771ebb22dde78631788f98c51f95c3f25ba104bbebd2"
+      }
+    },
+    {
+      "id": "new-gate-CPU-regression",
+      "status": "PASSED",
+      "evidence": {
+        "logical_id": "new-gate-CPU-regression",
+        "semantic_role": "12 legacy + eight CUDA11 + real-agent registration/unready rejection checks",
+        "path": "artifacts/llama2-sm80-native-discovery-v2/analysis-v1/ELF_FIX_CPU_REGRESSION.json",
+        "sha256": "f1c4be5c0347e6b5590a3abce4eb9fb343a23f3daf77e8a5b5896282ee3c1daf"
+      }
+    },
+    {
+      "id": "actual-entry-refusal",
+      "status": "PASSED",
+      "evidence": {
+        "logical_id": "actual-entry-refusal",
+        "semantic_role": "Actual final source GPU CLI refusal check",
+        "path": "artifacts/llama2-sm80-native-discovery-v3/CLI_APPROVAL_BOUNDARY.json",
+        "sha256": "90fd4aaac2eacdd455173eda83d7c192a5154a0d35d10e7443e0c6ec1e3dc572"
+      }
+    }
+  ],
+  "canonical_manifest_hash": "b179eb21beaf9bb8a24ebf06f5f19f7953d22e52d6ea76cadcd6463460ea116f",
+  "execution_context": {
+    "created_at_utc": "2026-10-20T02:17:51.530854+00:00",
+    "launch_performed": false,
+    "GPU_forward_calls_started": 0,
+    "scope": "Capture only; native control reused; HBF not run"
+  }
+}

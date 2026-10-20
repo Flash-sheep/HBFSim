@@ -1,0 +1,55 @@
+{
+  "schema": "llama2-layer15-continuation-v8",
+  "captured_at_utc": "2026-10-20T02:53:33.259936+00:00",
+  "user_goal": "Original full Llama2 layer15 and eventual complete HBF Timing validation",
+  "v3": {
+    "status": "NATIVE_DISCOVERY_PASS_HBF_NOT_RUN",
+    "user_approved": true,
+    "hash": "b179eb21beaf9bb8a24ebf06f5f19f7953d22e52d6ea76cadcd6463460ea116f",
+    "new_GPU_forwards": 1,
+    "retries": 0,
+    "exact_native_output_sha256": "528e30d35ba48d50b8aa98d8b01f4e3165a5de75522eaaa60f7170e00e6b9aea",
+    "runtime_records": 45,
+    "unique_Torch_entries": 20,
+    "raw": "/home/yjl/HBFSim/artifacts/llama2-sm80-native-discovery-v3/execution-v1",
+    "GPU_cleanup": "135MiB,0%,43C"
+  },
+  "CPU_preparation": {
+    "observed_Torch_entry_membership": "20 entries/12 members, unique original sm80/PTX7.7 identities",
+    "scoped_stage": "19 entries/11 members SCOPED_READY, not GPU or full-module runtime-link validated",
+    "stage": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/observed-torch-scoped-v1",
+    "excluded_reduction": "atom.global.add.u32 remains unsupported; requires proven auxiliary disjoint scope or separately reviewed supported plan; never waive unsupported metadata",
+    "register_note": "Two fixed CPU assembly failures pass with existing --maxrregcount64 option; not applied in v3 or v4 GPU discovery",
+    "assertfail_note": "Exact static diagnostic args proven, not rewritten or assumed unreachable; CPU fixtures pass",
+    "cupti_observer": "Private optional DSO built/tested only with fake CUPTI, no actual GPU start"
+  },
+  "v4": {
+    "status": "PENDING_USER_APPROVAL",
+    "canonical_manifest_hash": "b0cd0ed17121c225da51d54c505b03c6207a42c42c5215671f1393242421323b",
+    "new_GPU_forwards_requested": 1,
+    "GPU_tasks_started": 0,
+    "readable": "/home/yjl/HBFSim/docs/llama2_layer15_live/NATIVE_DISCOVERY_PREFLIGHT_V4.md",
+    "exact_command": [
+      "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/bin/python",
+      "-B",
+      "/home/yjl/HBFSim/experiments/llama2_sm80_cuda11/native_discovery_v4.py",
+      "--bundle",
+      "/home/yjl/HBFSim/artifacts/llama2-sm80-native-discovery-v4",
+      "--execute",
+      "--approval",
+      "/home/yjl/HBFSim/artifacts/llama2-sm80-native-discovery-v4/USER_CONFIRMATION.json"
+    ],
+    "scope": "Same successful strict capture plus passive CUPTI Driver launch/lookup inventory; no HBF ranges/PTX/service"
+  },
+  "active_jobs": [],
+  "production_changes": false,
+  "global_changes": false,
+  "HBF_timing_validated": false,
+  "remaining": [
+    "Obtain actual Driver/cuBLAS launch functions and symbols",
+    "Exact source-container/member/entry and staged binding for active weight kernels",
+    "Prove auxiliary scopes do not intersect HBF weight ranges or explicitly report remaining unsupported paths",
+    "Nine-weight addressed/active-modeled coverage and ordinary Timing service counters with exact numerical comparison"
+  ],
+  "next_action": "Execute v4 exact command only after actual user ID/version/hash confirmation; do not reuse v3 approval or auto-retry GPU"
+}

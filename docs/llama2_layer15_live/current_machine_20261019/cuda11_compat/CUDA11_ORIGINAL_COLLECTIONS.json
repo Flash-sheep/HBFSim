@@ -1,0 +1,51 @@
+{
+  "scope": "CPU original embedded PTX collection only; actual workload kernel selection not established",
+  "GPU_tasks_started": 0,
+  "libraries": [
+    {
+      "library": "cublas",
+      "manifest": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cuda11-cublas-original-collection/native-ptx-manifest.json",
+      "manifest_sha256": "75b70a45c995755a6d7e769884640a8f73dd5e5a2e560a89bb15d75819adb3a0",
+      "collector_status": "READY",
+      "container": {
+        "device": 66307,
+        "inode": 7616718,
+        "mtime_ns": 1698751728976607052,
+        "path": "/usr/local/cuda-11.7/targets/x86_64-linux/lib/libcublas.so.11.10.3.66",
+        "sha256": "f154544f9074e63d780476d1e8df66b410008c6babcd44c7180f6b5e11b08d17",
+        "size_bytes": 151346592
+      },
+      "members": 231,
+      "targets": {
+        "sm_80": 231
+      },
+      "versions": {
+        "7.7": 231
+      },
+      "entry_memberships": 3857
+    },
+    {
+      "library": "cublasLt",
+      "manifest": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cuda11-cublasLt-original-collection/native-ptx-manifest.json",
+      "manifest_sha256": "c24a12a61500aa89c52f078e983fc625f95ef9a26d6b1c5e60c49b193fee3894",
+      "collector_status": "READY",
+      "container": {
+        "device": 66307,
+        "inode": 7616715,
+        "mtime_ns": 1698751726780649302,
+        "path": "/usr/local/cuda-11.7/targets/x86_64-linux/lib/libcublasLt.so.11.10.3.66",
+        "sha256": "85f144dfe7b2ef588d2b688abf3fdd51a8e26a14e41a011c12d41fe8afc9a041",
+        "size_bytes": 332762424
+      },
+      "members": 88,
+      "targets": {
+        "sm_80": 88
+      },
+      "versions": {
+        "7.7": 84,
+        "7.4": 4
+      },
+      "entry_memberships": 4539
+    }
+  ]
+}

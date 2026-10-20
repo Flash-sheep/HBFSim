@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "validation": "CUDA 12.8.93 ptxas --compile-only --gpu-name=sm_80; CPU assembler only",
+  "gpu_workload_launched": false,
+  "ptx_version": "8.7",
+  "ptx_target": "sm_80",
+  "files": [
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/build/generated/hbf_device.ptx",
+      "bytes": 208517,
+      "sha256": "3878cc9b295197ab5cb3e71863db6d4142d458e287b3a80018cb4377cfaa93a2"
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/hbf_device.sm80.o",
+      "bytes": 181696,
+      "sha256": "662dd25c6de78d024fd4e45d09716742c76139e764ef5245dea30299d88e4658"
+    }
+  ],
+  "limitations": "HBF device helper only; does not validate actual Torch/cuBLAS kernels, driver loading or dynamic coverage."
+}

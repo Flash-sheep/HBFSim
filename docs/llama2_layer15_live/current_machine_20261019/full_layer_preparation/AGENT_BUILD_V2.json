@@ -1,0 +1,23 @@
+{
+  "status": "FAILED",
+  "returncode": 1,
+  "stop_reason": null,
+  "wall_seconds": 235.62922932510264,
+  "command": [
+    "/usr/bin/ninja",
+    "-C",
+    "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/agent-build-v1",
+    "-j1",
+    "bpftime-agent"
+  ],
+  "profile": "current-host-v1; not historical build lock",
+  "GPU_tasks_started": 0,
+  "CUDA11_adaptation_implemented": false,
+  "artifacts": {
+    "attach/nv_attach_impl/ptx_compiler/libnv_attach_impl_ptx_compiler.so": {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/agent-build-v1/attach/nv_attach_impl/ptx_compiler/libnv_attach_impl_ptx_compiler.so",
+      "bytes": 40165376,
+      "sha256": "9a403d36053c7b1e8517ff50ba308761b01d5ad887bbaab973d3d9397cd4de99"
+    }
+  }
+}

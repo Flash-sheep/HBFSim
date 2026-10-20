@@ -1,0 +1,280 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -25,6 +25,10 @@
+ #
+ # Set project options
+ #
++option(HBFSIM_EXPERIMENTAL_CUDART11 "Isolated experimental CUDA11 launch identity adapter" OFF)
++if(HBFSIM_EXPERIMENTAL_CUDART11)
++  add_compile_definitions(HBFSIM_EXPERIMENTAL_CUDART11=1)
++endif()
+ include(cmake/CompilerWarnings.cmake)
+ include(cmake/StandardSettings.cmake)
+ 
+--- a/attach/nv_attach_impl/nv_attach_impl.hpp
++++ b/attach/nv_attach_impl/nv_attach_impl.hpp
+@@ -69,6 +69,9 @@
+ };
+ enum class RuntimeRegistrationDomain {
+ 	Unknown = 0,
++#if HBFSIM_EXPERIMENTAL_CUDART11
++	Cudart11 = 11,
++#endif
+ 	Cudart12 = 12,
+ 	Cudart13 = 13,
+ };
+@@ -130,6 +133,9 @@
+ 	std::atomic<void *> orig_cuda_launch_kernel{ nullptr };
+ 	std::atomic<void *> orig_cuda_launch_kernel_ptsz{ nullptr };
+ 	// Exact CUDA 12 public runtime entry; do not share the process-global slot.
++#if HBFSIM_EXPERIMENTAL_CUDART11
++	std::atomic<void *> orig_public_launch_kernel_11{ nullptr };
++#endif
+ 	std::atomic<void *> orig_public_launch_kernel_12{ nullptr };
+ 	// NVCC-generated host stubs call the private cudaKernel_t entry points,
+ 	// which are distinct, versioned symbols.  Keep every domain/entry in its
+--- a/attach/nv_attach_impl/nv_attach_impl.cpp
++++ b/attach/nv_attach_impl/nv_attach_impl.cpp
+@@ -239,6 +239,10 @@
+ cudaError_t cuda_runtime_function__cudaLaunchKernel_ptsz(
+ 	const void *func, dim3 gridDim, dim3 blockDim, void **args,
+ 	size_t sharedMem, cudaStream_t stream);
++#if HBFSIM_EXPERIMENTAL_CUDART11
++cudaError_t cuda_runtime_function__cudaLaunchKernel_11(
++    const void*, dim3, dim3, void**, size_t, cudaStream_t);
++#endif
+ cudaError_t cuda_runtime_function__cudaLaunchKernel_12(
+ 	const void *func, dim3 gridDim, dim3 blockDim, void **args,
+ 	size_t sharedMem, cudaStream_t stream);
+@@ -461,6 +465,10 @@
+ 				{ kind, symbol, version, address, domain });
+ 		}
+ 	};
++#if HBFSIM_EXPERIMENTAL_CUDART11
++	collect_runtime_domain("libcudart.so.11.0", "libcudart.so.11.0",
++                              RuntimeRegistrationDomain::Cudart11);
++#endif
+ 	collect_runtime_domain("libcudart.so.12", "libcudart.so.12",
+ 				RuntimeRegistrationDomain::Cudart12);
+ 	collect_runtime_domain("libcudart.so.13", "libcudart.so.13",
+@@ -510,6 +518,10 @@
+ 		register_hook(AttachedToFunction::CudaMemcpyToSymbolAsync,
+ 			      cuda_memcpy_to_symbol_async_addr);
+ 	}
++#if HBFSIM_EXPERIMENTAL_CUDART11
++    void *public_launch_11 =
++        gate_versioned_symbol("cudaLaunchKernel", "libcudart.so.11.0");
++#endif
+ 	void *public_launch_12 =
+ 		gate_versioned_symbol("cudaLaunchKernel", "libcudart.so.12");
+ 	void *global_public_launch = GSIZE_TO_POINTER(
+@@ -517,6 +529,11 @@
+ 	// The global lookup can resolve to the exact CUDA 12 entry depending on
+ 	// DSO load order.  In that case install only the versioned wrapper so Gum
+ 	// never replaces the same address twice or leaves its exact slot empty.
++#if HBFSIM_EXPERIMENTAL_CUDART11
++    if (public_launch_11 != nullptr && global_public_launch == public_launch_11) {
++        SPDLOG_INFO("Skipping unversioned launch alias of exact CUDA11 entry");
++    } else
++#endif
+ 	if (global_public_launch != public_launch_12) {
+ 		replace_hook_once("cudaLaunchKernel",
+ 			(gpointer)&cuda_runtime_function__cudaLaunchKernel,
+@@ -530,6 +547,12 @@
+ 		"cudaLaunchKernel_ptsz",
+ 		(gpointer)&cuda_runtime_function__cudaLaunchKernel_ptsz,
+ 		hook_state.orig_cuda_launch_kernel_ptsz);
++#if HBFSIM_EXPERIMENTAL_CUDART11
++    replace_hook_address_once(
++        "cudaLaunchKernel@libcudart.so.11.0", public_launch_11,
++        (gpointer)&cuda_runtime_function__cudaLaunchKernel_11,
++        hook_state.orig_public_launch_kernel_11);
++#endif
+ 	replace_hook_address_once(
+ 		"cudaLaunchKernel@libcudart.so.12",
+ 		public_launch_12,
+--- a/attach/nv_attach_impl/nv_attach_impl_frida_setup.cpp
++++ b/attach/nv_attach_impl/nv_attach_impl_frida_setup.cpp
+@@ -64,6 +64,9 @@
+ static const char *registration_domain_name(RuntimeRegistrationDomain domain)
+ {
+ 	switch (domain) {
++#if HBFSIM_EXPERIMENTAL_CUDART11
++	case RuntimeRegistrationDomain::Cudart11: return "cudart11";
++#endif
+ 	case RuntimeRegistrationDomain::Cudart12: return "cudart12";
+ 	case RuntimeRegistrationDomain::Cudart13: return "cudart13";
+ 	default: return "unknown";
+@@ -698,6 +701,40 @@
+ 			     result);
+ }
+ 
++#if HBFSIM_EXPERIMENTAL_CUDART11
++static void try_native_auto_bind_public11(nv_attach_impl *impl,
++					  const void *host_stub)
++{
++	if (impl == nullptr || host_stub == nullptr ||
++	    std::getenv("HBFSIM_NATIVE_BINDING_MANIFEST_PATH") == nullptr)
++		return;
++	const char *build = std::getenv("HBFSIM_BUILD_DIR");
++	if (build == nullptr || build[0] == '\0') return;
++	static void *gate = nullptr;
++	if (gate == nullptr) {
++		auto path = std::filesystem::path(build) /
++			    "libhbfsim_launch_gate.so";
++		gate = dlopen(path.c_str(), RTLD_NOW | RTLD_NOLOAD | RTLD_LOCAL);
++	}
++	using get_function_type = cudaError_t (*)(cudaFunction_t *, const void *);
++	auto get_function = gate == nullptr ? nullptr
++		: reinterpret_cast<get_function_type>(
++			dlvsym(gate, "cudaGetFuncBySymbol", "libcudart.so.11.0"));
++	if (get_function == nullptr) return;
++	cudaFunction_t runtime_function = nullptr;
++	if (get_function(&runtime_function, host_stub) != cudaSuccess ||
++	    runtime_function == nullptr)
++		return;
++	const int result = impl->auto_bind_registered_function(
++		11, const_cast<void *>(host_stub),
++		reinterpret_cast<CUfunction>(runtime_function));
++	if (result != 0)
++		SPDLOG_ERROR("Native public11 automatic binding failed result={}",
++			     result);
++}
++
++#endif
++
+ static nv_attach_hook_state *current_hook_state()
+ {
+ 	auto gum_ctx = gum_interceptor_get_current_invocation();
+@@ -765,6 +802,68 @@
+ 		state->orig_public_launch_kernel_12.load(std::memory_order_acquire),
+ 		func, grid_dim, block_dim, args, shared_mem, stream);
+ }
++
++#if HBFSIM_EXPERIMENTAL_CUDART11
++static cudaError_t cuda_public_launch_kernel_11_common(
++	nv_attach_impl *impl, void *original_fn_ptr, const void *func,
++	dim3 grid_dim, dim3 block_dim, void **args, size_t shared_mem,
++	cudaStream_t stream)
++{
++	if (!strict_launch_bridge_enabled())
++        return cudaErrorNotSupported;
++	auto original = reinterpret_cast<cuda_launch_kernel_fn_t>(original_fn_ptr);
++	strict_runtime_driver_frame frame{};
++	frame.host_stub = func;
++	frame.api = "cudaLaunchKernel";
++	frame.argument_kind = "host_stub";
++	frame.runtime_domain = "cudart11";
++	frame.call_id = strict_runtime_next_call_id.fetch_add(
++		1, std::memory_order_relaxed);
++	frame.parent_call_id = strict_runtime_driver_frames.empty()
++			       ? 0
++			       : strict_runtime_driver_frames.back()->call_id;
++	strict_runtime_driver_scope scope(frame);
++	if (original == nullptr || impl == nullptr || !impl->is_enabled() ||
++	    !impl->is_late_bootstrap_done()) {
++		strict_runtime_log(frame, cudaErrorNotSupported,
++				   "REJECTED_BRIDGE_UNAVAILABLE");
++		return cudaErrorNotSupported;
++	}
++	try_native_auto_bind_public11(impl, func);
++	const auto roundtrip = strict_original_roundtrip_resolve();
++	if (!roundtrip) {
++		strict_runtime_log(frame, cudaErrorNotSupported,
++				   "REJECTED_ORIGINAL_HANDSHAKE_MIXED_COHORT");
++		return cudaErrorNotSupported;
++	}
++	std::uint64_t original_token = 0;
++	if (!strict_original_roundtrip_begin(roundtrip, func, 11, 1,
++					     original_token)) {
++		strict_runtime_log(frame, cudaErrorNotSupported,
++				   "REJECTED_ORIGINAL_HANDSHAKE_MISSING");
++		return cudaErrorNotSupported;
++	}
++	const auto result = original(func, grid_dim, block_dim, args,
++				     shared_mem, stream);
++	strict_original_roundtrip_consume(roundtrip, frame, original_token, func,
++					  11, 1, result);
++	const auto validation = strict_runtime_validate(frame, result);
++	strict_runtime_log(frame, validation.result, validation.outcome);
++	return validation.result;
++}
++
++extern "C" cudaError_t cuda_runtime_function__cudaLaunchKernel_11(
++	const void *func, dim3 grid_dim, dim3 block_dim, void **args,
++	size_t shared_mem, cudaStream_t stream)
++{
++	auto *state = current_hook_state();
++	return cuda_public_launch_kernel_11_common(
++		state->active_impl.load(std::memory_order_acquire),
++		state->orig_public_launch_kernel_11.load(std::memory_order_acquire),
++		func, grid_dim, block_dim, args, shared_mem, stream);
++}
++
++#endif
+ 
+ #define DEFINE_PRIVATE_RUNTIME_WRAPPER(function_name, slot_name, api_name, domain_name) \
+ 	extern "C" cudaError_t function_name(                                      \
+--- a/runtime/agent/agent.cpp
++++ b/runtime/agent/agent.cpp
+@@ -742,6 +742,9 @@
+ } // namespace llvm
+ } // namespace bpftime::vm::compat
+ using cuda_register_fatbinary_fn = void **(*)(void *);
++#if HBFSIM_EXPERIMENTAL_CUDART11
++static std::atomic<cuda_register_fatbinary_fn> original_register_fatbinary_11{};
++#endif
+ static std::atomic<cuda_register_fatbinary_fn> original_register_fatbinary_12{};
+ static std::atomic<cuda_register_fatbinary_fn> original_register_fatbinary_13{};
+ 
+@@ -776,6 +779,14 @@
+ 	return nullptr;
+ }
+ 
++#if HBFSIM_EXPERIMENTAL_CUDART11
++extern "C" void **bpftime___cudaRegisterFatBinary_11(void *fatbin)
++{
++    return register_fatbinary_versioned(fatbin, "libcudart.so.11.0",
++                                       original_register_fatbinary_11);
++}
++__asm__(".symver bpftime___cudaRegisterFatBinary_11,__cudaRegisterFatBinary@libcudart.so.11.0");
++#endif
+ extern "C" void **bpftime___cudaRegisterFatBinary_12(void *fatbin)
+ {
+ 	return register_fatbinary_versioned(fatbin, "libcudart.so.12",
+--- a/runtime/agent/CMakeLists.txt
++++ b/runtime/agent/CMakeLists.txt
+@@ -9,10 +9,14 @@
+   add_dependencies(bpftime-agent FridaGum spdlog::spdlog bpftime_frida_uprobe_attach_impl)
+ endif()
+ 
+-set_target_properties(bpftime-agent PROPERTIES CXX_STANDARD 20 LINK_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/agent.version)
++set(BPFTIME_AGENT_VERSION_MAP "${CMAKE_CURRENT_SOURCE_DIR}/agent.version")
++if(HBFSIM_EXPERIMENTAL_CUDART11)
++  set(BPFTIME_AGENT_VERSION_MAP "${CMAKE_CURRENT_SOURCE_DIR}/agent-cuda11.version")
++endif()
++set_target_properties(bpftime-agent PROPERTIES CXX_STANDARD 20 LINK_DEPENDS ${BPFTIME_AGENT_VERSION_MAP})
+ 
+ if(UNIX AND NOT APPLE)
+-  target_link_options(bpftime-agent PRIVATE -Wl,--version-script=${CMAKE_CURRENT_SOURCE_DIR}/agent.version)
++  target_link_options(bpftime-agent PRIVATE -Wl,--version-script=${BPFTIME_AGENT_VERSION_MAP})
+ endif()
+ 
+ if(${TEST_LCOV})
+--- /dev/null
++++ b/runtime/agent/agent-cuda11.version
+@@ -0,0 +1,14 @@
++GLIBC_2.2.5 {
++};
++GLIBC_2.34 {
++} GLIBC_2.2.5;
++libcudart.so.11.0 {
++};
++libcudart.so.12 {
++} libcudart.so.11.0;
++libcudart.so.13 {
++} libcudart.so.12;
++BPFTIME_AGENT_1.0 {
++    global: injected_with_frida; bpftime_hooked_main; bpftime_agent_main; bpftime_agent_control; bpftime_nv_bind_ptx_variant; bpftime_nv_strict_bridge_capabilities_v1; bpftime_nv_strict_direct_cu_launch_kernel_v1; syscall_callback; _bpftime__setup_syscall_trace_callback;
++    local: *;
++} libcudart.so.13;

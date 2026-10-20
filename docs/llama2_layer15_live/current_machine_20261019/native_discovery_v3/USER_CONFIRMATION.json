@@ -1,0 +1,16 @@
+{
+  "schema_version": "eq3-user-confirmation-v1",
+  "record_kind": "USER_CONFIRMATION",
+  "evidence_class": "USER_CONFIRMED",
+  "is_test_fixture": false,
+  "experiment_id": "LLAMA2-SM80-NATIVE-DISCOVERY",
+  "version": "3",
+  "canonical_manifest_hash": "b179eb21beaf9bb8a24ebf06f5f19f7953d22e52d6ea76cadcd6463460ea116f",
+  "source": {
+    "type": "codex_user_message",
+    "reference": "User message following capture-only v3 preflight; exact source preserved at artifacts/llama2-sm80-native-discovery-v3/USER_SOURCE.txt",
+    "captured_at": "2026-10-20T02:26:46.788421+00:00",
+    "statement": "批准 experiment_id=LLAMA2-SM80-NATIVE-DISCOVERY version=3 canonical_manifest_hash=b179eb21beaf9bb8a24ebf06f5f19f7953d22e52d6ea76cadcd6463460ea116f",
+    "statement_sha256": "f402c629ceb7842895d83f6b8eb1dc0b4f7f45cae2ef654fe0553e49788251fd"
+  }
+}

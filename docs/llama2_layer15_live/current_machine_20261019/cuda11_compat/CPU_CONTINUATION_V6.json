@@ -1,0 +1,13 @@
+{
+  "captured_at_utc": "2026-10-20T01:54:24.406382+00:00",
+  "v1_status": "FAILED_CAPTURE_NOT_COMPLETED",
+  "native_GPU_layer15": "PASS",
+  "HBF_Timing": "NOT_RUN",
+  "v1_retry_started": false,
+  "v2_status": "PENDING_USER_APPROVAL",
+  "v2_manifest_hash": "1a979d2b4624385fa10eb6f7518a0150c28062858e98e9e924b1090a950d57ba",
+  "v2_new_forward_calls_requested": 1,
+  "v2_native_control": "Immutable successful v1 GPU output; identity/layout audit PASS",
+  "GPU_actor_remaining": false,
+  "production_tracked_source_changes": false
+}

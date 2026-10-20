@@ -1,0 +1,97 @@
+[
+  {
+    "path": "artifacts/llama2-sm80-native-discovery-v2/execution-v1/resource-samples.jsonl",
+    "bytes": 11400,
+    "sha256": "95c441b589f0fb562199bfa94cb8ac981834e3c5bf9a657d869a18c51be1d3e2"
+  },
+  {
+    "path": "artifacts/llama2-sm80-native-discovery-v2/execution-v1/bpftime-runtime.log",
+    "bytes": 49032,
+    "sha256": "908a1cea6681b0ed141da9d450427a226c462fd395ea47a7d9f0feb45b4cb801"
+  },
+  {
+    "path": "artifacts/llama2-sm80-native-discovery-v2/execution-v1/capture-worker.stdout",
+    "bytes": 533,
+    "sha256": "82218ee7cd0046e058eddb0a963a1a791a23d6a67dddd59ce38c059cd8de682b"
+  },
+  {
+    "path": "artifacts/llama2-sm80-native-discovery-v2/execution-v1/START.json",
+    "bytes": 328,
+    "sha256": "34e02c822b423519c6bb1f0da4a703c710214293accb414c0236eb6967bf8c96"
+  },
+  {
+    "path": "artifacts/llama2-sm80-native-discovery-v2/execution-v1/SHM_IDENTITY.json",
+    "bytes": 175,
+    "sha256": "a19f45405d67702ebcb992baa569f8e72b5a3548369193267a45a92010af82dd"
+  },
+  {
+    "path": "artifacts/llama2-sm80-native-discovery-v2/execution-v1/FAILED",
+    "bytes": 375,
+    "sha256": "39ee4ed116b6b25979d5787753f1dbf39271e2a258ed46dfc5c5941ff1f0e1fb"
+  },
+  {
+    "path": "artifacts/llama2-sm80-native-discovery-v2/execution-v1/loader.PID.json",
+    "bytes": 338,
+    "sha256": "03a5cbfdb0fce720bdb7ea4d9342391b657f3288d27d7af6caa28bd1d56560a1"
+  },
+  {
+    "path": "artifacts/llama2-sm80-native-discovery-v2/execution-v1/capture-worker.PID.json",
+    "bytes": 425,
+    "sha256": "119dd946498dd99d9bf99bd11bc65ae449017446d96ad3cd789d62bb95464b61"
+  },
+  {
+    "path": "artifacts/llama2-sm80-native-discovery-v2/execution-v1/RESULT.json",
+    "bytes": 429,
+    "sha256": "5fc320131850aeb332d163c2c7e891327e48ce9b53d97230813ac760ef1bdfb1"
+  },
+  {
+    "path": "artifacts/llama2-sm80-native-discovery-v2/execution-v1/loader.stdout",
+    "bytes": 546,
+    "sha256": "c0e8bac927d1afe8ce51bb7b9506bdc0158cc988b091d28d0505187cc80fde14"
+  },
+  {
+    "path": "artifacts/llama2-sm80-native-discovery-v2/execution-v1/loader.stderr",
+    "bytes": 346,
+    "sha256": "703d462ee859b7741b395a137f875aea67e749b6f19a89a72e1f50f399c643cc"
+  },
+  {
+    "path": "artifacts/llama2-sm80-native-discovery-v2/execution-v1/capture-worker.stderr",
+    "bytes": 365,
+    "sha256": "cf1a25c6465c93b93c7194ae26ea61ad740ff6aa44080217ad918445a4af51ee"
+  },
+  {
+    "path": "artifacts/llama2-sm80-native-discovery-v2/execution-v1/attach-ready.txt",
+    "bytes": 67,
+    "sha256": "999aafe75931e04b752c944001330cd5d23aa8eb2897ae222e2d74984c72d0ad"
+  },
+  {
+    "path": "artifacts/llama2-sm80-native-discovery-v2/execution-v1/capture/FORWARD_BEGIN.json",
+    "bytes": 137,
+    "sha256": "dfa3455206c041ea696c24aeb21f370f79f86f7aca155824db51533c38529204"
+  },
+  {
+    "path": "artifacts/llama2-sm80-native-discovery-v2/execution-v1/capture/arena.json",
+    "bytes": 2796,
+    "sha256": "da713a745e096c179f396c4b925b3cd82d89ddb6bc8863a0423eeea6ca69c9a5"
+  },
+  {
+    "path": "artifacts/llama2-sm80-native-discovery-v2/execution-v1/capture/hidden-output.bin",
+    "bytes": 8192,
+    "sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47"
+  },
+  {
+    "path": "artifacts/llama2-sm80-native-discovery-v2/execution-v1/capture/FORWARD_END.json",
+    "bytes": 149,
+    "sha256": "0bb2adf610d3348742e46ba902b9aac687bb7e26374e4ca45343dd86b40e309f"
+  },
+  {
+    "path": "artifacts/llama2-sm80-native-discovery-v2/execution-v1/capture/native-registration.jsonl",
+    "bytes": 9355155,
+    "sha256": "83b16e06ce0229340516e90bc3c2bc5a729ef097ef989b31228f8cacf9f970b3"
+  },
+  {
+    "path": "artifacts/llama2-sm80-native-discovery-v2/execution-v1/capture/strict-runtime.jsonl",
+    "bytes": 19476,
+    "sha256": "e1fa1af991b59c3dd46aae3316f3843740c697c8e30cfd336245280f3e4a6121"
+  }
+]

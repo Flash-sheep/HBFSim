@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "scope": "fresh external source replay of base adapter plus incremental CUDA11 cold provider patch",
+  "provider_patch_sha256": "dfeb3323328a0b253a388bf39cac07d6b92e9ed2a42c398555d56d90e26269ca",
+  "all_post_patch_file_hashes_match": true,
+  "provider_patch_bytes_match": true,
+  "GPU_tasks_started": 0
+}

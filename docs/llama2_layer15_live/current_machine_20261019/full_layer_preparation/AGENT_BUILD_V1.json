@@ -1,0 +1,17 @@
+{
+  "status": "FAILED",
+  "returncode": 1,
+  "stop_reason": null,
+  "wall_seconds": 108.17920507490635,
+  "command": [
+    "/usr/bin/ninja",
+    "-C",
+    "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/agent-build-v1",
+    "-j1",
+    "bpftime-agent"
+  ],
+  "profile": "current-host-v1; not historical build lock",
+  "GPU_tasks_started": 0,
+  "CUDA11_adaptation_implemented": false,
+  "artifacts": {}
+}

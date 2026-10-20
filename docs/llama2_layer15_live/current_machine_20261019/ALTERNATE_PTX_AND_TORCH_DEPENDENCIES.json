@@ -1,0 +1,37 @@
+{
+  "scope": "Read-only extraction and ELF dependency inspection; samples are not proven workload-selected kernels",
+  "gpu_workload_launched": false,
+  "samples": [
+    {
+      "library": "/usr/local/cuda-11.7/targets/x86_64-linux/lib/libcublas.so.11.10.3.66",
+      "raw_ptx": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/alternate-library-audit-20261019T081156Z/raw-cublas/libcublas.so.11.10.3.1.sm_80.ptx",
+      "sha256": "321d1b5f2cdc4adcfb65ee7e6d4763d5724d66701c3886df79a5690128677934",
+      "extract_returncode": 0,
+      "ptx_version": [
+        "7.7"
+      ],
+      "ptx_target": [
+        "sm_80"
+      ],
+      "entry_count": 16
+    },
+    {
+      "library": "/usr/local/cuda-11.7/targets/x86_64-linux/lib/libcublasLt.so.11.10.3.66",
+      "raw_ptx": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/alternate-library-audit-20261019T081156Z/raw-cublasLt/libcublasLt.so.11.10.3.1.sm_80.ptx",
+      "sha256": "ad530c821797c101912794eda96df692160fc87d8a7ee5dd20ac4bb0c3e68afa",
+      "extract_returncode": 0,
+      "ptx_version": [
+        "7.7"
+      ],
+      "ptx_target": [
+        "sm_80"
+      ],
+      "entry_count": 0
+    }
+  ],
+  "current_torch_needed": [
+    " 0x0000000000000001 (NEEDED)             Shared library: [libcudart.so.12]",
+    " 0x0000000000000001 (NEEDED)             Shared library: [libcublas.so.12]",
+    " 0x0000000000000001 (NEEDED)             Shared library: [libcublasLt.so.12]"
+  ]
+}

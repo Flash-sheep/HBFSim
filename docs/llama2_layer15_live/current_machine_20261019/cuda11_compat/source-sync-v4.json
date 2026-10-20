@@ -1,0 +1,121 @@
+{
+  "status": "INCOMPLETE",
+  "source_git": "e4ee3be4063b7c430974252fdf7db42273388d86",
+  "wall_seconds": 901.4186612749472,
+  "rows": [
+    {
+      "path": "android/libs/fbjni",
+      "returncode": 0,
+      "attempts": 1
+    },
+    {
+      "path": "third_party/FP16",
+      "returncode": 0,
+      "attempts": 1
+    },
+    {
+      "path": "third_party/FXdiv",
+      "returncode": 128,
+      "attempts": 5
+    },
+    {
+      "path": "third_party/NNPACK",
+      "returncode": 128,
+      "attempts": 5
+    },
+    {
+      "path": "third_party/VulkanMemoryAllocator",
+      "returncode": 0,
+      "attempts": 2
+    },
+    {
+      "path": "third_party/XNNPACK",
+      "returncode": 0,
+      "attempts": 1
+    },
+    {
+      "path": "third_party/benchmark",
+      "returncode": 0,
+      "attempts": 1
+    },
+    {
+      "path": "third_party/cpp-httplib",
+      "returncode": 0,
+      "attempts": 1
+    },
+    {
+      "path": "third_party/cpuinfo",
+      "returncode": 0,
+      "attempts": 1
+    },
+    {
+      "path": "third_party/cudnn_frontend",
+      "returncode": 0,
+      "attempts": 1
+    },
+    {
+      "path": "third_party/cutlass",
+      "returncode": 0,
+      "attempts": 1
+    },
+    {
+      "path": "third_party/eigen",
+      "returncode": 0,
+      "attempts": 1
+    },
+    {
+      "path": "third_party/fbgemm",
+      "returncode": 128,
+      "attempts": 5
+    },
+    {
+      "path": "third_party/flatbuffers",
+      "returncode": 0,
+      "attempts": 2
+    },
+    {
+      "path": "third_party/fmt",
+      "returncode": 0,
+      "attempts": 1
+    },
+    {
+      "path": "third_party/foxi",
+      "returncode": 0,
+      "attempts": 1
+    },
+    {
+      "path": "third_party/gemmlowp/gemmlowp",
+      "returncode": 0,
+      "attempts": 1
+    },
+    {
+      "path": "third_party/gloo",
+      "returncode": 0,
+      "attempts": 1
+    },
+    {
+      "path": "third_party/googletest",
+      "returncode": 0,
+      "attempts": 3
+    },
+    {
+      "path": "third_party/ideep",
+      "returncode": 0,
+      "attempts": 2
+    },
+    {
+      "path": "third_party/ittapi",
+      "returncode": 0,
+      "attempts": 1
+    },
+    {
+      "path": "third_party/kineto",
+      "returncode": 124,
+      "attempts": 4
+    }
+  ],
+  "submodules": " 7e1e1fe3858c63c251c637ae41a20de425dde96f android/libs/fbjni (7e1e1fe)\n 4dfe081cf6bcd15db339cf2680b9281b8451eeb3 third_party/FP16 (4dfe081)\n b408327ac2a15ec3e43352421954f5b1967701d1 third_party/FXdiv (b408327)\n+70a77f485e8b934224f3a79efd8edcd84cd377b8 third_party/NNPACK (heads/master)\n a6bfc237255a6bac1513f7c1ebde6d8aed6b5191 third_party/VulkanMemoryAllocator (a6bfc23)\n fcbf55af6cf28a4627bcd1f703ab7ad843f0f3a2 third_party/XNNPACK (fcbf55af)\n 0d98dba29d66e93259db7daa53a9327df767a415 third_party/benchmark (0d98dba)\n 3b6597bba913d51161383657829b7e644e59c006 third_party/cpp-httplib (3b6597b)\n d6860c477c99f1fce9e28eb206891af3c0e1a1d7 third_party/cpuinfo (d6860c4)\n b740542818f36857acf7f9853f749bbad4118c65 third_party/cudnn_frontend (b740542)\n bbe579a9e3beb6ea6626d9227ec32d0dae119a49 third_party/cutlass (bbe579a)\n 3147391d946bb4b6c68edd901f2add6ac1f31f8c third_party/eigen (3147391)\n dbc3157bf256f1339b3fa1fef2be89ac4078be0e third_party/fbgemm (dbc3157)\n d3fbf7c9bc7c1d1365a94a45614b91c5a3706b81 third_party/fbgemm/third_party/asmjit (d3fbf7c)\n ed8b86a253800bafdb7b25c5c399f91bff9cb1f3 third_party/fbgemm/third_party/cpuinfo (ed8b86a)\n fc9ebc645b63f3a6bc80aaefde5c063fb72110d6 third_party/fbgemm/third_party/cutlass (fc9ebc6)\n cbf019de22c8dd37b2108da35b2748fd702d1796 third_party/fbgemm/third_party/googletest (cbf019d)\n 23f53b025b466d8ec3c45d52290d3442f7fbe6b1 third_party/fbgemm/third_party/hipify_torch (23f53b0)\n 01834de25e4bf3975a9a00e816292b1ad0fe184b third_party/flatbuffers (01834de)\n e69e5f977d458f2650bb346dadf2ad30c5320281 third_party/fmt (e69e5f9)\n c278588e34e535f0bb8f00df3880d26928038cad third_party/foxi (heads/master)\n 3fb5c176c17c765a3492cd2f0321b0dab712f350 third_party/gemmlowp/gemmlowp (3fb5c17)\n 5354032ea08eadd7fc4456477f7f7c6308818509 third_party/gloo (5354032)\n e2239ee6043f73722e7aa812a459f54a28552929 third_party/googletest (e2239ee)\n 55ca0191687aaf19aca5cdb7881c791e3bea442b third_party/ideep (55ca019)\n 1137e04ec0b5251ca2b4400a4fd3c667ce843d67 third_party/ideep/mkl-dnn (1137e04)\n 5b8a7d7422611c3a0d799fb5fc5dd4abfae35b42 third_party/ittapi (5b8a7d7)\n be1317644c68b4bfc4646024a6b221066e430031 third_party/kineto (be13176)\n 7d04a0053a845370ae06ce317a22a48e9edcc74e third_party/kineto/libkineto/third_party/dynolog (7d04a00)\n ffde4e54bc7249a6039a5e6b45b395141e1217f9 third_party/kineto/libkineto/third_party/dynolog/third_party/DCGM (ffde4e5)\n 871ed52d350214a034f6ef8a3b8f51c5ce1bd400 third_party/kineto/libkineto/third_party/dynolog/third_party/cpr (871ed52)\n cd4af11efc9c622896a3e4cb599fa28668ca3d05 third_party/kineto/libkineto/third_party/dynolog/third_party/fmt (cd4af11)\n e171aa2d15ed9eb17054558e0b3a6a413bb01067 third_party/kineto/libkineto/third_party/dynolog/third_party/gflags (e171aa2)\n 8411df715cf522606e3b1aca386ddfc0b63d34b4 third_party/kineto/libkineto/third_party/dynolog/third_party/gflags/doc (8411df7)\n b33e3bad4c46c8a6345525fd822af355e5ef9446 third_party/kineto/libkineto/third_party/dynolog/third_party/glog (b33e3ba)\n 58d77fa8070e8cec2dc1ed015d66b454c8d78850 third_party/kineto/libkineto/third_party/dynolog/third_party/googletest (58d77fa)\n+0e95fe8200adbf0e033d0c0818eea473e1d4d346 third_party/kineto/libkineto/third_party/dynolog/third_party/json (heads/develop)\n+9bba54778f206c397a315bee57af0bffaf82d240 third_party/kineto/libkineto/third_party/dynolog/third_party/pfs (v0.15.0)\n+0fc31633e7d53ac895ae0a688b83b7d44f0b0c1f third_party/kineto/libkineto/third_party/fmt (heads/main)\n+b66cffcd5f5d6ee34a4f96d57bf016d9a22cb023 third_party/kineto/libkineto/third_party/googletest (heads/main)\n+31d034d94cdb8e22f7d7ed55967f581a2d6e831d third_party/mimalloc (heads/main3)\n+3e46c089f4ae4732722a419eb6096aead7e47a30 third_party/nccl/nccl (heads/master)\n+0e95fe8200adbf0e033d0c0818eea473e1d4d346 third_party/nlohmann (heads/develop)\n+18fb3cfb3b7b2c3f3b05ba9bd3829333432c095d third_party/onnx (heads/main)\n+935b8789d87cd1822606aefe8f0bbeaa948d5744 third_party/opentelemetry-cpp (heads/main)\n+4d865cba24359b05b37da4e75aee24498c3b78e7 third_party/pocketfft (heads/cpp)\n+1d8382d5bdbd06af4e60e4d4e4d53241bfa5dbe8 third_party/protobuf (heads/main)\n 072586a71b55b7f8c584153d223e95687148a900 third_party/psimd (heads/master)\n+560c60d342a76076f0557a3946924c6478470044 third_party/pthreadpool (heads/master)\n+fdec8c350aa0c7fbb552ec70d8176f8a13eb0561 third_party/pybind11 (heads/master)\n+913d74c35a6b1d330e90bfc055208ce5b06b35a0 third_party/python-peachpy (heads/master)\n+7623d6cfa2712462880fa63a4d0f0b5f775d1a83 third_party/sleef (heads/master)\n+b4b77d1006e764fb5cc42597d17d2b110211c2d1 third_party/tensorpipe (heads/main)\n",
+  "GPU_tasks_started": 0,
+  "code_changes": false,
+  "transport": "per-command HTTP1.1, five bounded retries per pinned top-level submodule, 900s task watchdog"
+}

@@ -1,0 +1,24 @@
+{
+  "status": "CONFIRMED_COMPATIBILITY_GAP",
+  "scope": "read-only ELF/source audit, no library load or GPU initialization",
+  "runtime": "/usr/local/cuda-11.7/targets/x86_64-linux/lib/libcudart.so.11.7.99",
+  "runtime_sha256": "987eca3265cfe0103853a65ee9e9867017afc53a69c622ca94c98828538473ac",
+  "required_symbol_exports": {
+    "cudaGetFuncBySymbol": true,
+    "cudaLaunchKernel": true,
+    "cudaLaunchKernel_ptsz": true,
+    "cudaLaunchCooperativeKernel": true,
+    "cudaLaunchCooperativeKernel_ptsz": true,
+    "__cudaRegisterFatBinary": true,
+    "__cudaRegisterFatBinaryEnd": true,
+    "__cudaRegisterFunction": true,
+    "__cudaUnregisterFatBinary": true
+  },
+  "gate_runtime_domains": [
+    "Cudart12",
+    "Cudart13"
+  ],
+  "CUDA11_domain_implemented": false,
+  "GPU_tasks_started": 0,
+  "limitation": "Symbol existence does not validate ABI semantics, native binding or instrumentation."
+}

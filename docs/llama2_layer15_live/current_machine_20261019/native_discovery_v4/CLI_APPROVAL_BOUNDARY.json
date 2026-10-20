@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "command": [
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/bin/python",
+        "-B",
+        "/home/yjl/HBFSim/experiments/llama2_sm80_cuda11/native_discovery_v4.py",
+        "--bundle",
+        "/home/yjl/HBFSim/artifacts/llama2-sm80-native-discovery-v4",
+        "--execute"
+      ],
+      "returncode": 2,
+      "stderr": "GateError: no independently supplied user confirmation record was provided\n"
+    },
+    {
+      "command": [
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/bin/python",
+        "-B",
+        "/home/yjl/HBFSim/experiments/llama2_sm80_cuda11/native_discovery_v4.py",
+        "--bundle",
+        "/home/yjl/HBFSim/artifacts/llama2-sm80-native-discovery-v4",
+        "--worker",
+        "capture"
+      ],
+      "returncode": 2,
+      "stderr": "GateError: no independently supplied user confirmation record was provided\n"
+    }
+  ],
+  "scope": "Both actual allowed GPU entries refuse missing user approval before execution directory creation",
+  "GPU_tasks_started": 0
+}

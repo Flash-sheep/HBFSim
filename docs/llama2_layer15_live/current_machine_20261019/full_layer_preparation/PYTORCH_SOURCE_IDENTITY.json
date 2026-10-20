@@ -1,0 +1,11 @@
+{
+  "status": "SOURCE_IDENTITY_PASS",
+  "source": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/pytorch-src",
+  "head": "e4ee3be4063b7c430974252fdf7db42273388d86",
+  "matches_installed_torch_git": true,
+  "tag_v2_4_0_head": "d990dada86a8ad94882b5c23e859b88c0c255bda",
+  "tag_head_does_not_match_wheel": true,
+  "selected_identity": "Exact installed wheel git, not tag name alone",
+  "source_changes": false,
+  "framework_build_started": false
+}

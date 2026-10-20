@@ -1,0 +1,11 @@
+{
+  "UTC": "2026-10-20T01:37:56.761464+00:00",
+  "status": "PENDING_USER_APPROVAL",
+  "CPU_preparation": "PASS",
+  "readable_preflight": "/home/yjl/HBFSim/docs/llama2_layer15_live/NATIVE_DISCOVERY_PREFLIGHT.md",
+  "manifest": "/home/yjl/HBFSim/artifacts/llama2-sm80-native-discovery-v1/manifest.json",
+  "canonical_manifest_hash": "0da675dcfdbcf84395b09fb524335af87bfba0581620df056e218fba87b97222",
+  "GPU_tasks_started": 0,
+  "user_confirmation_created": false,
+  "full_HBF_layer_validation": "NOT_RUN"
+}

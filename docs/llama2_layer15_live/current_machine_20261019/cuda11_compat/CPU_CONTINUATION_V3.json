@@ -1,0 +1,62 @@
+{
+  "UTC": "2026-10-19T13:37:36.720735+00:00",
+  "scope": "approved isolated CUDA11 implementation and fixed CPU verification",
+  "adapter_status": "CPU_VALIDATION_PASS_GPU_NOT_RUN",
+  "GPU_tasks_started_this_phase": 0,
+  "jobs": {
+    "build-v1": {
+      "running_record": {
+        "pid": 3302057,
+        "supervisor_pid": 3301559,
+        "command": [
+          "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/bin/python",
+          "-B",
+          "setup.py",
+          "bdist_wheel"
+        ],
+        "completion_notification": "NOT_CONFIGURED",
+        "DONE": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/torch-build-v1.DONE",
+        "FAILED": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/torch-build-v1.FAILED"
+      },
+      "process_exists": true,
+      "completion_receipt": null
+    },
+    "postbuild-v1": {
+      "running_record": {
+        "pid": 3316283,
+        "waits_for_worker": {
+          "pid": 3302057,
+          "supervisor_pid": 3301559,
+          "command": [
+            "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/bin/python",
+            "-B",
+            "setup.py",
+            "bdist_wheel"
+          ],
+          "completion_notification": "NOT_CONFIGURED",
+          "DONE": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/torch-build-v1.DONE",
+          "FAILED": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/torch-build-v1.FAILED"
+        },
+        "completion_notification": "NOT_CONFIGURED",
+        "DONE": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/postbuild-v1/DONE",
+        "FAILED": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/postbuild-v1/FAILED"
+      },
+      "process_exists": true,
+      "completion_receipt": null
+    }
+  },
+  "completion_notification": "NOT_CONFIGURED",
+  "production_tracked_source_changes": false,
+  "next_dependencies": [
+    "framework/postbuild actual receipts",
+    "actual kernel and library identity",
+    "staged provenance plus exact runtime binding",
+    "integrated nine-weight ordinary-service wrapper",
+    "new manifest/hash-bound GPU confirmation"
+  ],
+  "does_not_claim": [
+    "full GPU layer correctness",
+    "HBF Timing completion",
+    "physical model calibration"
+  ]
+}

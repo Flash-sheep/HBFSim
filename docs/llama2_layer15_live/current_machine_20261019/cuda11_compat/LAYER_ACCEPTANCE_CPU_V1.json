@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "scope": "six synthetic CPU acceptance/rejection fixtures; future GPU wrapper is NOT_INTEGRATED",
+  "returncode": 0,
+  "wall_seconds": 0.06423009908758104,
+  "command": [
+    "python3",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "experiments/llama2_sm80_cuda11/tests",
+    "-p",
+    "test_layer_acceptance.py",
+    "-v"
+  ],
+  "source_sha256": "15c705f19287b4d96994f0d94ca21a438fb81593e186d2bb58be23c537ae28ae",
+  "GPU_tasks_started": 0,
+  "actual_GPU_receipts_validated": 0,
+  "original_sources_or_libraries_changed": false
+}

@@ -1,0 +1,113 @@
+{
+  "captured_at_utc": "2026-10-19T05:34:49.568150+00:00",
+  "authorization": {
+    "USER_CONFIRMED": "Search conda environments and configure experiment environment on current host",
+    "INFERRED": "Create isolated Python/CUDA environments; CPU-only preparation and compilation",
+    "gpu_experiment": "NOT_AUTHORIZED_BY_THIS_REQUEST"
+  },
+  "git": {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stdout": "874a20f289b7bd587fa4048a788e12df2618444b\n",
+    "stderr": ""
+  },
+  "git_status_before_changes": {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "conda_inventory": {
+    "argv": [
+      "/home/fyf/anaconda3/bin/conda",
+      "env",
+      "list",
+      "--json"
+    ],
+    "returncode": 0,
+    "stdout": "{\n  \"envs\": [\n    \"/home/fyf/anaconda3\",\n    \"/home/fyf/anaconda3/envs/DNN\",\n    \"/home/fyf/anaconda3/envs/GNN\",\n    \"/home/fyf/anaconda3/envs/gnn\",\n    \"/home/fyf/anaconda3/envs/gnn-1\",\n    \"/home/yjl/.conda/envs/litellm311\"\n  ]\n}\n",
+    "stderr": ""
+  },
+  "gpu_inventory": {
+    "argv": [
+      "nvidia-smi",
+      "--query-gpu=index,name,uuid,driver_version,memory.total,memory.used,compute_cap",
+      "--format=csv"
+    ],
+    "returncode": 0,
+    "stdout": "index, name, uuid, driver_version, memory.total [MiB], memory.used [MiB], compute_cap\n0, NVIDIA A100-PCIE-40GB, GPU-5a6f4752-9597-bca9-62d5-bf9fd25c0426, 565.57.01, 40960 MiB, 36383 MiB, 8.0\n1, NVIDIA A100-PCIE-40GB, GPU-5302a497-ea8c-bb7b-7235-f7464792093e, 565.57.01, 40960 MiB, 135 MiB, 8.0\n",
+    "stderr": ""
+  },
+  "disk": {
+    "argv": [
+      "df",
+      "-B1",
+      "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1",
+      "/home/yjl/HBFSim"
+    ],
+    "returncode": 0,
+    "stdout": "Filesystem         1B-blocks          Used    Available Use% Mounted on\n/dev/nvme0n1p2  470822240256  247723044864 199107514368  56% /\n/dev/sdb       1888036147200 1779201867776  12851826688 100% /home\n",
+    "stderr": ""
+  },
+  "memory": {
+    "argv": [
+      "free",
+      "-b"
+    ],
+    "returncode": 0,
+    "stdout": "              total        used        free      shared  buff/cache   available\nMem:    540500553728 27990700032 72931491840  7554101248 439578361856 501448822784\nSwap:             0           0           0\n",
+    "stderr": ""
+  },
+  "tool_versions": {
+    "cmake": {
+      "argv": [
+        "cmake",
+        "--version"
+      ],
+      "returncode": 0,
+      "stdout": "cmake version 3.25.1\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n",
+      "stderr": ""
+    },
+    "gcc": {
+      "argv": [
+        "gcc",
+        "--version"
+      ],
+      "returncode": 0,
+      "stdout": "gcc (Ubuntu 11.5.0-10ubuntu1~20~ppa3) 11.5.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+      "stderr": ""
+    },
+    "ninja": {
+      "argv": [
+        "ninja",
+        "--version"
+      ],
+      "returncode": 0,
+      "stdout": "1.13.0.git.kitware.jobserver-pipe-1\n",
+      "stderr": ""
+    }
+  },
+  "gpu_workload_launched": false,
+  "resource_plan": {
+    "build_jobs": 2,
+    "OMP_NUM_THREADS": 1,
+    "OPENBLAS_NUM_THREADS": 1,
+    "MKL_NUM_THREADS": 1,
+    "gpu_jobs": 0,
+    "estimated_additional_disk_gib": 15,
+    "stop_free_disk_gib": 30,
+    "storage": "/var/tmp; temporary-location persistence not guaranteed",
+    "stop_conditions": [
+      "Stop installation/build if free disk below 30 GiB on artifact filesystem",
+      "Stop on dependency/hash mismatch; do not change driver or existing environments"
+    ]
+  }
+}

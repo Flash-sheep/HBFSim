@@ -1,0 +1,341 @@
+{
+  "status": "CPU_PREPARATION_FINISHED",
+  "modules": [
+    {
+      "raw_sha256": "bae60176bbd657ca2c2954173e406b509b9fd453f55d1bba2fada29a0c36e355",
+      "returncode": 0,
+      "entries": [
+        "_ZN2at6native40_GLOBAL__N__6fd89146_8_Shape_cu_49f7391c19CatArrayBatchedCopyINS1_10OpaqueTypeILj2EEEjLi4ELi64ELi64EEEvPT_NS1_25CatArrInputTensorMetadataIS5_T0_XT2_EXT3_EEENS1_16TensorSizeStrideIS8_Lj4EEEiS8_",
+        "_ZN2at6native40_GLOBAL__N__6fd89146_8_Shape_cu_49f7391c36CatArrayBatchedCopy_aligned16_contigINS1_10OpaqueTypeILj4EEEjLi3ELi128ELi1EEEvPT_NS1_25CatArrInputTensorMetadataIS5_T0_XT2_EXT3_EEENS1_16TensorSizeStrideIS8_Lj4EEEiS8_",
+        "_ZN2at6native40_GLOBAL__N__6fd89146_8_Shape_cu_49f7391c26CatArrayBatchedCopy_contigINS1_10OpaqueTypeILj2EEEjLi4ELi128ELi1EEEvPT_NS1_25CatArrInputTensorMetadataIS5_T0_XT2_EXT3_EEENS1_16TensorSizeStrideIS8_Lj4EEEiS8_"
+      ],
+      "result": {
+        "status": "CPU_PREPARED_NOT_GPU_VALIDATED",
+        "selected_entries": 3,
+        "original_member_sha256": "bae60176bbd657ca2c2954173e406b509b9fd453f55d1bba2fada29a0c36e355",
+        "derived_version_copy": {
+          "status": "DERIVED_VERSION_COPY",
+          "evidence_type": "DERIVED",
+          "input": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/observed-torch-stage-v1/bae60176bbd657ca2c2954173e406b509b9fd453f55d1bba2fada29a0c36e355/transformed-original-version.ptx",
+          "input_sha256": "c7c254a350719bf9c90091fb8a6e67aee1ca53e37c1b93ea6f121a8052eea038",
+          "output": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/observed-torch-stage-v1/bae60176bbd657ca2c2954173e406b509b9fd453f55d1bba2fada29a0c36e355/version87/version-adapted.ptx",
+          "output_sha256": "0264f20e3fef65b05d20f6d39e916d9517a6e787c1fa3e5a08ad9c1230f901f3",
+          "old_version": "7.7",
+          "new_version": "8.7",
+          "target_before": "sm_80",
+          "target_after": "sm_80",
+          "only_version_token_changed": true,
+          "source_unchanged": true,
+          "assembly_or_GPU_equivalence": "NOT_VALIDATED",
+          "GPU_tasks_started": 0
+        },
+        "GPU_tasks_started": 0,
+        "assembly_version87_returncode": 0,
+        "limitation": "Assembly is selected-entry relocatable-object validation, not runtime link/load or whole-layer coverage"
+      }
+    },
+    {
+      "raw_sha256": "0fecca25493bbb058bae9a5fd29775faf3a8a0ebf3db6f043757209d501aff6a",
+      "returncode": 1,
+      "entries": [
+        "_ZN2at6native27unrolled_elementwise_kernelIZZZNS0_23direct_copy_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE1_clEvENKUlvE5_clEvEUlfE_NS_6detail5ArrayIPcLi2EEE23TrivialOffsetCalculatorILi1EjESC_NS0_6memory12LoadWithCastILi1EEENSD_13StoreWithCastILi1EEEEEviT_T0_T1_T2_T3_T4_",
+        "_ZN2at6native27unrolled_elementwise_kernelIZZZNS0_23direct_copy_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE1_clEvENKUlvE8_clEvEUlN3c104HalfEE_NS_6detail5ArrayIPcLi2EEE23TrivialOffsetCalculatorILi1EjESE_NS0_6memory12LoadWithCastILi1EEENSF_13StoreWithCastILi1EEEEEviT_T0_T1_T2_T3_T4_"
+      ]
+    },
+    {
+      "raw_sha256": "c843155b67ecc43534e3a1b2fe4d8cd1b42975c9ecccec015bc75cad7e77e1d1",
+      "returncode": 0,
+      "entries": [
+        "_ZN2at6native29vectorized_elementwise_kernelILi4EZZZNS0_15cos_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE0_clEvENKUlvE0_clEvEUlfE_NS_6detail5ArrayIPcLi2EEEEEviT0_T1_"
+      ],
+      "result": {
+        "status": "CPU_PREPARED_NOT_GPU_VALIDATED",
+        "selected_entries": 1,
+        "original_member_sha256": "c843155b67ecc43534e3a1b2fe4d8cd1b42975c9ecccec015bc75cad7e77e1d1",
+        "derived_version_copy": {
+          "status": "DERIVED_VERSION_COPY",
+          "evidence_type": "DERIVED",
+          "input": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/observed-torch-stage-v1/c843155b67ecc43534e3a1b2fe4d8cd1b42975c9ecccec015bc75cad7e77e1d1/transformed-original-version.ptx",
+          "input_sha256": "982f86c940609082e48affa202b53299864b0ca00206642198d1fbda771ae77a",
+          "output": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/observed-torch-stage-v1/c843155b67ecc43534e3a1b2fe4d8cd1b42975c9ecccec015bc75cad7e77e1d1/version87/version-adapted.ptx",
+          "output_sha256": "10c12f1be9a26173912741b3e44e80d6e0bd43f5a93425af6e3a29256078cea5",
+          "old_version": "7.7",
+          "new_version": "8.7",
+          "target_before": "sm_80",
+          "target_after": "sm_80",
+          "only_version_token_changed": true,
+          "source_unchanged": true,
+          "assembly_or_GPU_equivalence": "NOT_VALIDATED",
+          "GPU_tasks_started": 0
+        },
+        "GPU_tasks_started": 0,
+        "assembly_version87_returncode": 0,
+        "limitation": "Assembly is selected-entry relocatable-object validation, not runtime link/load or whole-layer coverage"
+      }
+    },
+    {
+      "raw_sha256": "7229d98bca57a9a1c422ed2ff01f5a93c0947b9eaca12eeb0355b24e81ea64ea",
+      "returncode": 0,
+      "entries": [
+        "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_13AUnaryFunctorIfffNS0_15binary_internal10MulFunctorIfEEEENS_6detail5ArrayIPcLi2EEEEEviT0_T1_",
+        "_ZN2at6native18elementwise_kernelILi128ELi2EZNS0_22gpu_kernel_impl_nocastINS0_13BinaryFunctorIfffNS0_15binary_internal10MulFunctorIfEEEEEEvRNS_18TensorIteratorBaseERKT_EUliE_EEviT1_",
+        "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_13BinaryFunctorIN3c104HalfES4_S4_NS0_15binary_internal10MulFunctorIfEEEENS_6detail5ArrayIPcLi3EEEEEviT0_T1_",
+        "_ZN2at6native18elementwise_kernelILi128ELi4EZNS0_22gpu_kernel_impl_nocastINS0_13BinaryFunctorIN3c104HalfES5_S5_NS0_15binary_internal10MulFunctorIfEEEEEEvRNS_18TensorIteratorBaseERKT_EUliE_EEviT1_",
+        "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_13AUnaryFunctorIN3c104HalfES4_S4_NS0_15binary_internal10MulFunctorIfEEEENS_6detail5ArrayIPcLi2EEEEEviT0_T1_"
+      ],
+      "result": {
+        "status": "CPU_PREPARED_NOT_GPU_VALIDATED",
+        "selected_entries": 5,
+        "original_member_sha256": "7229d98bca57a9a1c422ed2ff01f5a93c0947b9eaca12eeb0355b24e81ea64ea",
+        "derived_version_copy": {
+          "status": "DERIVED_VERSION_COPY",
+          "evidence_type": "DERIVED",
+          "input": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/observed-torch-stage-v1/7229d98bca57a9a1c422ed2ff01f5a93c0947b9eaca12eeb0355b24e81ea64ea/transformed-original-version.ptx",
+          "input_sha256": "0cec61415d29a07fe9cf4c97f843dbb785caf6185ba7397016f35bbdd5db9cef",
+          "output": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/observed-torch-stage-v1/7229d98bca57a9a1c422ed2ff01f5a93c0947b9eaca12eeb0355b24e81ea64ea/version87/version-adapted.ptx",
+          "output_sha256": "cd08388a70c6b4f371ebdde688ec341b15abfa7f7ccc7a910e43f8a6805e6864",
+          "old_version": "7.7",
+          "new_version": "8.7",
+          "target_before": "sm_80",
+          "target_after": "sm_80",
+          "only_version_token_changed": true,
+          "source_unchanged": true,
+          "assembly_or_GPU_equivalence": "NOT_VALIDATED",
+          "GPU_tasks_started": 0
+        },
+        "GPU_tasks_started": 0,
+        "assembly_version87_returncode": 255,
+        "limitation": "Assembly is selected-entry relocatable-object validation, not runtime link/load or whole-layer coverage"
+      }
+    },
+    {
+      "raw_sha256": "24caee641e5f77de284a0a0f7a9272238e0e92d370b90e808e2ca71440045ea3",
+      "returncode": 0,
+      "entries": [
+        "_ZN2at6native29vectorized_elementwise_kernelILi4EZZZNS0_15sin_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE0_clEvENKUlvE0_clEvEUlfE_NS_6detail5ArrayIPcLi2EEEEEviT0_T1_"
+      ],
+      "result": {
+        "status": "CPU_PREPARED_NOT_GPU_VALIDATED",
+        "selected_entries": 1,
+        "original_member_sha256": "24caee641e5f77de284a0a0f7a9272238e0e92d370b90e808e2ca71440045ea3",
+        "derived_version_copy": {
+          "status": "DERIVED_VERSION_COPY",
+          "evidence_type": "DERIVED",
+          "input": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/observed-torch-stage-v1/24caee641e5f77de284a0a0f7a9272238e0e92d370b90e808e2ca71440045ea3/transformed-original-version.ptx",
+          "input_sha256": "7d0f451fc74550e1a683bed5c7e9a54b81cd5eb9205db0b7b22dea8423cf7548",
+          "output": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/observed-torch-stage-v1/24caee641e5f77de284a0a0f7a9272238e0e92d370b90e808e2ca71440045ea3/version87/version-adapted.ptx",
+          "output_sha256": "141dbba949ae5144745df11385e0019901409be4a5e1e14a3419c2584dbdbdc5",
+          "old_version": "7.7",
+          "new_version": "8.7",
+          "target_before": "sm_80",
+          "target_after": "sm_80",
+          "only_version_token_changed": true,
+          "source_unchanged": true,
+          "assembly_or_GPU_equivalence": "NOT_VALIDATED",
+          "GPU_tasks_started": 0
+        },
+        "GPU_tasks_started": 0,
+        "assembly_version87_returncode": 0,
+        "limitation": "Assembly is selected-entry relocatable-object validation, not runtime link/load or whole-layer coverage"
+      }
+    },
+    {
+      "raw_sha256": "ded5a89154d45e7a25d4b2d8b663d300ba052056e55ce60b1af74af476d884e2",
+      "returncode": 0,
+      "entries": [
+        "_ZN2at6native29vectorized_elementwise_kernelILi4EZNS0_53_GLOBAL__N__3ae0c82e_12_PowKernel_cu_346661a8_333990529pow_tensor_scalar_kernel_implIffEEvRNS_18TensorIteratorBaseET0_EUlfE_NS_6detail5ArrayIPcLi2EEEEEviS6_T1_"
+      ],
+      "result": {
+        "status": "CPU_PREPARED_NOT_GPU_VALIDATED",
+        "selected_entries": 1,
+        "original_member_sha256": "ded5a89154d45e7a25d4b2d8b663d300ba052056e55ce60b1af74af476d884e2",
+        "derived_version_copy": {
+          "status": "DERIVED_VERSION_COPY",
+          "evidence_type": "DERIVED",
+          "input": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/observed-torch-stage-v1/ded5a89154d45e7a25d4b2d8b663d300ba052056e55ce60b1af74af476d884e2/transformed-original-version.ptx",
+          "input_sha256": "e3ef48528f89f095794f23b524189c49ceb18bfa432d53f2e2c4ece1a91eafbb",
+          "output": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/observed-torch-stage-v1/ded5a89154d45e7a25d4b2d8b663d300ba052056e55ce60b1af74af476d884e2/version87/version-adapted.ptx",
+          "output_sha256": "3facb479ebaa0a78a12862660ab9f0d896a3aa14ad0d7fe97e0ada6762f40019",
+          "old_version": "7.7",
+          "new_version": "8.7",
+          "target_before": "sm_80",
+          "target_after": "sm_80",
+          "only_version_token_changed": true,
+          "source_unchanged": true,
+          "assembly_or_GPU_equivalence": "NOT_VALIDATED",
+          "GPU_tasks_started": 0
+        },
+        "GPU_tasks_started": 0,
+        "assembly_version87_returncode": 0,
+        "limitation": "Assembly is selected-entry relocatable-object validation, not runtime link/load or whole-layer coverage"
+      }
+    },
+    {
+      "raw_sha256": "6fed9c64b663edb9ff8a4b3950b286e844b7d87fec424a3198d1f24bd35a5782",
+      "returncode": 1,
+      "entries": [
+        "_ZN2at6native13reduce_kernelILi512ELi1ENS0_8ReduceOpIfNS0_7MeanOpsIffffEEjfLi4EEEEEvT1_"
+      ]
+    },
+    {
+      "raw_sha256": "bfa769a44f4164c0d4a55f300b39c933a62d6f0da78e1db1f98d02792afe4ba9",
+      "returncode": 0,
+      "entries": [
+        "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_21CUDAFunctorOnSelf_addIfEENS_6detail5ArrayIPcLi2EEEEEviT0_T1_",
+        "_ZN2at6native29vectorized_elementwise_kernelILi4ENS0_15CUDAFunctor_addIN3c104HalfEEENS_6detail5ArrayIPcLi3EEEEEviT0_T1_"
+      ],
+      "result": {
+        "status": "CPU_PREPARED_NOT_GPU_VALIDATED",
+        "selected_entries": 2,
+        "original_member_sha256": "bfa769a44f4164c0d4a55f300b39c933a62d6f0da78e1db1f98d02792afe4ba9",
+        "derived_version_copy": {
+          "status": "DERIVED_VERSION_COPY",
+          "evidence_type": "DERIVED",
+          "input": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/observed-torch-stage-v1/bfa769a44f4164c0d4a55f300b39c933a62d6f0da78e1db1f98d02792afe4ba9/transformed-original-version.ptx",
+          "input_sha256": "7063d96177311a5a0805ee770bca093161def201d59861198f716ba65cf34855",
+          "output": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/observed-torch-stage-v1/bfa769a44f4164c0d4a55f300b39c933a62d6f0da78e1db1f98d02792afe4ba9/version87/version-adapted.ptx",
+          "output_sha256": "c3e7908415ba8af9fbb366a06a4d0ee8a9ba919a8cbb6184bdf1a5c3cb58efdd",
+          "old_version": "7.7",
+          "new_version": "8.7",
+          "target_before": "sm_80",
+          "target_after": "sm_80",
+          "only_version_token_changed": true,
+          "source_unchanged": true,
+          "assembly_or_GPU_equivalence": "NOT_VALIDATED",
+          "GPU_tasks_started": 0
+        },
+        "GPU_tasks_started": 0,
+        "assembly_version87_returncode": 0,
+        "limitation": "Assembly is selected-entry relocatable-object validation, not runtime link/load or whole-layer coverage"
+      }
+    },
+    {
+      "raw_sha256": "4d96b955915055c748fec540330cf26796ef128da3fc017b28d98d00851cddc1",
+      "returncode": 0,
+      "entries": [
+        "_ZN2at6native29vectorized_elementwise_kernelILi4EZZZNS0_17rsqrt_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE0_clEvENKUlvE0_clEvEUlfE_NS_6detail5ArrayIPcLi2EEEEEviT0_T1_"
+      ],
+      "result": {
+        "status": "CPU_PREPARED_NOT_GPU_VALIDATED",
+        "selected_entries": 1,
+        "original_member_sha256": "4d96b955915055c748fec540330cf26796ef128da3fc017b28d98d00851cddc1",
+        "derived_version_copy": {
+          "status": "DERIVED_VERSION_COPY",
+          "evidence_type": "DERIVED",
+          "input": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/observed-torch-stage-v1/4d96b955915055c748fec540330cf26796ef128da3fc017b28d98d00851cddc1/transformed-original-version.ptx",
+          "input_sha256": "dd3019790100a1261232e1a18856f92688bd84646f6762278a8f3ab7b25152e2",
+          "output": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/observed-torch-stage-v1/4d96b955915055c748fec540330cf26796ef128da3fc017b28d98d00851cddc1/version87/version-adapted.ptx",
+          "output_sha256": "b6919d4633a2a4ff5b973c33f5ceeb130896053df5ffe0d4ec3c9d5b000cc445",
+          "old_version": "7.7",
+          "new_version": "8.7",
+          "target_before": "sm_80",
+          "target_after": "sm_80",
+          "only_version_token_changed": true,
+          "source_unchanged": true,
+          "assembly_or_GPU_equivalence": "NOT_VALIDATED",
+          "GPU_tasks_started": 0
+        },
+        "GPU_tasks_started": 0,
+        "assembly_version87_returncode": 0,
+        "limitation": "Assembly is selected-entry relocatable-object validation, not runtime link/load or whole-layer coverage"
+      }
+    },
+    {
+      "raw_sha256": "8e2f5d297295d06439a7bf3e196dd752bc40f6d43d256a26158282ee49547352",
+      "returncode": 0,
+      "entries": [
+        "_ZN2at6native18elementwise_kernelILi128ELi4EZNS0_22gpu_kernel_impl_nocastIZZZNS0_15neg_kernel_cudaERNS_18TensorIteratorBaseEENKUlvE0_clEvENKUlvE6_clEvEUlN3c104HalfEE_EEvS4_RKT_EUliE_EEviT1_"
+      ],
+      "result": {
+        "status": "CPU_PREPARED_NOT_GPU_VALIDATED",
+        "selected_entries": 1,
+        "original_member_sha256": "8e2f5d297295d06439a7bf3e196dd752bc40f6d43d256a26158282ee49547352",
+        "derived_version_copy": {
+          "status": "DERIVED_VERSION_COPY",
+          "evidence_type": "DERIVED",
+          "input": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/observed-torch-stage-v1/8e2f5d297295d06439a7bf3e196dd752bc40f6d43d256a26158282ee49547352/transformed-original-version.ptx",
+          "input_sha256": "e58cbd6b3563f3f2d16122f512e9c01908e13c7fdbfda7b21f01ead613a88457",
+          "output": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/observed-torch-stage-v1/8e2f5d297295d06439a7bf3e196dd752bc40f6d43d256a26158282ee49547352/version87/version-adapted.ptx",
+          "output_sha256": "90c46a833403ac5446a5281977515e2c8e7fb4fa47d20fc672c605306a082174",
+          "old_version": "7.7",
+          "new_version": "8.7",
+          "target_before": "sm_80",
+          "target_after": "sm_80",
+          "only_version_token_changed": true,
+          "source_unchanged": true,
+          "assembly_or_GPU_equivalence": "NOT_VALIDATED",
+          "GPU_tasks_started": 0
+        },
+        "GPU_tasks_started": 0,
+        "assembly_version87_returncode": 255,
+        "limitation": "Assembly is selected-entry relocatable-object validation, not runtime link/load or whole-layer coverage"
+      }
+    },
+    {
+      "raw_sha256": "6bbd570060aea9c1bdcaf1b72e6a9d111b2091d83bf802a685a3283791d175d4",
+      "returncode": 0,
+      "entries": [
+        "_ZN43_GLOBAL__N__420b926e_10_SoftMax_cu_9f978f6320softmax_warp_forwardIN3c104HalfEffLi5ELb0ELb0EEEvPT0_PKT_iiiPKbib"
+      ],
+      "result": {
+        "status": "CPU_PREPARED_NOT_GPU_VALIDATED",
+        "selected_entries": 1,
+        "original_member_sha256": "6bbd570060aea9c1bdcaf1b72e6a9d111b2091d83bf802a685a3283791d175d4",
+        "derived_version_copy": {
+          "status": "DERIVED_VERSION_COPY",
+          "evidence_type": "DERIVED",
+          "input": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/observed-torch-stage-v1/6bbd570060aea9c1bdcaf1b72e6a9d111b2091d83bf802a685a3283791d175d4/transformed-original-version.ptx",
+          "input_sha256": "f1d3fb330eb075d3643240c2024fc0f786822c5589cb39e604b2b58c3ef0cab2",
+          "output": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/observed-torch-stage-v1/6bbd570060aea9c1bdcaf1b72e6a9d111b2091d83bf802a685a3283791d175d4/version87/version-adapted.ptx",
+          "output_sha256": "a861e38ab7cece1aa2a29dcd32f42792d6771175238121b9fd289790f617d882",
+          "old_version": "7.7",
+          "new_version": "8.7",
+          "target_before": "sm_80",
+          "target_after": "sm_80",
+          "only_version_token_changed": true,
+          "source_unchanged": true,
+          "assembly_or_GPU_equivalence": "NOT_VALIDATED",
+          "GPU_tasks_started": 0
+        },
+        "GPU_tasks_started": 0,
+        "assembly_version87_returncode": 0,
+        "limitation": "Assembly is selected-entry relocatable-object validation, not runtime link/load or whole-layer coverage"
+      }
+    },
+    {
+      "raw_sha256": "933ec703e58ba4bfaca0c7388eb14faa38f832b621b7aab3bde19d17e7ce8b9a",
+      "returncode": 0,
+      "entries": [
+        "_ZN2at6native29vectorized_elementwise_kernelILi4EZZZNS0_64_GLOBAL__N__3d152190_23_ActivationSiluKernel_cu_346661a8_333093811silu_kernelERNS_18TensorIteratorBaseEENKUlvE_clEvENKUlvE3_clEvEUlN3c104HalfEE_NS_6detail5ArrayIPcLi2EEEEEviT0_T1_"
+      ],
+      "result": {
+        "status": "CPU_PREPARED_NOT_GPU_VALIDATED",
+        "selected_entries": 1,
+        "original_member_sha256": "933ec703e58ba4bfaca0c7388eb14faa38f832b621b7aab3bde19d17e7ce8b9a",
+        "derived_version_copy": {
+          "status": "DERIVED_VERSION_COPY",
+          "evidence_type": "DERIVED",
+          "input": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/observed-torch-stage-v1/933ec703e58ba4bfaca0c7388eb14faa38f832b621b7aab3bde19d17e7ce8b9a/transformed-original-version.ptx",
+          "input_sha256": "792e09369a75ccb90843e836eb5fb30c3d3e553cd03ac169f40118f95bdb4963",
+          "output": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/observed-torch-stage-v1/933ec703e58ba4bfaca0c7388eb14faa38f832b621b7aab3bde19d17e7ce8b9a/version87/version-adapted.ptx",
+          "output_sha256": "eee940d39ca90466a856e661a6413cfbca1d0e34ae5d913df4334c0b4897047f",
+          "old_version": "7.7",
+          "new_version": "8.7",
+          "target_before": "sm_80",
+          "target_after": "sm_80",
+          "only_version_token_changed": true,
+          "source_unchanged": true,
+          "assembly_or_GPU_equivalence": "NOT_VALIDATED",
+          "GPU_tasks_started": 0
+        },
+        "GPU_tasks_started": 0,
+        "assembly_version87_returncode": 0,
+        "limitation": "Assembly is selected-entry relocatable-object validation, not runtime link/load or whole-layer coverage"
+      }
+    }
+  ],
+  "wall_seconds": 163.56043413793668,
+  "GPU_tasks_started": 0,
+  "HBF_timing_validated": false,
+  "whole_layer_kernel_inventory_complete": false
+}

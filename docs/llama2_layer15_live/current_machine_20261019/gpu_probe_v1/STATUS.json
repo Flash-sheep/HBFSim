@@ -1,0 +1,17 @@
+{
+  "experiment_id": "LLAMA2-SM80-PTX-GPU-PROBE",
+  "version": "1",
+  "canonical_manifest_hash": "a54ce76c6ee340533c953a407d126f44b257014b61481e27be8ffc797e5c297f",
+  "approval": "USER_CONFIRMED",
+  "execution_status": "PASS",
+  "actual_kernel_launches": 3,
+  "gpu_uuid": "GPU-5302a497-ea8c-bb7b-7235-f7464792093e",
+  "wall_s": 1.1181908310391009,
+  "mode": "UNBOUND_PASSTHROUGH",
+  "hbf_timing_validated": false,
+  "llama_workload_validated": false,
+  "output_directory": "/home/yjl/HBFSim/artifacts/llama2-sm80-gpu-probe-v1/execution-v1",
+  "completion_path": "/home/yjl/HBFSim/artifacts/llama2-sm80-gpu-probe-v1/execution-v1/DONE",
+  "approval_record": "/home/yjl/HBFSim/artifacts/llama2-sm80-gpu-probe-v1/USER_CONFIRMATION.json",
+  "captured_at_utc": "2026-10-19T08:43:53.864065+00:00"
+}

@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "scope": "Independent post-run byte checks; no GPU relaunch",
+  "captured_at_utc": "2026-10-19T08:43:53.804709+00:00",
+  "all_outputs_identical": true,
+  "arms": [
+    {
+      "arm": "raw77",
+      "sha256": "7b85d3fa26b3b390f124c4e659969274a561705b8d2c036ada43e7b60fae88df",
+      "bytes": 8704,
+      "zero_elements": 2048,
+      "guards_unchanged": true
+    },
+    {
+      "arm": "raw87",
+      "sha256": "7b85d3fa26b3b390f124c4e659969274a561705b8d2c036ada43e7b60fae88df",
+      "bytes": 8704,
+      "zero_elements": 2048,
+      "guards_unchanged": true
+    },
+    {
+      "arm": "staged87",
+      "sha256": "7b85d3fa26b3b390f124c4e659969274a561705b8d2c036ada43e7b60fae88df",
+      "bytes": 8704,
+      "zero_elements": 2048,
+      "guards_unchanged": true
+    }
+  ]
+}

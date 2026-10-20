@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "returncode": 0,
+  "stop_reason": null,
+  "wall_seconds": 359.28907352802344,
+  "command": [
+    "/usr/bin/python3",
+    "-B",
+    "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/build-agent-steps-v3.py"
+  ],
+  "profile": "current-host-v2 with explicit copy_headers prerequisite; not historical build lock",
+  "GPU_tasks_started": 0,
+  "CUDA11_adaptation_implemented": false,
+  "artifacts": {
+    "runtime/agent/libbpftime-agent.so": {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/agent-build-v2/runtime/agent/libbpftime-agent.so",
+      "bytes": 192696672,
+      "sha256": "f4846e4c6174017887c0a6fcb90111d0d4e4e9066266e808dd960e4641c1e22c"
+    },
+    "attach/nv_attach_impl/ptx_compiler/libnv_attach_impl_ptx_compiler.so": {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/agent-build-v2/attach/nv_attach_impl/ptx_compiler/libnv_attach_impl_ptx_compiler.so",
+      "bytes": 40165376,
+      "sha256": "9a403d36053c7b1e8517ff50ba308761b01d5ad887bbaab973d3d9397cd4de99"
+    }
+  }
+}

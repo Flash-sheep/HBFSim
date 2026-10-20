@@ -1,0 +1,113 @@
+{
+  "schema": "llama2-sm80-native-discovery-v3-analysis-v1",
+  "generated_at_utc": "2026-10-20T02:41:21.866965+00:00",
+  "USER_CONFIRMED": {
+    "experiment_id": "LLAMA2-SM80-NATIVE-DISCOVERY",
+    "version": "3",
+    "canonical_manifest_hash": "b179eb21beaf9bb8a24ebf06f5f19f7953d22e52d6ea76cadcd6463460ea116f",
+    "new_GPU_forward_calls": 1,
+    "retries": 0
+  },
+  "OBSERVED": {
+    "parent": {
+      "status": "NATIVE_DISCOVERY_PASS_HBF_NOT_RUN",
+      "output_comparison": "EXACT_FP16_BYTES",
+      "output_sha256": "528e30d35ba48d50b8aa98d8b01f4e3165a5de75522eaaa60f7170e00e6b9aea",
+      "GPU_forward_calls": 1,
+      "native_baseline": "/home/yjl/HBFSim/artifacts/llama2-sm80-native-discovery-v1/execution-v1/native/hidden-output.bin",
+      "native_baseline_reused": true,
+      "HBF_timing_validated": false,
+      "registered_HBF_ranges": 0,
+      "limits": "Kernel/container staging and HBF binding/coverage remain separate unresolved checks",
+      "wall_seconds": 38.29681430198252,
+      "actor_exit_codes": {
+        "3544364": 0,
+        "3544413": 0
+      },
+      "final_snapshot": {
+        "uuid": "GPU-5302a497-ea8c-bb7b-7235-f7464792093e",
+        "name": "NVIDIA A100-PCIE-40GB",
+        "driver": "565.57.01",
+        "memory_mib": 135,
+        "utilization_percent": 0,
+        "temperature_c": 43
+      }
+    },
+    "forward": {
+      "status": "NATIVE_FORWARD_PASS_HBF_NOT_RUN",
+      "arm": "capture",
+      "gpu_uuid": "GPU-5302a497-ea8c-bb7b-7235-f7464792093e",
+      "dtype": "float16",
+      "shape": [
+        1,
+        1,
+        4096
+      ],
+      "output_sha256": "528e30d35ba48d50b8aa98d8b01f4e3165a5de75522eaaa60f7170e00e6b9aea",
+      "forward_calls": 1,
+      "warmup_calls": 0,
+      "original_helper": true,
+      "registered_HBF_ranges": 0,
+      "HBF_timing_validated": false,
+      "host_forward_wall_seconds": 0.9951485670171678,
+      "limits": "Host time includes observation overhead; no GPU performance or physical calibration claim"
+    },
+    "output": {
+      "bytes": 8192,
+      "shape": [
+        1,
+        1,
+        4096
+      ],
+      "dtype": "float16",
+      "all_finite": true,
+      "exact_native_bytes": true,
+      "sha256": "528e30d35ba48d50b8aa98d8b01f4e3165a5de75522eaaa60f7170e00e6b9aea"
+    },
+    "forward_scope": {
+      "begin": {
+        "log_offsets": {
+          "coverage": 0,
+          "strict-runtime": 0,
+          "strict-bridge": 0
+        },
+        "forward_calls": 1,
+        "warmup_calls": 0
+      },
+      "end": {
+        "log_offsets": {
+          "coverage": 21718,
+          "strict-runtime": 18261,
+          "strict-bridge": 0
+        },
+        "host_forward_wall_seconds": 0.9951485670171678
+      },
+      "coverage_records": 45,
+      "runtime_records": 45,
+      "bridge_records": 0,
+      "unique_observed_Torch_entries": 20,
+      "all_allowed_unmodeled": true,
+      "all_successful_cudart11_original_completion": true
+    },
+    "sampled_resources": {
+      "samples": 30,
+      "peak_GPU_memory_MiB": 2139,
+      "peak_temperature_C": 43,
+      "peak_process_group_RSS_bytes": 3202076672,
+      "unexpected_GPU_process_samples": 0,
+      "safety_stop_file_present": false
+    }
+  },
+  "DOC_DERIVED": {
+    "original_completion": "Existing one-use gate/agent handshake; Driver interception is not required in original path",
+    "unchanged_math": "Original layer helper/checkpoint/input/layout with fixed source-built CUDA11 Torch; no operator replacement",
+    "HBF_registered_ranges": 0,
+    "staged_PTX_loaded": false
+  },
+  "limitations": [
+    "Not a performance benchmark: host time includes observation/first-call/synchronization overhead",
+    "No HBF ranges or Timing requests; full HBF validation remains incomplete",
+    "Observed Torch subset is not a complete kernel inventory; cuBLAS internal Driver launches are not in these records",
+    "Source PTX membership is not instrumentation/binding/runtime or nine-weight modeled-service proof"
+  ]
+}

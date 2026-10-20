@@ -1,0 +1,14 @@
+{
+  "status": "FAILED",
+  "error": "GPU temperature/memory/foreign-process stop",
+  "HBF_timing_validated": false,
+  "wall_seconds": 20.57299326802604,
+  "final_snapshot": {
+    "uuid": "GPU-5302a497-ea8c-bb7b-7235-f7464792093e",
+    "name": "NVIDIA A100-PCIE-40GB",
+    "driver": "565.57.01",
+    "memory_mib": 135,
+    "utilization_percent": 7,
+    "temperature_c": 43
+  }
+}

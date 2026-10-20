@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "configuration_id": "llama2-layer15-current-machine-env-20261019-v1",
+  "captured_at_utc": "2026-10-19T05:46:30.487996+00:00",
+  "authorization": {
+    "USER_CONFIRMED": "Find usable conda environments and configure current-machine experiment environment",
+    "DOC_DERIVED": "BLOCKERS.md requires CUDA>=12.8, numeric target matching device and separately confirmed GPU execution",
+    "INFERRED": "Use independent environments and CPU-only construction/validation"
+  },
+  "status": "CPU_PREPARATION_PASS_GPU_EXECUTION_BLOCKED",
+  "gpu_experiment_status": "PENDING_USER_APPROVAL",
+  "gpu_workload_launched": false,
+  "repo": "/home/yjl/HBFSim",
+  "head": "874a20f289b7bd587fa4048a788e12df2618444b",
+  "python_prefix": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/env",
+  "cuda_prefix": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/cuda",
+  "activation_script": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/activate.sh",
+  "build_directory": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/build",
+  "model_directory": "/home/yjl/yjl-r760/llama2-7b-hf-chat",
+  "python_version": "3.11.17 (main, Oct  1 2026, 20:17:42) [GCC 14.3.0]",
+  "packages": {
+    "torch": "2.4.0",
+    "transformers": "4.57.1",
+    "safetensors": "0.6.2",
+    "numpy": "1.26.4"
+  },
+  "torch_cuda_build": "12.1",
+  "toolkit": "12.8.93",
+  "cmake": "3.31.10",
+  "cuda_arch": 80,
+  "timing_futures": false,
+  "validation": {
+    "cpu_checkpoint_bytes": 404766848,
+    "checkpoint_tensors": 10,
+    "selected_cpu_tests_passed": 6,
+    "helper_sm80_assembly": "PASS",
+    "gpu_runtime_validation": "NOT_RUN",
+    "patched_bpftime_agent": "NOT_BUILT"
+  },
+  "remaining_blockers": [
+    "Original two workload scripts are absent from this checkout; only archived hashes are available. They were not reconstructed or replaced.",
+    "No actual-kernel PTX binding or dynamic coverage is established. See PTX_INVENTORY.json for the installed library container inventory.",
+    "Matching patched bpftime agent is not built; historical host-specific lock requires a validated current-host profile, not direct path substitution.",
+    "Single-layer HBF adapter and complete experiment launcher are not delivered by this environment setup.",
+    "Driver 565.57.01 compatibility with the actual loading/compiler path has not been validated; offline compilation is not driver PTX JIT acceptance.",
+    "New device/input/build/kernel binding/command/resource preflight and explicit user confirmation are required before GPU experiment execution."
+  ],
+  "scope_limits": [
+    "No driver/global environment changes",
+    "No production-source or public ABI/PTX/TMA/future/cache changes",
+    "No operator replacements",
+    "No GPU workload, native baseline, FAST or REFERENCE",
+    "No push/merge",
+    "/var/tmp environment is host-local and may be subject to cleanup"
+  ],
+  "toolchain_files": [
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/cuda/bin/nvcc",
+      "resolved_path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/cuda/bin/nvcc",
+      "sha256": "5ad3b681e5f65dc6e66799ba019627986b618120778a9cccc33276ad6893a673"
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/cuda/bin/ptxas",
+      "resolved_path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/cuda/bin/ptxas",
+      "sha256": "acc38601cf89412a4518545d548eff8c6f437496c6f8858194c360c0d610c61b"
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/cuda/bin/cuobjdump",
+      "resolved_path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/cuda/bin/cuobjdump",
+      "sha256": "9a127e39d662e56d1847b0f08c4a36d53ef6e4900d0592df93b4521a177d1722"
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/cuda/targets/x86_64-linux/lib/libcudart.so.12.8.90",
+      "resolved_path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/cuda/targets/x86_64-linux/lib/libcudart.so.12.8.90",
+      "sha256": "7b15fc50d4d6bc77dd66f64603d40d045545d92a7f1b38654389ad2b1e88de9e"
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/cuda/targets/x86_64-linux/lib/libnvptxcompiler_static.a",
+      "resolved_path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/cuda/targets/x86_64-linux/lib/libnvptxcompiler_static.a",
+      "sha256": "994209ac56b93451beaeb4d1dc539f53ae943c9ccbd4fab914ca78a820a55eff"
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/build-tools/cmake/data/bin/cmake",
+      "resolved_path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/build-tools/cmake/data/bin/cmake",
+      "sha256": "576c050dab1e1418b6703b5cfb523330567683dad0c60a5ff9cc23128143812e"
+    },
+    {
+      "path": "/usr/bin/g++-11",
+      "resolved_path": "/usr/bin/x86_64-linux-gnu-g++-11",
+      "sha256": "57eb39c26c131a9577cfe8392f6f57e58cb624fa4edac3ef5cecc2221accd28b"
+    },
+    {
+      "path": "/home/yjl/HBFSim/cmake/cudart-versions.map",
+      "resolved_path": "/home/yjl/HBFSim/cmake/cudart-versions.map",
+      "sha256": "a72268814d69b1102c25b0529af33ea8cc911d71c883234f932059e76a5c205b"
+    }
+  ],
+  "artifacts": [
+    {
+      "relative_path": "activate.sh",
+      "bytes": 677,
+      "sha256": "d7e711f80da30367991b3c333ea62a4757f8431415cef3d12dabe9d21dfc6334"
+    },
+    {
+      "relative_path": "build_cpu.sh",
+      "bytes": 1347,
+      "sha256": "d91033ee0d672d457309fe39365092bddcd35aed8cc20559dbcfb03b10249860"
+    },
+    {
+      "relative_path": "validate_cpu.py",
+      "bytes": 2559,
+      "sha256": "12c1c6eff81aa2aacdc5fb67130bb70e0d4cfdbae5e591fb5db721b5cc78e416"
+    },
+    {
+      "relative_path": "inventory_ptx.py",
+      "bytes": 1467,
+      "sha256": "06f8f9163588cc6554eccb3845bf15dd186e4ad2d7a2f3ada3ebc8624a794ba8"
+    },
+    {
+      "relative_path": "HOST_AUDIT.json",
+      "bytes": 3770,
+      "sha256": "ded6fa9d695b4b08564b29295c14936743eb4043711362c37569bf2c6cb8a5d5"
+    },
+    {
+      "relative_path": "EXISTING_CONDA_ENVIRONMENTS.json",
+      "bytes": 1482,
+      "sha256": "2a76ab6cd2e79956f5b50d09c89773cd4ef6e92a004a0bc5edc03fb684400b36"
+    },
+    {
+      "relative_path": "CPU_VALIDATION.json",
+      "bytes": 3990,
+      "sha256": "7ffff1644bc60a98b7c6e1ae1ac3c6f58e50bc5983a340402e5b5e14f8b19ab1"
+    },
+    {
+      "relative_path": "BUILD_RECEIPT.json",
+      "bytes": 1838,
+      "sha256": "e8c083068bace274e16296f69b04711c5bedc215057bc1cc1e402b424a4d3c73"
+    },
+    {
+      "relative_path": "ASSEMBLY_VALIDATION.json",
+      "bytes": 763,
+      "sha256": "19ca3042c715d9a4e19d35a132ff11252b9ba0e5a540c38655086635b6680d4d"
+    },
+    {
+      "relative_path": "PTX_INVENTORY.json",
+      "bytes": 1398,
+      "sha256": "4ba5b780720c76e5fc71d3e30ea2dcfbc2f7de451acf98481e062581a5f901b9"
+    },
+    {
+      "relative_path": "conda-python-explicit.txt",
+      "bytes": 3673,
+      "sha256": "e1ec2501e7cfbba2202941bb283acf4b456237d4c0f315c379ead479d569a716"
+    },
+    {
+      "relative_path": "conda-cuda-explicit.txt",
+      "bytes": 3766,
+      "sha256": "11607ceb379e18e96e622cf25f5a5c3332af9372097eced0776096952b2c8cbc"
+    },
+    {
+      "relative_path": "requirements.lock.txt",
+      "bytes": 789,
+      "sha256": "a7705de9bf0620580fa00cd5c75b14cbc7175c276c81cef5cb8de2bcea2f4405"
+    },
+    {
+      "relative_path": "pip-install-report.json",
+      "bytes": 436754,
+      "sha256": "3e8fd73c15f418ccc5fc015e44287a4ecd12382955fc31a8952cac2cf4601e85"
+    },
+    {
+      "relative_path": "logs/pip-check.log",
+      "bytes": 30,
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    {
+      "relative_path": "logs/ctest.log",
+      "bytes": 826,
+      "sha256": "39cf3f51b6cccb698ee2140eebe852aee8f22dd713b74526de049df45c0235d2"
+    },
+    {
+      "relative_path": "logs/configure.log",
+      "bytes": 2211,
+      "sha256": "9d34cd3d22da9406a5371ba27889e278435af72786cbfa2887a5ca34dd5d9cc6"
+    },
+    {
+      "relative_path": "logs/configure-cmake325-failed.log",
+      "bytes": 2065,
+      "sha256": "f6598dded8aec96eb635f69fb86c4e87e83d18f1e0ed56accbdd198f5b4526fa"
+    },
+    {
+      "relative_path": "logs/build-without-cudart-map-failed.log",
+      "bytes": 16949,
+      "sha256": "2b65017495dbf1ac9565c1171297c65369d98352b5701b57b6bd26c188e3b0f5"
+    },
+    {
+      "relative_path": "logs/build.log",
+      "bytes": 6749,
+      "sha256": "19dfd8dd927673ee359b8ac2232d416173460fcc1a4ddc26b60c52ffa043c23e"
+    }
+  ]
+}

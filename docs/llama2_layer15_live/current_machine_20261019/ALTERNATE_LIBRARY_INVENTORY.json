@@ -1,0 +1,72 @@
+{
+  "scope": "Read-only software library inventory; no GPU launch or environment/library replacement",
+  "gpu_workload_launched": false,
+  "libraries": [
+    {
+      "toolkit_directory": "11.7",
+      "path": "/usr/local/cuda-11.7/targets/x86_64-linux/lib/libcublas.so.11.10.3.66",
+      "bytes": 151346592,
+      "sha256": "f154544f9074e63d780476d1e8df66b410008c6babcd44c7180f6b5e11b08d17",
+      "returncode": 0,
+      "ptx_member_count": 231,
+      "named_targets": [
+        "sm_80"
+      ]
+    },
+    {
+      "toolkit_directory": "11.7",
+      "path": "/usr/local/cuda-11.7/targets/x86_64-linux/lib/libcublasLt.so.11.10.3.66",
+      "bytes": 332762424,
+      "sha256": "85f144dfe7b2ef588d2b688abf3fdd51a8e26a14e41a011c12d41fe8afc9a041",
+      "returncode": 0,
+      "ptx_member_count": 88,
+      "named_targets": [
+        "sm_80"
+      ]
+    },
+    {
+      "toolkit_directory": "12.3",
+      "path": "/usr/local/cuda-12.3/targets/x86_64-linux/lib/libcublas.so.12.3.2.9",
+      "bytes": 106675248,
+      "sha256": "c57c53bd86062b0b60469f0a08994fd67675ca82072e4c68fe64c1ce71c4468d",
+      "returncode": 0,
+      "ptx_member_count": 191,
+      "named_targets": [
+        "sm_90"
+      ]
+    },
+    {
+      "toolkit_directory": "12.3",
+      "path": "/usr/local/cuda-12.3/targets/x86_64-linux/lib/libcublasLt.so.12.3.2.9",
+      "bytes": 526030064,
+      "sha256": "29bd69bf1e3d9c30c42fd205d2087a38efdb83ce6f7a03499dfbd6e9cb50203a",
+      "returncode": 0,
+      "ptx_member_count": 95,
+      "named_targets": [
+        "sm_90"
+      ]
+    },
+    {
+      "toolkit_directory": "12.4",
+      "path": "/usr/local/cuda-12.4/targets/x86_64-linux/lib/libcublas.so.12.4.2.65",
+      "bytes": 109760416,
+      "sha256": "16d30f1d13456df6cf1f864603b9b80faf7adff657348cf8f90d516b37ad57a1",
+      "returncode": 0,
+      "ptx_member_count": 192,
+      "named_targets": [
+        "sm_90"
+      ]
+    },
+    {
+      "toolkit_directory": "12.4",
+      "path": "/usr/local/cuda-12.4/targets/x86_64-linux/lib/libcublasLt.so.12.4.2.65",
+      "bytes": 441131728,
+      "sha256": "b178b4437945a7cd698408bb5ba40c9d21bf155f1311216e09be2f4240650510",
+      "returncode": 0,
+      "ptx_member_count": 92,
+      "named_targets": [
+        "sm_90"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "previous_agent": {
+    "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/agent-on-before-provider-fix.so",
+    "sha256": "3556a365a904fc8321f377462562f24b5df6ce53df7ff8add5274b9484ad6153"
+  },
+  "status": "PASS",
+  "scope": "cold CUDA11 provider acquisition and exact-version registration; default-off and CUDA12 regression retained",
+  "renamed_provider_rejected": true,
+  "exports_preserved": true,
+  "steps": [
+    {
+      "label": "cold-before",
+      "returncode": 1,
+      "command": [
+        "python3",
+        "-B",
+        "/home/yjl/HBFSim/experiments/llama2_sm80_cuda11/test_cpu.py",
+        "registry",
+        "--cold-start",
+        "--work",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1",
+        "--attempt",
+        "cold-before-v1"
+      ]
+    },
+    {
+      "label": "apply-isolated-fix",
+      "returncode": 0,
+      "command": [
+        "python3",
+        "-B",
+        "/home/yjl/HBFSim/experiments/llama2_sm80_cuda11/apply_provider_fix.py",
+        "--source",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/agent-src",
+        "--patch-output",
+        "/home/yjl/HBFSim/experiments/llama2_sm80_cuda11/patches/agent-cuda11-provider.patch"
+      ]
+    },
+    {
+      "label": "build-agent-on",
+      "returncode": 0,
+      "command": [
+        "python3",
+        "-B",
+        "/home/yjl/HBFSim/experiments/llama2_sm80_cuda11/build_cpu.py",
+        "agent-on",
+        "--work",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1",
+        "--attempt",
+        "provider-v2"
+      ]
+    },
+    {
+      "label": "cold-on-after",
+      "returncode": 0,
+      "command": [
+        "python3",
+        "-B",
+        "/home/yjl/HBFSim/experiments/llama2_sm80_cuda11/test_cpu.py",
+        "registry",
+        "--cold-start",
+        "--work",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1",
+        "--attempt",
+        "cold-on-after-v2"
+      ]
+    },
+    {
+      "label": "registry-after",
+      "returncode": 0,
+      "command": [
+        "python3",
+        "-B",
+        "/home/yjl/HBFSim/experiments/llama2_sm80_cuda11/test_cpu.py",
+        "registry",
+        "--work",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1",
+        "--attempt",
+        "provider-after-v2"
+      ]
+    },
+    {
+      "label": "build-agent-off",
+      "returncode": 0,
+      "command": [
+        "python3",
+        "-B",
+        "/home/yjl/HBFSim/experiments/llama2_sm80_cuda11/build_cpu.py",
+        "agent-off",
+        "--work",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1",
+        "--attempt",
+        "provider-v2"
+      ]
+    },
+    {
+      "label": "cold-off-after",
+      "returncode": 0,
+      "command": [
+        "python3",
+        "-B",
+        "/home/yjl/HBFSim/experiments/llama2_sm80_cuda11/test_cpu.py",
+        "registry",
+        "--cold-start",
+        "--agent-profile",
+        "agent-off",
+        "--work",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1",
+        "--attempt",
+        "cold-off-after-v2"
+      ]
+    },
+    {
+      "label": "renamed-CUDA12-provider-rejected",
+      "returncode": 1,
+      "expected_failure": true
+    }
+  ],
+  "GPU_tasks_started": 0,
+  "torch_build_resumed": true,
+  "wall_seconds": 158.15423441119492
+}

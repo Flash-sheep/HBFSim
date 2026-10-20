@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "GPU_tasks_started": 0,
+  "rows": [
+    {
+      "label": "legacy12-13",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/legacy-on/run.py",
+        "--gate",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-launch-lookup-v2/libhbfsim_launch_gate.so",
+        "--receipt",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-launch-lookup-v2/LEGACY_12_13.json"
+      ],
+      "returncode": 0,
+      "stdout": "PASS 12 /var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-launch-lookup-v2/LEGACY_12_13.json\n",
+      "stderr": ""
+    },
+    {
+      "label": "cuda11",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/test11.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\"status\": \"PASS\", \"rows\": [{\"case\": \"exact11_forward_and_return\", \"result\": 0, \"cross_domain_calls\": 0}, {\"case\": \"exact11_forward_and_return\", \"result\": 801, \"cross_domain_calls\": 0}, {\"case\": \"wrong_domain\", \"status\": \"PASS\"}, {\"case\": \"wrong_function\", \"status\": \"PASS\"}, {\"case\": \"cross_thread\", \"status\": \"PASS\"}, {\"case\": \"unreviewed11_rejected\", \"api\": \"cudaLaunchKernel_ptsz\"}, {\"case\": \"unreviewed11_rejected\", \"api\": \"cudaLaunchCooperativeKernel\"}, {\"case\": \"unreviewed11_rejected\", \"api\": \"cudaLaunchCooperativeKernel_ptsz\"}], \"hardware_gpu_used\": false}\n",
+      "stderr": ""
+    },
+    {
+      "label": "real-agent-registry",
+      "command": [
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-registry-provider-after-v2/registry_cpu",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-launch-lookup-v2/fixture-native-manifest.json"
+      ],
+      "returncode": 0,
+      "stdout": "[2026-10-20 10:14:05.569] [info] [nv_attach_impl.cpp:311] Starting nv_attach_impl\n[2026-10-20 10:14:05.569] [warning] [nv_attach_impl.cpp:357] Skipping hook registration for function 5 - symbol not found\n[2026-10-20 10:14:05.569] [warning] [nv_attach_impl.cpp:357] Skipping hook registration for function 6 - symbol not found\n[2026-10-20 10:14:05.569] [warning] [nv_attach_impl.cpp:357] Skipping hook registration for function 7 - symbol not found\n[2026-10-20 10:14:05.569] [warning] [nv_attach_impl.cpp:357] Skipping hook registration for function 8 - symbol not found\n[2026-10-20 10:14:05.569] [info] [nv_attach_impl.cpp:415] Strict versioned hook cudaLaunchKernel@libcudart.so.11.0 target=0x7f99ae17f680 dso=/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-launch-lookup-v2/libhbfsim_launch_gate.so\n[2026-10-20 10:14:05.569] [info] [nv_attach_impl.cpp:426] Strict versioned hook installed cudaLaunchKernel@libcudart.so.11.0 result=OK target=0x7f99ae17f680 trampoline=0x7f99aeb4431e\n[2026-10-20 10:14:05.569] [info] [nv_attach_impl.cpp:415] Strict versioned hook cudaLaunchKernel@libcudart.so.12 target=0x7f99ae17f730 dso=/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-launch-lookup-v2/libhbfsim_launch_gate.so\n[2026-10-20 10:14:05.569] [info] [nv_attach_impl.cpp:426] Strict versioned hook installed cudaLaunchKernel@libcudart.so.12 result=OK target=0x7f99ae17f730 trampoline=0x7f99aeb4441e\n[2026-10-20 10:14:05.569] [info] [nv_attach_impl.cpp:415] Strict versioned hook __cudaLaunchKernel@libcudart.so.12 target=0x7f99ae182950 dso=/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-launch-lookup-v2/libhbfsim_launch_gate.so\n[2026-10-20 10:14:05.569] [info] [nv_attach_impl.cpp:426] Strict versioned hook installed __cudaLaunchKernel@libcudart.so.12 result=OK target=0x7f99ae182950 trampoline=0x7f99aeb4451e\n[2026-10-20 10:14:05.569] [info] [nv_attach_impl.cpp:415] Strict versioned hook __cudaLaunchKernel@libcudart.so.13 target=0x7f99ae182990 dso=/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-launch-lookup-v2/libhbfsim_launch_gate.so\n[2026-10-20 10:14:05.569] [info] [nv_attach_impl.cpp:426] Strict versioned hook installed __cudaLaunchKernel@libcudart.so.13 result=OK target=0x7f99ae182990 trampoline=0x7f99aeb4461e\n[2026-10-20 10:14:05.569] [info] [nv_attach_impl.cpp:415] Strict versioned hook __cudaLaunchKernel_ptsz@libcudart.so.12 target=0x7f99ae1829d0 dso=/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-launch-lookup-v2/libhbfsim_launch_gate.so\n[2026-10-20 10:14:05.569] [info] [nv_attach_impl.cpp:426] Strict versioned hook installed __cudaLaunchKernel_ptsz@libcudart.so.12 result=OK target=0x7f99ae1829d0 trampoline=0x7f99aeb4471e\n[2026-10-20 10:14:05.569] [info] [nv_attach_impl.cpp:415] Strict versioned hook __cudaLaunchKernel_ptsz@libcudart.so.13 target=0x7f99ae182a10 dso=/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-launch-lookup-v2/libhbfsim_launch_gate.so\n[2026-10-20 10:14:05.569] [info] [nv_attach_impl.cpp:426] Strict versioned hook installed __cudaLaunchKernel_ptsz@libcudart.so.13 result=OK target=0x7f99ae182a10 trampoline=0x7f99aeb4481e\n[2026-10-20 10:14:05.569] [info] [nv_attach_impl.cpp:694] Parsing user provided (by BPFTIME_PTXPASS_LIBRARIES) libraries: /nonexistent-cpu-fixture-pass\n[2026-10-20 10:14:05.569] [info] [nv_attach_impl.cpp:704] Found path: /nonexistent-cpu-fixture-pass, executing..\n[2026-10-20 10:14:05.569] [error] [nv_attach_impl.cpp:708] Unable to load dynamic library of pass /nonexistent-cpu-fixture-pass: /nonexistent-cpu-fixture-pass: cannot open shared object file: No such file or directory\n[2026-10-20 10:14:05.583] [info] [nv_attach_impl_frida_setup.cpp:921] Skipping CUDA fatbin registration scan\n[2026-10-20 10:14:05.583] [info] [nv_attach_impl_frida_setup.cpp:921] Skipping CUDA fatbin registration scan\n[2026-10-20 10:14:05.584] [info] [nv_attach_impl_frida_setup.cpp:921] Skipping CUDA fatbin registration scan\n[2026-10-20 10:14:10.712] [info] [nv_attach_impl_frida_setup.cpp:921] Skipping CUDA fatbin registration scan\n{\"status\":\"PASS\",\"domains\":[11,12,13],\"scope\":\"real registration listeners, unready launch rejection and negative native binding with fake CUDA DSOs\",\"driver_launches\":0,\"hardware_gpu_used\":false}\n",
+      "stderr": ""
+    }
+  ],
+  "scope": "12 legacy cases, eight CUDA11 cases, real agent registration and unready rejection with mock CUDA providers"
+}

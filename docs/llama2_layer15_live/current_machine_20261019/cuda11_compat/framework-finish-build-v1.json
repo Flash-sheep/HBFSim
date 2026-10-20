@@ -1,0 +1,71 @@
+{
+  "status": "PASS",
+  "artifacts": [
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/build-gate-on/libhbfsim.so",
+      "sha256": "b2908a4007bf3884f6b57247bfbd76a33bd954026f19cee8e2232772db0589e0",
+      "bytes": 2119576
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/build-gate-on/hbfsimd",
+      "sha256": "7b51fb315e10dfb771c5bd1f798cacf78e31d63c1eb6b31904d5ba0373c8ed1c",
+      "bytes": 1047192
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/build-gate-on/libhbfsim_launch_gate.so",
+      "sha256": "e6e7e5645fe714fc09a92288596cb3ad288961ddc095824e8a1c827d67b714e2",
+      "bytes": 613040
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/build-gate-on/libptxpass_hbf.so",
+      "sha256": "ef4636152c891e6c2c5133015822ac117085aef84e4f2646b38aa5ac7c88e4f3",
+      "bytes": 928320
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/build-gate-on/libptxpass_hbf_aggregate.so",
+      "sha256": "9bb182a13c5fbde06c1cef30d8db026d6c9cc199e1da746ae654711235fcf2c5",
+      "bytes": 991048
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/build-gate-on/hbfsim_bpftime_attach_loader",
+      "sha256": "a485458b86f4883267e11d7ffbbe2dad489ce8f9766c68a1133bdda7a2a7ad83",
+      "bytes": 18616
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/build-gate-on/coverage_probe.bpf.o",
+      "sha256": "e7b9ea6fef7f63822f4850a94c97b539baf36f08ebf788a7bd010d4f723c6f56",
+      "bytes": 4704
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/build-agent-on/runtime/agent/libbpftime-agent.so",
+      "sha256": "38d5435ad4b14d9a169963ada0e00434e34b82a35c5796cf20d710c1b1f6492f",
+      "bytes": 192706528
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/build-agent-on/runtime/syscall-server/libbpftime-syscall-server.so",
+      "sha256": "b47adfc57f286fd99160649a0a86468b6eebe20838f124e7446bce167ad83ebb",
+      "bytes": 190427720
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/build-agent-on/libbpf/libbpf.so",
+      "sha256": "8640bb6ccf12a13bec5b69d745d8c6603f231880e9217e3eafd64fb70b0ec7ec",
+      "bytes": 2445336
+    }
+  ],
+  "steps": [
+    {
+      "step": 0,
+      "returncode": 0
+    },
+    {
+      "step": 1,
+      "returncode": 0
+    },
+    {
+      "step": 2,
+      "returncode": 0
+    }
+  ],
+  "wall_seconds": 56.4999304250814,
+  "GPU_tasks_started": 0
+}

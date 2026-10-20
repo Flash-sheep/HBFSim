@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "scope": "fixed CPU PTX version-copy rules, not assembly/GPU semantics",
+  "tests": 3,
+  "stdout": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/version-copy-tests.stdout",
+  "stderr": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/version-copy-tests.stderr",
+  "stderr_sha256": "9169f1fe22b6b19f03c6a8da672ffc16f6aba6101cafc4d4a723f9019806084d",
+  "GPU_tasks_started": 0
+}

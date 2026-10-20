@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "profile": "gate-off",
+  "feature": "OFF",
+  "steps": [
+    {
+      "step": 0,
+      "returncode": 0
+    },
+    {
+      "step": 1,
+      "returncode": 0
+    }
+  ],
+  "stop_reason": null,
+  "wall_seconds": 53.03700445801951,
+  "GPU_tasks_started": 0,
+  "artifacts": {
+    "libhbfsim_launch_gate.so": {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/build-gate-off/libhbfsim_launch_gate.so",
+      "sha256": "d3106b3dbc293ac1015f04104b7e6c63dd4ff92983cc26333744775a1d9cb78b",
+      "bytes": 608120
+    }
+  }
+}

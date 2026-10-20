@@ -1,0 +1,18 @@
+{
+  "status": "FAILED",
+  "error": "child failed pid=3532573, rc=2",
+  "HBF_timing_validated": false,
+  "wall_seconds": 35.11936249001883,
+  "actor_exit_codes": {
+    "3532520": 0,
+    "3532573": 2
+  },
+  "final_snapshot": {
+    "uuid": "GPU-5302a497-ea8c-bb7b-7235-f7464792093e",
+    "name": "NVIDIA A100-PCIE-40GB",
+    "driver": "565.57.01",
+    "memory_mib": 135,
+    "utilization_percent": 25,
+    "temperature_c": 43
+  }
+}

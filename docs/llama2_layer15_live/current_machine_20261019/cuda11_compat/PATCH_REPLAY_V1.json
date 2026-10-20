@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "scope": "replay on fresh minimal external source copies; no compiler or GPU",
+  "all_post_patch_file_hashes_match": true,
+  "both_patch_bytes_match": true,
+  "production_tree_tracked_diff": [],
+  "GPU_tasks_started": 0
+}

@@ -1,0 +1,37 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: linux-64
+@EXPLICIT
+https://repo.anaconda.com/pkgs/main/linux-64/_libgcc_mutex-0.1-main.conda#c3473ff8bdb3d124ed5ff11ec380d6f9
+https://repo.anaconda.com/pkgs/main/linux-64/_openmp_mutex-5.1-52_gnu.conda#8c74a3d91bfc4b484c91ed7201f84fba
+https://conda.anaconda.org/nvidia/noarch/cuda-version-12.8-h5d125a7_4.conda#00460e4f6e28a8ea27fb24f5f0ecb61f
+https://repo.anaconda.com/pkgs/main/noarch/kernel-headers_linux-64-4.18.0-h3108a97_1.conda#f4def41f769ea85046f6a17f189f95a3
+https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026c-he532380_0.conda#448fc60cd3fb615bf69e242f8aa22914
+https://conda.anaconda.org/nvidia/linux-64/cuda-cccl_linux-64-12.8.90-0.conda#8fc5a4205e5dcbad6148b160a0b08488
+https://conda.anaconda.org/nvidia/noarch/cuda-crt-dev_linux-64-12.8.93-0.conda#47902dcf03c12640171c6b8943401483
+https://conda.anaconda.org/nvidia/linux-64/cuda-crt-tools-12.8.93-0.conda#afdbba4bbd59b7850c3e5a07b87f041d
+https://conda.anaconda.org/nvidia/noarch/cuda-cudart-static_linux-64-12.8.90-0.conda#73c9b9d4eb67dd57fa122626c04331eb
+https://conda.anaconda.org/nvidia/noarch/cuda-cudart_linux-64-12.8.90-0.conda#adf7d7473089b905a719ded172e516ec
+https://conda.anaconda.org/nvidia/noarch/cuda-driver-dev_linux-64-12.8.90-0.conda#097742a26483300e3c7c20e62b286ab2
+https://conda.anaconda.org/nvidia/noarch/cuda-nvvm-dev_linux-64-12.8.93-0.conda#d4f95227b62472674c590dffc02d7058
+https://repo.anaconda.com/pkgs/main/linux-64/libgcc-15.2.0-h69a1729_8.conda#44a53b93cf0953bde4b0f4e610cef1c3
+https://repo.anaconda.com/pkgs/main/noarch/sysroot_linux-64-2.28-h3108a97_1.conda#552901d903fadc64e8a723714b47879b
+https://conda.anaconda.org/nvidia/linux-64/cuda-cccl-12.8.90-0.conda#e3af6b512914384e3dd153803408e2b7
+https://conda.anaconda.org/nvidia/noarch/cuda-cudart-dev_linux-64-12.8.90-0.conda#2f3b2712d8877ee99cf40a6a9b527250
+https://repo.anaconda.com/pkgs/main/linux-64/libgcc-ng-15.2.0-h166f726_8.conda#b3f01816cd1e046648fff257be7b0248
+https://repo.anaconda.com/pkgs/main/linux-64/libstdcxx-15.2.0-h39759b7_8.conda#157776d72d1eba48854127f461b729cc
+https://conda.anaconda.org/nvidia/noarch/cuda-nvcc-dev_linux-64-12.8.93-0.conda#fdead0f7bf91c9a0af0e402edd320c49
+https://repo.anaconda.com/pkgs/main/linux-64/libstdcxx-ng-15.2.0-hc03a8fd_8.conda#1b632358fe0c3badbd77b81ac05a48c2
+https://conda.anaconda.org/nvidia/linux-64/cuda-cudart-12.8.90-0.conda#1f08a30e0c3f7056cb10020107696928
+https://conda.anaconda.org/nvidia/linux-64/cuda-cudart-static-12.8.90-0.conda#ddae12fe2225728e706b708aff52c757
+https://conda.anaconda.org/nvidia/linux-64/cuda-driver-dev-12.8.90-0.conda#525b873de52e89c7b2b8be6102d4f97e
+https://conda.anaconda.org/nvidia/linux-64/cuda-nvdisasm-12.8.90-0.conda#dc99f6987b4eb1bd71eb097aa1b8b203
+https://conda.anaconda.org/nvidia/linux-64/cuda-nvrtc-12.8.93-0.conda#ad21bf0cb90fc783cb02a7f84d87c674
+https://conda.anaconda.org/nvidia/linux-64/cuda-nvvm-impl-12.8.93-0.conda#1d07df513c414dea7fe4e106cb80a4b5
+https://conda.anaconda.org/nvidia/linux-64/cuda-nvvm-tools-12.8.93-0.conda#6aa631b2d25f6fea6b7548bdec3c265c
+https://conda.anaconda.org/nvidia/linux-64/cuda-cudart-dev-12.8.90-0.conda#ce069f909b1df418f2be01859e080bef
+https://conda.anaconda.org/nvidia/linux-64/cuda-cuobjdump-12.8.90-0.conda#123d447c6cf4733477a81e82871e65c6
+https://conda.anaconda.org/nvidia/linux-64/cuda-nvcc-tools-12.8.93-0.conda#4822347af4cbff51dbcaaecc40c84a11
+https://conda.anaconda.org/nvidia/linux-64/cuda-nvrtc-dev-12.8.93-0.conda#7aa6fad8a4f0ee6f72e4ae11bed0f6d4
+https://conda.anaconda.org/nvidia/linux-64/cuda-nvcc-impl-12.8.93-0.conda#036e883bf1bc010b0cbefa4cacf2b5b4
+https://conda.anaconda.org/nvidia/linux-64/cuda-nvcc_linux-64-12.8.93-0.conda#f38969982634ce44ff086b9d2dc6c57a

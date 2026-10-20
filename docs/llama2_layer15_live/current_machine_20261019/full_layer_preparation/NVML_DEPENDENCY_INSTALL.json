@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "scope": "task-private development dependency only",
+  "package": {
+    "name": "cuda-nvml-dev",
+    "version": "12.8.90",
+    "build": "0",
+    "url": "https://conda.anaconda.org/nvidia/linux-64/cuda-nvml-dev-12.8.90-0.conda",
+    "sha256": "9732e1ab683c2f6816c3c829f6936901ac27889d6a285e84393f9a2a36145462"
+  },
+  "nvml_header": {
+    "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/agent-deps/targets/x86_64-linux/include/nvml.h",
+    "sha256": "2469cfaa1c2497412848b66bafc57782540536df4dd39d1ab59c519722fe8b60"
+  },
+  "initial_failure_log": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/agent-nvml-install.json",
+  "initial_failure": "TLS SSLEOFError",
+  "retry_receipt": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/agent-nvml-install-retry.json",
+  "GPU_tasks_started": 0
+}

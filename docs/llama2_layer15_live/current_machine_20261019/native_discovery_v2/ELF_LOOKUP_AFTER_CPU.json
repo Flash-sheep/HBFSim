@@ -1,0 +1,55 @@
+{
+  "schema": "llama2-sm80-elf-launch-lookup-cpu-v1",
+  "evidence_class": "CPU_REPRODUCED",
+  "GPU_tasks_started": 0,
+  "gate": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-launch-lookup-v2/libhbfsim_launch_gate.so",
+  "gate_sha256": "1dc9125011fc97a8195cf289a4b6c4942fff77505e5b4341680888c675b4f19b",
+  "compile_command": [
+    "/usr/bin/gcc",
+    "-shared",
+    "-fPIC",
+    "-O0",
+    "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/launch-lookup-fixed-cpu-v1/consumer.c",
+    "-L/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2",
+    "-Wl,--no-as-needed",
+    "-l:libcudart.so.11.0",
+    "-o",
+    "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/launch-lookup-fixed-cpu-v1/consumer.so"
+  ],
+  "cases": {
+    "provider-control": {
+      "relocated_address": "0x7f7e9dd35155",
+      "provider_address": "0x7f7e9dd35155",
+      "exact_gate_address": null,
+      "unversioned_gate_address": null,
+      "selects_exact_gate": false,
+      "selects_unversioned_gate": false,
+      "selects_provider": true,
+      "result": 0,
+      "provider_calls": 1,
+      "mapped_cuda_paths": [
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/libcudart.so.11.0"
+      ],
+      "hardware_GPU_used": false
+    },
+    "frozen-gate-preload": {
+      "relocated_address": "0x7f95fe135680",
+      "provider_address": "0x7f95fcc4d155",
+      "exact_gate_address": "0x7f95fe135680",
+      "unversioned_gate_address": "0x7f95fe11a4b0",
+      "selects_exact_gate": true,
+      "selects_unversioned_gate": false,
+      "selects_provider": false,
+      "result": 0,
+      "provider_calls": 1,
+      "mapped_cuda_paths": [
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/libcuda.so.1",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/libcudart.so.11.0",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/tests-gate-v2/libcudart.so.12"
+      ],
+      "hardware_GPU_used": false
+    }
+  },
+  "compatibility_validated": false,
+  "finding": "VERSIONED_RELOCATION_SELECTS_EXACT_GATE"
+}

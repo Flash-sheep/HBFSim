@@ -1,0 +1,28 @@
+{
+  "captured_at_utc": "2026-10-20T01:51:54.697030+00:00",
+  "overall_status": "FAILED_CAPTURE_NOT_COMPLETED",
+  "native_status": "PASS",
+  "native_output_sha256": "528e30d35ba48d50b8aa98d8b01f4e3165a5de75522eaaa60f7170e00e6b9aea",
+  "native_forward_wall_seconds": 0.9727775959763676,
+  "total_execution_wall_seconds": 20.57299326802604,
+  "capture_forward_started": false,
+  "capture_has_arena_or_forward_begin": false,
+  "strict_capture_output_comparison": "NOT_AVAILABLE",
+  "HBF_Timing_validated": false,
+  "observed_evidence": [
+    "Strict11 hooks and empty-PTX bootstrap attached in capture PID3522550",
+    "Additional agent/CUDA context appeared in PID3522681 outside main actor allowlist",
+    "Capture had no model validate message, arena or FORWARD_BEGIN",
+    "All owned GPU actors cleaned; GPU1 returned to135MiB and0%utilization at post-check"
+  ],
+  "CPU_reproduced_defect": "Approval Git subprocesses inherit LD_PRELOAD; inert CPU marker loaded by24 Git processes before fix,0 after fix",
+  "INFERRED": "Unexpected nested Git agent is consistent with the foreign-process stop branch; v1 omitted the triggering resource sample, so the exact triggering predicate cannot be independently reconstructed",
+  "UNKNOWN_NOT_CAPTURED": [
+    "v1 trigger-time GPU memory/temperature/foreign-PID rows",
+    "v1 final actor returncodes"
+  ],
+  "fix_scope": "Separate v2 wrapper removes child preload before gate checks, retains already loaded DSOs, records explicit GPU/resource stop data and task-local runtime logs; no core or threshold changes",
+  "GPU_retries_started": 0,
+  "v2_state": "PENDING_USER_APPROVAL",
+  "v2_manifest_hash": "1a979d2b4624385fa10eb6f7518a0150c28062858e98e9e924b1090a950d57ba"
+}

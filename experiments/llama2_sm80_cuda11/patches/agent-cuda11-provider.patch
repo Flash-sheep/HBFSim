@@ -1,0 +1,79 @@
+--- a/attach/nv_attach_impl/nv_attach_impl.cpp
++++ b/attach/nv_attach_impl/nv_attach_impl.cpp
+@@ -96,6 +96,21 @@
+ 	auto &state = nv_attach_get_hook_state();
+ 	return state.active_impl.load(std::memory_order_acquire);
+ }
++#if HBFSIM_EXPERIMENTAL_CUDART11
++// The CUDA12/13 provider is a link dependency. Acquire the optional CUDA11
++// provider locally before collecting its versioned registration hooks too.
++void *nv_attach_cudart11_provider()
++{
++    static void *provider = []() -> void * {
++        void *handle = dlopen("libcudart.so.11.0", RTLD_NOW | RTLD_LOCAL);
++        if (handle == nullptr ||
++            dlvsym(handle, "__cudaRegisterFatBinary", "libcudart.so.11.0") == nullptr)
++            return nullptr;
++        return handle;
++    }();
++    return provider;
++}
++#endif
+ } // namespace bpftime::attach
+ 
+ static std::vector<std::filesystem::path> split_by_colon(const std::string &str)
+@@ -303,6 +318,10 @@
+ 				     dlerror());
+ 		}
+ 	}
++#if HBFSIM_EXPERIMENTAL_CUDART11
++    if (bpftime::attach::nv_attach_cudart11_provider() == nullptr)
++        throw std::runtime_error("Exact CUDA11 runtime provider unavailable");
++#endif
+ 	this->module_pool = std::make_shared<
+ 		std::map<std::string, std::shared_ptr<ptx_in_module>>>();
+ 	this->ptx_pool =
+--- a/runtime/agent/agent.cpp
++++ b/runtime/agent/agent.cpp
+@@ -741,6 +741,9 @@
+ void register_llvm_vm_factory();
+ } // namespace llvm
+ } // namespace bpftime::vm::compat
++#if HBFSIM_EXPERIMENTAL_CUDART11
++namespace bpftime::attach { void *nv_attach_cudart11_provider(); }
++#endif
+ using cuda_register_fatbinary_fn = void **(*)(void *);
+ #if HBFSIM_EXPERIMENTAL_CUDART11
+ static std::atomic<cuda_register_fatbinary_fn> original_register_fatbinary_11{};
+@@ -782,8 +785,29 @@
+ #if HBFSIM_EXPERIMENTAL_CUDART11
+ extern "C" void **bpftime___cudaRegisterFatBinary_11(void *fatbin)
+ {
+-    return register_fatbinary_versioned(fatbin, "libcudart.so.11.0",
+-                                       original_register_fatbinary_11);
++    try {
++        auto original = original_register_fatbinary_11.load(std::memory_order_acquire);
++        if (original == nullptr) {
++            void *provider = bpftime::attach::nv_attach_cudart11_provider();
++            if (provider == nullptr)
++                throw std::runtime_error("Exact CUDA11 runtime provider unavailable");
++            dlerror();
++            original = reinterpret_cast<cuda_register_fatbinary_fn>(
++                dlvsym(provider, "__cudaRegisterFatBinary", "libcudart.so.11.0"));
++            const char *error = dlerror();
++            if (original == nullptr || error != nullptr)
++                throw std::runtime_error(error != nullptr ? error :
++                                         "Exact CUDA11 fatbinary symbol unavailable");
++            original_register_fatbinary_11.store(original, std::memory_order_release);
++        }
++        bpftime::vm::compat::llvm::register_llvm_vm_factory();
++        return original(fatbin);
++    } catch (const std::exception &error) {
++        fprintf(stderr, "bpftime-agent: CUDA11 fatbinary registration failed: %s\n", error.what());
++    } catch (...) {
++        fprintf(stderr, "bpftime-agent: CUDA11 fatbinary registration failed\n");
++    }
++    return nullptr;
+ }
+ __asm__(".symver bpftime___cudaRegisterFatBinary_11,__cudaRegisterFatBinary@libcudart.so.11.0");
+ #endif

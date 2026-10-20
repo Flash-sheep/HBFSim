@@ -1,0 +1,125 @@
+{
+  "schema": "llama2-sm80-native-discovery-v2-analysis-v1",
+  "generated_at_utc": "2026-10-20T02:16:22.890422+00:00",
+  "status": "FAILED",
+  "user_confirmed": {
+    "experiment_id": "LLAMA2-SM80-NATIVE-DISCOVERY",
+    "version": "2",
+    "canonical_manifest_hash": "1a979d2b4624385fa10eb6f7518a0150c28062858e98e9e924b1090a950d57ba",
+    "actual_new_forward_calls": 1,
+    "automatic_retries": 0
+  },
+  "observed": {
+    "parent_result": {
+      "status": "FAILED",
+      "error": "child failed pid=3532573, rc=2",
+      "HBF_timing_validated": false,
+      "wall_seconds": 35.11936249001883,
+      "actor_exit_codes": {
+        "3532520": 0,
+        "3532573": 2
+      },
+      "final_snapshot": {
+        "uuid": "GPU-5302a497-ea8c-bb7b-7235-f7464792093e",
+        "name": "NVIDIA A100-PCIE-40GB",
+        "driver": "565.57.01",
+        "memory_mib": 135,
+        "utilization_percent": 25,
+        "temperature_c": 43
+      }
+    },
+    "worker_error": "AssertionError: No actual forward coverage/strict bridge records",
+    "forward_begin": {
+      "log_offsets": {
+        "coverage": 0,
+        "strict-runtime": 0,
+        "strict-bridge": 0
+      },
+      "forward_calls": 1,
+      "warmup_calls": 0
+    },
+    "forward_end": {
+      "log_offsets": {
+        "coverage": 0,
+        "strict-runtime": 19476,
+        "strict-bridge": 0
+      },
+      "host_forward_wall_seconds": 0.9570832250174135
+    },
+    "output": {
+      "shape": [
+        1,
+        1,
+        4096
+      ],
+      "dtype": "float16",
+      "bytes": 8192,
+      "all_finite": true,
+      "sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+      "native_sha256": "528e30d35ba48d50b8aa98d8b01f4e3165a5de75522eaaa60f7170e00e6b9aea",
+      "exact_native": false,
+      "differing_bytes": 8167,
+      "differing_elements": 4096,
+      "max_absolute_error": 3.564453125
+    },
+    "strict_runtime": {
+      "records": 45,
+      "domains": {
+        "unversioned": 45
+      },
+      "outcomes": {
+        "REJECTED_DRIVER_CORRELATION": 45
+      },
+      "results": {
+        "801": 45
+      },
+      "Driver_calls": 0,
+      "coverage_records": 0,
+      "strict_bridge_records": 0
+    },
+    "registrations": {
+      "records": 17933,
+      "domains": {
+        "cudart11": 17933
+      },
+      "events": {
+        "register_fatbin": 239,
+        "register_function": 16798,
+        "register_variable": 657,
+        "unregister_fatbin": 239
+      },
+      "observed_unique_host_stubs": 20,
+      "all_stubs_match_registration": true
+    },
+    "resources": {
+      "samples": 28,
+      "sampled_peak_GPU_memory_MiB": 2165,
+      "sampled_peak_temperature_C": 43,
+      "sampled_peak_group_RSS_bytes": 3179061248,
+      "unexpected_GPU_process_samples": 0,
+      "safety_stop_snapshot_present": false
+    }
+  },
+  "CPU_REPRODUCED": {
+    "before": "Versioned CUDA11 ELF relocation selects unversioned gate rejection stub; result3; mock provider calls0",
+    "after": "Separate ON-only map gives rejected unversioned entry a distinct version; ELF selects exact CUDA11 gate; result0; mock provider calls1",
+    "regression": "12 legacy cases + eight CUDA11 cases + real-agent registration/unready rejection PASS; real driver/provider absent",
+    "scope": "Actual frozen and independently relinked gate against inert CUDA DSOs; no GPU execution"
+  },
+  "DOC_DERIVED": {
+    "unversioned_rejection_source": "External hbfsim-src/src/cuda_runtime/launch_gate.cpp:3709",
+    "agent_generic_runtime_source": "External agent-src/attach/nv_attach_impl/nv_attach_impl_frida_setup.cpp:1247",
+    "strict_runtime_correlation_reject_source": "External agent-src/attach/nv_attach_impl/nv_attach_impl_frida_setup.cpp:294",
+    "original_completion_contract": "External gate runtime_launch Original branch calls complete_strict_original; existing agent validates authenticated original_completion even without a Driver interception"
+  },
+  "INFERRED": {
+    "primary_failure_chain": "Versioned Torch launch bound to unversioned gate stub, then observed by generic Gum hook without gate/Driver correlation; consistent with all45 rejected unversioned records",
+    "numerical_error_origin": "Incorrect launch path can corrupt initialization and/or forward; exact per-operator origin not localized"
+  },
+  "limitations": [
+    "Output exists but fails native comparison; not a correct capture forward",
+    "Kernel registration matches identify attempted host-stub symbols, not successfully executed full-layer kernels or exact selected PTX members",
+    "No HBF ranges/staged PTX/Timing service; full HBF validation remains unresolved",
+    "CPU relocation fix does not establish GPU correctness; another GPU execution needs its own approval"
+  ]
+}

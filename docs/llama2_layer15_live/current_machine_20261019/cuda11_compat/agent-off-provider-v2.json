@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "profile": "agent-off",
+  "feature": "OFF",
+  "steps": [
+    {
+      "step": 0,
+      "returncode": 0
+    },
+    {
+      "step": 1,
+      "returncode": 0
+    },
+    {
+      "step": 2,
+      "returncode": 0
+    }
+  ],
+  "stop_reason": null,
+  "wall_seconds": 54.87632715702057,
+  "GPU_tasks_started": 0,
+  "artifacts": {
+    "runtime/agent/libbpftime-agent.so": {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/build-agent-off/runtime/agent/libbpftime-agent.so",
+      "sha256": "0163c3c0c3d5bda21930f2b63b208545725b25acb04fe65946ac1fc611b47523",
+      "bytes": 192696672
+    }
+  }
+}

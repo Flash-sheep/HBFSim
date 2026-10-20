@@ -1,0 +1,71 @@
+{
+  "status": "BUILD_PASS_CPU_CHECKS_PENDING",
+  "GPU_tasks_started": 0,
+  "scope": "Approved isolated CUDA11 version-symbol adaptation; ON map only; relink frozen objects",
+  "old_gate": {
+    "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/build-gate-on/libhbfsim_launch_gate.so",
+    "sha256": "e6e7e5645fe714fc09a92288596cb3ad288961ddc095824e8a1c827d67b714e2"
+  },
+  "new_gate": {
+    "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-launch-lookup-v2/libhbfsim_launch_gate.so",
+    "sha256": "1dc9125011fc97a8195cf289a4b6c4942fff77505e5b4341680888c675b4f19b"
+  },
+  "map_before_sha256": "a708dffeae83a1d042466b848633ec7b6e877ae3d082b2f0b19bafd47856c21c",
+  "map_after_sha256": "3994f54177b56487422062e584209df01e136e5cc7672d4725795a4e3e703280",
+  "command": [
+    "/usr/bin/g++-11",
+    "-fPIC",
+    "-O3",
+    "-DNDEBUG",
+    "-Wl,--version-script=/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-launch-lookup-v2/cudart11-experiment.map",
+    "-shared",
+    "-Wl,-soname,libhbfsim_launch_gate.so",
+    "-o",
+    "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-launch-lookup-v2/libhbfsim_launch_gate.so",
+    "CMakeFiles/hbfsim_launch_gate.dir/src/cuda_runtime/launch_gate.cpp.o",
+    "-Wl,-rpath,/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/cuda/lib",
+    "libhbfsim_core.a",
+    "-ldl",
+    "/usr/lib/x86_64-linux-gnu/libcrypto.so",
+    "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/cuda/lib/libcudart.so",
+    "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/cuda/targets/x86_64-linux/lib/stubs/libcuda.so",
+    "-ldl",
+    "/usr/lib/x86_64-linux-gnu/librt.a",
+    "libmqsim_hbf.a"
+  ],
+  "immutable_link_inputs": [
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/build-gate-on/CMakeFiles/hbfsim_launch_gate.dir/src/cuda_runtime/launch_gate.cpp.o",
+      "sha256": "ad0662c7bc2e8779db7f8d64e000c6fc34a7611c092fa1395e8c40e330c98746"
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/build-gate-on/libhbfsim_core.a",
+      "sha256": "b055ac69e3f1a587430b652c45055924fcf3401a89ebc695aaa2ac0887d23a8d"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libcrypto.so",
+      "sha256": "bf99926de2ce739d3fdccc4a551d97d64aac6e968589aaad9dc4ac8d143b519a"
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/cuda/lib/libcudart.so",
+      "sha256": "7b15fc50d4d6bc77dd66f64603d40d045545d92a7f1b38654389ad2b1e88de9e"
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/cuda/targets/x86_64-linux/lib/stubs/libcuda.so",
+      "sha256": "055e044be132c1e3037739a194b137072fe6117aaeccd63eb86ffd53c20a15e8"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/librt.a",
+      "sha256": "f0a17a43c74d2fe5474fa2fd29c8f14799e777d7d75a2cc4d11c20a6e7b161c5"
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cudart11-v1/build-gate-on/libmqsim_hbf.a",
+      "sha256": "b0b122cb20e5da6f13cca7324645cc96ef288ecb4fd46592a36c49763da6e641"
+    }
+  ],
+  "HBF_exports_unchanged": true,
+  "CUDA_versioned_11_12_13_exports_unchanged": true,
+  "function_bodies_unchanged": true,
+  "default_OFF_build_unchanged": true,
+  "scope_limit": "ELF routing/build proof only; no GPU or full HBF validation"
+}

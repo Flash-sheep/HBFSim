@@ -1,0 +1,48 @@
+{
+  "git_head": "874a20f289b7bd587fa4048a788e12df2618444b",
+  "tracked_source_diff": "",
+  "CPU_inputs": "PASS",
+  "CPU_full_forward": "PASS",
+  "GPU_full_layer_launches": 0,
+  "CUDA11_interface_plan": "PENDING_USER_APPROVAL",
+  "framework_build": "NOT_STARTED",
+  "agent_build_attempt1": "FAILED_MISSING_NVML_HEADER",
+  "agent_dependency_retry": "IN_PROGRESS",
+  "files": [
+    {
+      "file": "AGENT_CONFIGURE_V1.json",
+      "bytes": 2038,
+      "sha256": "05defc3bdee443aa7d7a67a880a805ca9740376519c8a52ea3eef1b82716e1c1"
+    },
+    {
+      "file": "AGENT_SOURCE_PREPARE.json",
+      "bytes": 9881,
+      "sha256": "678a2c60c35b6ddd31f1563b4ddc81fd6a329b3ebf05bb55d37349dfc0ce0302"
+    },
+    {
+      "file": "CPU_FULL_FORWARD.json",
+      "bytes": 2272,
+      "sha256": "33b8fcdf8e740a953d00331f6066d73c1fa221fdc67327e7a5d940417c1ff35d"
+    },
+    {
+      "file": "CUDART11_INTERFACE_AUDIT.json",
+      "bytes": 901,
+      "sha256": "9dc651f9c6b154dc15ea8f237dd35597a0fd8cfd0abf59aec6d0c9356af91eae"
+    },
+    {
+      "file": "INPUT_IDENTITY.json",
+      "bytes": 5032,
+      "sha256": "7041124f6dbdde8175c3198b29fd3cf561c0fab8281a3b22dbad2aa5d8551a73"
+    },
+    {
+      "file": "PYTORCH_ARCHITECTURE_PRECHECK.json",
+      "bytes": 628,
+      "sha256": "1ab4c5d553fc1dbc90742b20d7dc563731a831ae768dcddcdac06d9a87fa6518"
+    },
+    {
+      "file": "PYTORCH_SOURCE_IDENTITY.json",
+      "bytes": 443,
+      "sha256": "86c09243be4c1a4eb55b51d7dd7ba1fa16bd29a34fa45eab7c85791574a1bb79"
+    }
+  ]
+}

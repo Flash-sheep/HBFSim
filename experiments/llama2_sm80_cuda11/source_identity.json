@@ -1,0 +1,61 @@
+{
+  "hbf_git": "874a20f289b7bd587fa4048a788e12df2618444b",
+  "agent_git": "ec26daecc8e787fb80fd95dd596a576404a5e36e",
+  "agent_base_patch_sha256": "63f4820fa41bdf6538ec45d805f3c68e3dea9a3e605ffbd65f3b88788c51121f",
+  "files": {
+    "gate": [
+      {
+        "path": "CMakeLists.txt",
+        "before_sha256": "e6370da5f88d75eabf7db3afe7a995cd7a04d30f36e62467d9505d66e48b34d3",
+        "after_sha256": "8c3e74a20e8fbda3c60d6a483f79b9dfe3d43515df9e5f434243cd561dc103ea"
+      },
+      {
+        "path": "cmake/cudart11-experiment.map",
+        "before_sha256": null,
+        "after_sha256": "a708dffeae83a1d042466b848633ec7b6e877ae3d082b2f0b19bafd47856c21c"
+      },
+      {
+        "path": "src/cuda_runtime/launch_gate.cpp",
+        "before_sha256": "d72d5002e331407f1b6f649ca08df18ec7e34cfbae83bafa11c753df55ae42b7",
+        "after_sha256": "c2b9a27a350d11543a5a17ba9127ac6f8b5f292fa17c1ecd215e3c7dd9b83507"
+      }
+    ],
+    "agent": [
+      {
+        "path": "CMakeLists.txt",
+        "before_sha256": "7a93ae1f7deb4101efab3f3143f883e26fb2b05c213b8403b2806d3bf4171adf",
+        "after_sha256": "a6802d7e8a3a7947c9179b70d26a9fcde207174700dc23d635218b9df03eafe1"
+      },
+      {
+        "path": "attach/nv_attach_impl/nv_attach_impl.hpp",
+        "before_sha256": "a769bf11b27cf3161a2a38a9d18d4d59b1d8efcbebcc00196caffb725f135409",
+        "after_sha256": "2d9f6d062092319c1b7ec5ac00ad528a0076acf46276f3e06d4e3077259c6fef"
+      },
+      {
+        "path": "attach/nv_attach_impl/nv_attach_impl.cpp",
+        "before_sha256": "d1749581c42239622a8ea604009e500864290f0a68fd87e1a998f2ca558ccec9",
+        "after_sha256": "4e62a9092327b918fdb97effef8fcdbfa91c4269c4bc83c7f7782a61455fef12"
+      },
+      {
+        "path": "attach/nv_attach_impl/nv_attach_impl_frida_setup.cpp",
+        "before_sha256": "a94b2cb01592a62dcc6a70f3f50f17004e4dc6be31cc7c4cf086cd528c18b1b5",
+        "after_sha256": "4ecfa4940b9e40a777284ab1f4dcbeedaef45553d13e06583cddbd0593161a5b"
+      },
+      {
+        "path": "runtime/agent/agent.cpp",
+        "before_sha256": "8a31f1d66c857cea3dac86a7710af94e8009f660f1b73b7fb75fcbe4ceb4bcf3",
+        "after_sha256": "7c2b896ea02954583a573f119e53683e295dca72d680dcdc43f810edcd3c6ea2"
+      },
+      {
+        "path": "runtime/agent/CMakeLists.txt",
+        "before_sha256": "9877b133b83c4f92580f35639532fd1cabd8cce05fca6c76e62ef9f2e99dc0af",
+        "after_sha256": "5e4fbeb7b655499e3347acbfc6ac801ee0046620634499f9a9c3c8c5f9ed96bc"
+      },
+      {
+        "path": "runtime/agent/agent-cuda11.version",
+        "before_sha256": null,
+        "after_sha256": "219b563ab9895c2a6e00e05929e2637f1ca9701d06f6ab0c67e65a49f5f06e4a"
+      }
+    ]
+  }
+}

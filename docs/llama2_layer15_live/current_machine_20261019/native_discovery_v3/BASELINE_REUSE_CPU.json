@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "scope": "Software baseline applicability audit; not physical/calibrated evidence",
+  "original_native_result": {
+    "status": "NATIVE_FORWARD_PASS_HBF_NOT_RUN",
+    "arm": "native",
+    "gpu_uuid": "GPU-5302a497-ea8c-bb7b-7235-f7464792093e",
+    "dtype": "float16",
+    "shape": [
+      1,
+      1,
+      4096
+    ],
+    "output_sha256": "528e30d35ba48d50b8aa98d8b01f4e3165a5de75522eaaa60f7170e00e6b9aea",
+    "forward_calls": 1,
+    "warmup_calls": 0,
+    "original_helper": true,
+    "registered_HBF_ranges": 0,
+    "HBF_timing_validated": false,
+    "host_forward_wall_seconds": 0.9727775959763676,
+    "limits": "Host time includes observation overhead; no GPU performance or physical calibration claim"
+  },
+  "output_hash_verified": true,
+  "nine_parameter_layout_verified": true,
+  "runtime_and_build_file_count_bound": 4606,
+  "v3_new_gpu_forward_calls_requested": 1,
+  "native_baseline_reexecution": false,
+  "source_change": "Experimental ON-only launch version-map relink and original-completion receipt validation; native baseline had no gate preloaded; original mathematical helpers/environment unchanged",
+  "GPU_tasks_started": 0
+}

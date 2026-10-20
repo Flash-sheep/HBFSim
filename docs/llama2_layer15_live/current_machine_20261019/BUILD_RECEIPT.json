@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "captured_at_utc": "2026-10-19T05:40:50.794602+00:00",
+  "code_head": "874a20f289b7bd587fa4048a788e12df2618444b",
+  "cuda_arch": 80,
+  "timing_futures": false,
+  "mqsim": true,
+  "cpu_tests_passed": 6,
+  "test_selection": "build_smoke,profile,protocol,timing_binding,module_identity,ptx_transform",
+  "gpu_tests_run": 0,
+  "artifacts": [
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/build/libhbfsim.so.0.1.1",
+      "sha256": "a51f4798dc2fac7bd1b662897f00bfc46479b0584b6fcd2b4fc1af8cde8d1556",
+      "bytes": 2119576,
+      "ldd_returncode": 0
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/build/hbfsimd",
+      "sha256": "7b51fb315e10dfb771c5bd1f798cacf78e31d63c1eb6b31904d5ba0373c8ed1c",
+      "bytes": 1047192,
+      "ldd_returncode": 0
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/build/libhbfsim_launch_gate.so",
+      "sha256": "c5fb0cbf9e828863c05341a4b08c5cb05fdc3ade48c31e4be16fe203a96dca14",
+      "bytes": 608120,
+      "ldd_returncode": 0
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/build/libptxpass_hbf.so",
+      "sha256": "e5b4dc9c8ce36376aa742be722a44ef251dbb06c02a51650ffa79e0e90f2252d",
+      "bytes": 928320,
+      "ldd_returncode": 0
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/build/src/ptxpass_hbf/ptxpass_hbf",
+      "sha256": "2566753f21e10bb66337e604d156fcf0f140af857a583705c6a5a4da04e1cd18",
+      "bytes": 578472,
+      "ldd_returncode": 0
+    }
+  ],
+  "notes": [
+    "Initial CMake3.25 NVTX failure and missing version-map link failure preserved in logs",
+    "CMake3.31.10 and repository existing cudart-versions.map used; no production source edits",
+    "Non-reference target; no GPU protocol/runtime acceptance"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "captured_at_utc": "2026-10-19T05:46:06.563728+00:00",
+  "scope": "Installed cuBLAS/cuBLASLt/Torch CUDA containers only; no claim about other libraries or dynamic kernel coverage",
+  "gpu_workload_launched": false,
+  "libraries": [
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/env/lib/python3.11/site-packages/nvidia/cublas/lib/libcublas.so.12",
+      "sha256": "37d1141111d6b935aa84156ad61fd3575350cad8d69d0916e9db7d37eef9b816",
+      "bytes": 107473968,
+      "returncode": 0,
+      "ptx_member_count": 191,
+      "targets": [
+        "sm_90"
+      ],
+      "sm80_named_ptx_available": false
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/env/lib/python3.11/site-packages/nvidia/cublas/lib/libcublasLt.so.12",
+      "sha256": "f97bfc2cf75dc40da650eb97aff63d3e195f500cc623c74f3fe33ce2ce2b71f4",
+      "bytes": 515090264,
+      "returncode": 0,
+      "ptx_member_count": 95,
+      "targets": [
+        "sm_90"
+      ],
+      "sm80_named_ptx_available": false
+    },
+    {
+      "path": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/env/lib/python3.11/site-packages/torch/lib/libtorch_cuda.so",
+      "sha256": "f42a55443861edf4457af694b1c87dead4bdb07663005063d7eed1c0285fecef",
+      "bytes": 902414441,
+      "returncode": 0,
+      "ptx_member_count": 0,
+      "targets": [],
+      "sm80_named_ptx_available": false
+    }
+  ]
+}

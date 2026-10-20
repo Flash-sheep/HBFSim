@@ -1,0 +1,138 @@
+{
+  "status": "PASS",
+  "captured_at_utc": "2026-10-19T05:46:03.409365+00:00",
+  "python": "3.11.17 (main, Oct  1 2026, 20:17:42) [GCC 14.3.0]",
+  "python_executable": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/env/bin/python",
+  "packages": {
+    "torch": "2.4.0",
+    "transformers": "4.57.1",
+    "safetensors": "0.6.2",
+    "numpy": "1.26.4"
+  },
+  "torch_cuda_build": "12.1",
+  "cuda_initialized": false,
+  "gpu_workload_launched": false,
+  "configuration_identity": [
+    {
+      "path": "/home/yjl/yjl-r760/llama2-7b-hf-chat/config.json",
+      "sha256": "958cdb0decc112046a6bb0741aa3afa5df5929bbaae2d56cea9eae47c95cc564",
+      "matches_archive": true
+    },
+    {
+      "path": "/home/yjl/yjl-r760/llama2-7b-hf-chat/model.safetensors.index.json",
+      "sha256": "11b694a9d4bffdac71733db7f782be0df1f87a65fb9ef05bcf6d317029c22364",
+      "matches_archive": true
+    }
+  ],
+  "tensors": [
+    {
+      "name": "model.layers.15.input_layernorm.weight",
+      "shape": [
+        4096
+      ],
+      "dtype": "torch.float16",
+      "bytes": 8192,
+      "sha256": "16c3bd8aba5985efe9973bd63229398c7dda306afe764fd8e4eb11e45698e1ed",
+      "matches_archive": true
+    },
+    {
+      "name": "model.layers.15.mlp.down_proj.weight",
+      "shape": [
+        4096,
+        11008
+      ],
+      "dtype": "torch.float16",
+      "bytes": 90177536,
+      "sha256": "1afd01da66a62d756e5066e068d9c1720b88ed24c7f889031427b003bad5ba84",
+      "matches_archive": true
+    },
+    {
+      "name": "model.layers.15.mlp.gate_proj.weight",
+      "shape": [
+        11008,
+        4096
+      ],
+      "dtype": "torch.float16",
+      "bytes": 90177536,
+      "sha256": "25eeed365e29aebc61092df2463fa0b1508dbe18a718ea58387bd8da0ffd7879",
+      "matches_archive": true
+    },
+    {
+      "name": "model.layers.15.mlp.up_proj.weight",
+      "shape": [
+        11008,
+        4096
+      ],
+      "dtype": "torch.float16",
+      "bytes": 90177536,
+      "sha256": "3ba04e67b7ed1ad5c6adc79b5404fef48335820da268f8b3c77e1384be29ffc0",
+      "matches_archive": true
+    },
+    {
+      "name": "model.layers.15.post_attention_layernorm.weight",
+      "shape": [
+        4096
+      ],
+      "dtype": "torch.float16",
+      "bytes": 8192,
+      "sha256": "591c67bbc4cafaa8866881bd3aa096dc799908a17be7f7cfa6117f2a10ce59c5",
+      "matches_archive": true
+    },
+    {
+      "name": "model.layers.15.self_attn.k_proj.weight",
+      "shape": [
+        4096,
+        4096
+      ],
+      "dtype": "torch.float16",
+      "bytes": 33554432,
+      "sha256": "774fb3fad58f4bd0fa4ba8048f514791a223827994e492834ffc26fa017bb3f9",
+      "matches_archive": true
+    },
+    {
+      "name": "model.layers.15.self_attn.o_proj.weight",
+      "shape": [
+        4096,
+        4096
+      ],
+      "dtype": "torch.float16",
+      "bytes": 33554432,
+      "sha256": "3fdfbc8fdb2f485bef0c0a5a172116904d40d28d09f78b931a3742041019578b",
+      "matches_archive": true
+    },
+    {
+      "name": "model.layers.15.self_attn.q_proj.weight",
+      "shape": [
+        4096,
+        4096
+      ],
+      "dtype": "torch.float16",
+      "bytes": 33554432,
+      "sha256": "567314da8612aec258b8c7613d75d59fa034f04bf90be360503e06695b09a8bc",
+      "matches_archive": true
+    },
+    {
+      "name": "model.layers.15.self_attn.rotary_emb.inv_freq",
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float16",
+      "bytes": 128,
+      "sha256": "c060eb12019f8cb67139029855ead952cbbf747ecab788be7748c2a3d3bae6a7",
+      "matches_archive": true
+    },
+    {
+      "name": "model.layers.15.self_attn.v_proj.weight",
+      "shape": [
+        4096,
+        4096
+      ],
+      "dtype": "torch.float16",
+      "bytes": 33554432,
+      "sha256": "f08a1a45b3286590ac05b8e0f147d39efea22f5c242a94d53e719eb956a6ff86",
+      "matches_archive": true
+    }
+  ],
+  "total_tensor_bytes": 404766848,
+  "scope": "CPU imports and checkpoint tensor loading/hash verification only; no forward; missing original workload scripts remain a separate prerequisite"
+}

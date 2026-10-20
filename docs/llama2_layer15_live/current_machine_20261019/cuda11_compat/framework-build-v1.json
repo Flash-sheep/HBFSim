@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "mode": "build",
+  "returncode": 0,
+  "stop_reason": null,
+  "wall_seconds": 5337.385816080961,
+  "peak_process_group_rss_bytes": 568131584,
+  "last_task_tree_bytes": 11231072256,
+  "GPU_tasks_started": 0,
+  "command": [
+    "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/torch-cu117-env/bin/python",
+    "-B",
+    "setup.py",
+    "bdist_wheel"
+  ]
+}

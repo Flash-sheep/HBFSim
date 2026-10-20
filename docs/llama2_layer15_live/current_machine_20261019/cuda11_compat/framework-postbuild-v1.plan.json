@@ -1,0 +1,19 @@
+{
+  "scope": "CPU software postprocessing only; no GPU execution or approval generation",
+  "waits_for": "/home/yjl/HBFSim/artifacts/llama2-layer15-full-validation-v1/framework-cpu/build-v1.json",
+  "steps": [
+    "install local wheel into the new prefix",
+    "verify source/CUDA/ABI and original model byte identities",
+    "fixed original-helper CPU forward",
+    "collect real embedded torch PTX",
+    "build remaining isolated HBF/agent artifacts without running them"
+  ],
+  "postprocessing_wall_seconds": 1800,
+  "stop_available_memory_bytes": 68719476736,
+  "stop_free_disk_bytes": 53687091200,
+  "build_jobs": 2,
+  "GPU_tasks": 0,
+  "completion_notification": "NOT_CONFIGURED",
+  "DONE": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/postbuild-v1/DONE",
+  "FAILED": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/postbuild-v1/FAILED"
+}

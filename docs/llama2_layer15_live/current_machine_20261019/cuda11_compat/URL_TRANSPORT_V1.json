@@ -1,0 +1,30 @@
+{
+  "status": "CURRENT_IDENTITY_CHECK",
+  "bookkeeping_failure": "First receipt write raised FileNotFoundError because framework-cpu directory did not exist; command logs preserved. Current HEADs queried independently; no historical exit codes invented.",
+  "rows": [
+    {
+      "path": "third_party/FXdiv",
+      "expected_gitlink": "b408327ac2a15ec3e43352421954f5b1967701d1",
+      "current_HEAD": "b408327ac2a15ec3e43352421954f5b1967701d1",
+      "matches": true,
+      "historic_command_returncode": "NOT_SAVED_DUE_TO_RECEIPT_DIRECTORY_ERROR",
+      "logs": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/official-url-variant-*"
+    },
+    {
+      "path": "third_party/NNPACK",
+      "expected_gitlink": "c07e3a0400713d546e0dea2d5466dd22ea389c73",
+      "current_HEAD": "70a77f485e8b934224f3a79efd8edcd84cd377b8",
+      "matches": false,
+      "historic_command_returncode": "NOT_SAVED_DUE_TO_RECEIPT_DIRECTORY_ERROR",
+      "logs": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/official-url-variant-*"
+    },
+    {
+      "path": "third_party/fbgemm/third_party/hipify_torch",
+      "expected_gitlink": "23f53b025b466d8ec3c45d52290d3442f7fbe6b1",
+      "current_HEAD": "23f53b025b466d8ec3c45d52290d3442f7fbe6b1",
+      "matches": true,
+      "historic_command_returncode": "NOT_SAVED_DUE_TO_RECEIPT_DIRECTORY_ERROR",
+      "logs": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/official-url-variant-*"
+    }
+  ]
+}

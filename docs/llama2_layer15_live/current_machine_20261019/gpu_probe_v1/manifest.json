@@ -1,0 +1,322 @@
+{
+  "schema_version": "eq3-experiment-manifest-v1",
+  "experiment_id": "LLAMA2-SM80-PTX-GPU-PROBE",
+  "version": "1",
+  "approval_status": "PENDING_USER_APPROVAL",
+  "canonical_manifest_hash": "a54ce76c6ee340533c953a407d126f44b257014b61481e27be8ffc797e5c297f",
+  "scientific_config": {
+    "research_question_and_hypothesis": {
+      "question": "Can the sampled original sm80 cuBLAS kernel, version-only PTX adaptation, and synchronous HBF instrumentation execute on this A100 with identical expected output and intact guards?",
+      "hypothesis": "All three variants clear the same 32x64 FP32 engineering fixture; staged helper is explicitly unbound and preserves native addresses.",
+      "assumptions": {
+        "USER_CONFIRMED": "User requests an execution attempt; no version/hash-bound approval exists yet.",
+        "DOC_DERIVED": "Use archived sample and same compiled artifacts; no operator implementation substitution.",
+        "INFERRED": "Use one small three-arm sample fixture before attempting the unavailable full Llama launcher."
+      }
+    },
+    "evidence_type_and_limits": {
+      "type": "GPU_ENGINEERING_FIXTURE",
+      "not_validated": [
+        "Llama layer15",
+        "actual Llama-selected kernel",
+        "HBF modeled requests/delay",
+        "MQSim/fabric throughput",
+        "physical calibration",
+        "performance comparison",
+        "PTX driver JIT",
+        "production gate/bpftime binding"
+      ],
+      "limitations": [
+        "One sample scal kernel, not the full 16-entry module coverage",
+        "Selected entry is ELF LOCAL; actual driver lookup remains to be tested and failure must abort",
+        "Earlier CLI reported 5 ld.param unsupported operations; this probe does not waive them or claim full coverage",
+        "PTX major-version adaptation is tested only on this input"
+      ]
+    },
+    "device_topology": {
+      "gpu_uuid": "GPU-5302a497-ea8c-bb7b-7235-f7464792093e",
+      "device": "NVIDIA A100-PCIE-40GB",
+      "compute_capability": "8.0",
+      "driver": "565.57.01",
+      "gpu_count": 1,
+      "gpu0": "NOT_USED; occupied by another user process",
+      "source": "Read-only nvidia-smi receipts and CUDA device UUID/attributes checked at execution",
+      "selection": "CUDA_VISIBLE_DEVICES exact UUID; advisory file lock plus foreign-process checks; no reservation is claimed before execution",
+      "runtime": "ctypes CUDA Driver API using installed libcuda; no Torch, cuBLAS library, libcudart, bpftime agent or launch gate loaded"
+    },
+    "geometry_materials_boundaries": {
+      "package_geometry": "NOT_USED",
+      "thermal_model": "NOT_USED",
+      "materials": "NOT_USED",
+      "boundary": "One process/context on the selected GPU; existing driver and CUDA library files unchanged"
+    },
+    "workload_and_initial_state": {
+      "kernel": "_Z18scal_64addr_kernelIffLi1ELb1ELi6ELi5ELi5ELi3EEv21cublasTransposeParamsIT0_EPKT_PS3_PKS1_",
+      "grid": [
+        1,
+        1,
+        1
+      ],
+      "block": [
+        256,
+        1,
+        1
+      ],
+      "shared_memory_bytes": 0,
+      "parameter0": {
+        "bytes": 48,
+        "alignment": 4,
+        "uint32_fields": [
+          0,
+          0,
+          64,
+          32,
+          0,
+          64,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "source": "DERIVED from raw ld.param offsets 8/12/20/40 and inspected stores"
+      },
+      "three_pointer_parameters": "All point to allocation+256; selected kernel consumes param2 only",
+      "allocation_bytes": 8704,
+      "data": "2048 FP32 values initialized to 1.0",
+      "guards": "256 bytes 0xa5 on each side",
+      "expected": "2048 zero FP32 values; guards byte-identical",
+      "seed": "NOT_USED; deterministic input",
+      "warmup": 0,
+      "hbf_globals": "__hbfsim_control and __hbfsim_control_generation must both equal zero; no registration, daemon or modeled waits"
+    },
+    "power_reliability_control": {
+      "device_power": "Existing setting recorded from nvidia-smi; unchanged, not an energy model",
+      "reliability": "NOT_USED",
+      "maintenance": "NOT_USED",
+      "control": "HBF unbound passthrough; timing futures disabled",
+      "temperature_policy": {
+        "evidence_class": "SCENARIO_ASSUMPTION",
+        "startup_below_c": 75,
+        "abort_at_or_above_c": 80,
+        "not_a_vendor_specification": true
+      }
+    },
+    "scan_matrix_and_repetitions": {
+      "arms": [
+        {
+          "name": "raw77",
+          "description": "Original PTX7.7 sm80 compiled to cubin"
+        },
+        {
+          "name": "raw87",
+          "description": "Only PTX version line changed to8.7, same sm80 target"
+        },
+        {
+          "name": "staged87",
+          "description": "Same selected entry instrumented with existing helper, output version line8.7, sm80 target"
+        }
+      ],
+      "repetitions_per_arm": 1,
+      "maximum_total_kernel_launches": 3,
+      "execution_attempts": 1,
+      "automatic_gpu_retries": 0,
+      "parameter_scan": false,
+      "cross_device_runs": false
+    },
+    "time_and_numerics": {
+      "simulation_duration": "NOT_USED; actual finite kernel executions",
+      "expected_wall_seconds": "Estimated 1-10s; not measured GPU time",
+      "wall_watchdog_seconds": 60,
+      "termination_grace_seconds": 5,
+      "gpu_compute_budget_minutes": 1,
+      "cpu_threads": "OMP/OpenBLAS/MKL1; no compilation during execution",
+      "host_memory_plan": "2GiB task envelope; worker RSS stop1GiB; parent and monitoring overhead included",
+      "comparison": "Exact output bytes and guard bytes; no numerical tolerance relaxation",
+      "metric_time": "Host launch+sync wall time only, not a CUDA-event performance claim"
+    },
+    "controls_ablations_observations": {
+      "controls": "raw77 vs raw87 isolates the language directive; raw87 vs staged87 isolates this sampled instrumentation in unbound mode",
+      "observations": [
+        "CUresult errors",
+        "driver module/function lookup",
+        "device identity",
+        "output binary and SHA256 per arm",
+        "zero-output and guard checks",
+        "host launch+sync wall time",
+        "process PID and exit status",
+        "resource/watchdog stop reason"
+      ],
+      "safety_monitor": "Parent process checks its child and target GPU at1s intervals; AI does not poll each launch"
+    },
+    "acceptance_abort_and_outputs": {
+      "pass": "All three arms finish once with exact expected output, intact guards and success CUDA status",
+      "abort": [
+        "Any CUDA/API/symbol-lookup/output/guard failure; stop subsequent arms",
+        "Runtime/file hash or Git drift",
+        "Visible GPU not exact UUID/sm80/driver565.57.01",
+        "Foreign target-GPU compute process, nonidle startup or advisory lock busy",
+        "GPU used memory>=1024MiB; worker RSS>1GiB",
+        "Startup temperature>=75C or measured temperature>=80C",
+        "Wall>60s or output>64MiB",
+        "Host available RAM<4GiB or filesystem free<1GiB"
+      ],
+      "scope": "No reset, driver change, environment replacement, deleting raw, push or merge",
+      "output_directory": "/home/yjl/HBFSim/artifacts/llama2-sm80-gpu-probe-v1/execution-v1",
+      "completion_files": [
+        "START.json",
+        "PID.json",
+        "progress.json",
+        "RESULT.json",
+        "FINISH.json",
+        "DONE or FAILED"
+      ],
+      "no_claims_on_failure": "Preserve failure and raw outputs; no threshold relaxation or automatic retry",
+      "exact_command": [
+        "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/env/bin/python",
+        "-B",
+        "/home/yjl/HBFSim/artifacts/llama2-sm80-gpu-probe-v1/probe.py",
+        "--execute",
+        "--approval",
+        "/home/yjl/HBFSim/artifacts/llama2-sm80-gpu-probe-v1/USER_CONFIRMATION.json"
+      ]
+    }
+  },
+  "code": {
+    "repository_revision": "874a20f289b7bd587fa4048a788e12df2618444b",
+    "dirty_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts": [
+      {
+        "logical_id": "probe-launcher",
+        "semantic_role": "Default-CPU isolated driver fixture with approval gate and watchdog",
+        "sha256": "d414880e7209b8f3175f0c5a1b1f9e20f49bf6b50f11ca766ceadc9e70fa53ef",
+        "path": "artifacts/llama2-sm80-gpu-probe-v1/probe.py"
+      },
+      {
+        "logical_id": "approval-gate",
+        "semantic_role": "Existing project approval validator",
+        "sha256": "a49f4bce6bbf36045cbc881945bc5ebbb9a260f1f1d3147a67c0a21254003255",
+        "path": "tools/eq3_experiment_gate.py"
+      },
+      {
+        "logical_id": "transform-source",
+        "semantic_role": "Existing synchronous transformer source",
+        "sha256": "7d3962d4df6ecc9ea2118dfd598194badd1d4719280428dda4302b4c7437c365",
+        "path": "src/ptxpass_hbf/transform.cpp"
+      },
+      {
+        "logical_id": "helper-source",
+        "semantic_role": "Existing device helper source",
+        "sha256": "7b59083009406285a21419dd313abe8cf611948d99f941111f7dfe11224d6b68",
+        "path": "src/cuda_runtime/device/hbf_device.cu"
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "logical_id": "runtime-identity",
+      "semantic_role": "Bound receipt of actual Python and installed driver file hashes; launcher verifies each original file before GPU use",
+      "sha256": "44c7d85876f9d7032998e773d705eeeb3530fe9af222791f207028fe255835fc",
+      "path": "artifacts/llama2-sm80-gpu-probe-v1/evidence/runtime_identity.json"
+    }
+  ],
+  "inputs": [
+    {
+      "logical_id": "raw77.ptx",
+      "semantic_role": "Exact compiled module or PTX provenance",
+      "sha256": "321d1b5f2cdc4adcfb65ee7e6d4763d5724d66701c3886df79a5690128677934",
+      "path": "artifacts/llama2-sm80-gpu-probe-v1/inputs/raw77.ptx"
+    },
+    {
+      "logical_id": "raw77.cubin",
+      "semantic_role": "Exact compiled module or PTX provenance",
+      "sha256": "e3caae3e6536cd45c58de98c16be0ea731f109cc2512c06ede09c34114e3740a",
+      "path": "artifacts/llama2-sm80-gpu-probe-v1/inputs/raw77.cubin"
+    },
+    {
+      "logical_id": "raw87.ptx",
+      "semantic_role": "Exact compiled module or PTX provenance",
+      "sha256": "1d10acba706afb7173c82cac49331bbbcf88975827f963e41e2383201c8f19e8",
+      "path": "artifacts/llama2-sm80-gpu-probe-v1/inputs/raw87.ptx"
+    },
+    {
+      "logical_id": "raw87.cubin",
+      "semantic_role": "Exact compiled module or PTX provenance",
+      "sha256": "e3caae3e6536cd45c58de98c16be0ea731f109cc2512c06ede09c34114e3740a",
+      "path": "artifacts/llama2-sm80-gpu-probe-v1/inputs/raw87.cubin"
+    },
+    {
+      "logical_id": "staged87.ptx",
+      "semantic_role": "Exact compiled module or PTX provenance",
+      "sha256": "aaa5cd5dfca9386b6bab393addb88fddafac882ca1970883c166f57eeb7e22d2",
+      "path": "artifacts/llama2-sm80-gpu-probe-v1/inputs/staged87.ptx"
+    },
+    {
+      "logical_id": "staged87.cubin",
+      "semantic_role": "Exact compiled module or PTX provenance",
+      "sha256": "5f1d9cfd85bfda09eb3cdab0898c837b874917b5783924627215a1de53c70087",
+      "path": "artifacts/llama2-sm80-gpu-probe-v1/inputs/staged87.cubin"
+    }
+  ],
+  "resource_budget": {
+    "requested": {
+      "cpu_configurations": 1,
+      "executions_per_configuration": 1,
+      "cpu_hours": 0.02,
+      "build_threads": 1,
+      "ram_gib": 2,
+      "disk_gib": 0.125,
+      "gpu_compute_minutes": 1
+    },
+    "limits": {
+      "cpu_configurations": 1,
+      "executions_per_configuration": 1,
+      "cpu_hours": 0.02,
+      "build_threads": 1,
+      "ram_gib": 2,
+      "disk_gib": 0.125,
+      "gpu_compute_minutes": 1
+    }
+  },
+  "prerequisites": [
+    {
+      "id": "cpu-parameter-address-check",
+      "status": "PASSED",
+      "evidence": {
+        "logical_id": "cpu-check",
+        "semantic_role": "CPU ABI/address coverage/ELF structure check; not GPU correctness",
+        "sha256": "f868fbee83d116ae405e02c10159f6ebb5a1ffc1cade1387128b739fc5f92d28",
+        "path": "artifacts/llama2-sm80-gpu-probe-v1/evidence/cpu_check.json"
+      }
+    },
+    {
+      "id": "version-copy-compilation",
+      "status": "PASSED",
+      "evidence": {
+        "logical_id": "compile-check",
+        "semantic_role": "Existing raw87/staged87 CPU compilation and immutable-library checks",
+        "sha256": "8d4d679b1938bce12f39d96c8201e781be0efbaf0a9de7639df012e8f243b64d",
+        "path": "artifacts/llama2-sm80-gpu-probe-v1/evidence/version_copy_cpu.json"
+      }
+    },
+    {
+      "id": "approval-boundary-check",
+      "status": "PASSED",
+      "evidence": {
+        "logical_id": "approval-boundary",
+        "semantic_role": "Both GPU entry paths refuse without user confirmation before loading libcuda",
+        "sha256": "9022e73bb2528f127b775d7c303bb6a1d566531be70cc381ab7366f172a43b07",
+        "path": "artifacts/llama2-sm80-gpu-probe-v1/evidence/approval_boundary_check.json"
+      }
+    }
+  ],
+  "execution_context": {
+    "created_at_utc": "2026-10-19T08:39:07.753318+00:00",
+    "gpu_workload_launched": false,
+    "readable_preflight": "/home/yjl/HBFSim/artifacts/llama2-sm80-gpu-probe-v1/PREFLIGHT.md",
+    "root": "/home/yjl/HBFSim",
+    "python": "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/env/bin/python",
+    "no_approval_record_created": true
+  }
+}

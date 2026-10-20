@@ -1,0 +1,24 @@
+{
+  "status": "NATIVE_DISCOVERY_PASS_HBF_NOT_RUN",
+  "output_comparison": "EXACT_FP16_BYTES",
+  "output_sha256": "528e30d35ba48d50b8aa98d8b01f4e3165a5de75522eaaa60f7170e00e6b9aea",
+  "GPU_forward_calls": 1,
+  "native_baseline": "/home/yjl/HBFSim/artifacts/llama2-sm80-native-discovery-v1/execution-v1/native/hidden-output.bin",
+  "native_baseline_reused": true,
+  "HBF_timing_validated": false,
+  "registered_HBF_ranges": 0,
+  "limits": "Kernel/container staging and HBF binding/coverage remain separate unresolved checks",
+  "wall_seconds": 38.29681430198252,
+  "actor_exit_codes": {
+    "3544364": 0,
+    "3544413": 0
+  },
+  "final_snapshot": {
+    "uuid": "GPU-5302a497-ea8c-bb7b-7235-f7464792093e",
+    "name": "NVIDIA A100-PCIE-40GB",
+    "driver": "565.57.01",
+    "memory_mib": 135,
+    "utilization_percent": 0,
+    "temperature_c": 43
+  }
+}

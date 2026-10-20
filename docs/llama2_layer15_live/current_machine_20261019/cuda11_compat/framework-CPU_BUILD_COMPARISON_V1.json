@@ -1,0 +1,12 @@
+{
+  "scope": "old cu121 wheel CPU vs new exact-source cu117 minimal build CPU; not GPU or HBF comparison",
+  "identical_bytes": false,
+  "different_elements": 597,
+  "max_absolute_error": 0.001953125,
+  "mean_absolute_error": 4.1991472244262695e-05,
+  "old_max_abs": 3.564453125,
+  "new_max_abs": 3.564453125,
+  "all_finite": true,
+  "GPU_tasks_started": 0,
+  "interpretation": "Custom CPU optional-backend configuration differs; retain both raw outputs. GPU native baseline must be the new build in the same environment."
+}

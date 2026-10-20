@@ -1,0 +1,37 @@
+{
+  "status": "WAITING_CUDA11_MINIMAL_PLAN_APPROVAL_CPU_BUILD_RUNNING",
+  "CPU_input_identity": "PASS",
+  "CPU_full_layer_forward": "PASS",
+  "GPU_full_layer_launches": 0,
+  "CUDA11_changes_implemented": false,
+  "framework_build": "NOT_STARTED",
+  "agent_build": {
+    "state": "RUNNING",
+    "attempt": 3,
+    "build_directory": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/agent-build-v2",
+    "session_id": 55922,
+    "processes": {
+      "pid": 3235381,
+      "parent": 3235379,
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/build-agent-steps-v3.py"
+      ],
+      "completion_notification": "not configured; poll session after estimated completion"
+    },
+    "DONE": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/AGENT_BUILD_V3_DONE",
+    "FAILED": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/logs/AGENT_BUILD_V3_FAILED",
+    "completion_notification": "NOT_CONFIGURED",
+    "watchdog_seconds": 1200,
+    "approximate_expected_total_wall_s": 344,
+    "CPU_build_steps": [
+      "existing copy_headers target",
+      "existing bpftime-agent target"
+    ],
+    "source_changes": "existing 0002 patch only"
+  },
+  "required_user_decision": "MINIMAL_CUDART11_PLAN.md: approve default-off isolated CUDA11 compatibility implementation + fixed CPU tests; not GPU authorization",
+  "request_source": "AGENTS.md:65-72; explicit confirmation before runtime/PTX/module responsibility refactoring",
+  "old_sample_approval": "complete and exhausted"
+}

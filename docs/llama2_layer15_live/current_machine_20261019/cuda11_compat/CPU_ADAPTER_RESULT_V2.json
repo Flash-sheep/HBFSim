@@ -1,0 +1,17 @@
+{
+  "status": "CPU_VALIDATION_PASS_GPU_NOT_RUN",
+  "approval_scope": "isolated CUDA11 compatibility implementation and fixed CPU verification",
+  "base_result": "CPU_ADAPTER_RESULT_V1.json",
+  "provider_result": "PROVIDER_FIX_V2.json",
+  "patch_replay": "PATCH_REPLAY_PROVIDER_V2.json",
+  "new_regression": "cold agent construction before application dlopen of CUDA11; actual pre-fix failure retained",
+  "default_off_exports": "unchanged from pinned baseline",
+  "public_HBF_headers_device_helper": "unchanged",
+  "GPU_tasks_started": 0,
+  "not_validated": [
+    "positive real PTX binding",
+    "GPU numerical equivalence",
+    "nine-weight dynamic HBF coverage",
+    "complete layer Timing"
+  ]
+}

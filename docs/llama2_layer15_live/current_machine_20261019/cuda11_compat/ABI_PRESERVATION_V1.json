@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "scope": "CPU source/ELF identity checks",
+  "agent_default_off_export_set_matches_original_baseline": true,
+  "agent_default_off_exports_CUDA11_registration": false,
+  "agent_enabled_exports_CUDA11_registration": true,
+  "unchanged_public_header_count": 37,
+  "unchanged_device_helper": true,
+  "GPU_tasks_started": 0
+}

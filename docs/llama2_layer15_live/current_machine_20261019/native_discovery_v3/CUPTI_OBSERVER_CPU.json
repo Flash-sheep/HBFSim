@@ -1,0 +1,56 @@
+{
+  "status": "CPU_BUILD_AND_MOCK_CALLBACK_PASS",
+  "GPU_tasks_started": 0,
+  "observer": {
+    "path": "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cupti-observer-v2/libllama2_cupti_observer.so",
+    "sha256": "c4280f508f90571ba10bbac59fe831046b7b07a5d39fef23c7b05c3662dc7521"
+  },
+  "source": {
+    "path": "/home/yjl/HBFSim/experiments/llama2_sm80_cuda11/cupti_observer.cpp",
+    "sha256": "c23287868ec543fa637e4f669ccc36ffd4f9ac3a2eb1970eccf85733815305b4"
+  },
+  "command": [
+    "/usr/bin/g++-11",
+    "-shared",
+    "-fPIC",
+    "-O2",
+    "-std=c++17",
+    "-I/usr/local/cuda-11.7/extras/CUPTI/include",
+    "-I/usr/local/cuda-11.7/include",
+    "/home/yjl/HBFSim/experiments/llama2_sm80_cuda11/cupti_observer.cpp",
+    "-L/usr/local/cuda-11.7/extras/CUPTI/lib64",
+    "-lcupti",
+    "-ldl",
+    "-pthread",
+    "-Wl,-rpath,/usr/local/cuda-11.7/extras/CUPTI/lib64",
+    "-o",
+    "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/cupti-observer-v2/libllama2_cupti_observer.so"
+  ],
+  "headers": [
+    {
+      "path": "/usr/local/cuda-11.7/extras/CUPTI/include/cupti_callbacks.h",
+      "sha256": "67fa011168e34e515c00702b00e14028354f2478917fd051eceb61f0bebcc3ee"
+    },
+    {
+      "path": "/usr/local/cuda-11.7/extras/CUPTI/include/generated_cuda_meta.h",
+      "sha256": "c7ec427d224dbf001d42bba76cc53ad391e5926b99473288210da6076208e7be"
+    },
+    {
+      "path": "/usr/local/cuda-11.7/extras/CUPTI/include/cupti_driver_cbid.h",
+      "sha256": "9e40ac34fd8104a5843be6c8beb9bc33e40b0d8167d7dc8df67875ad305781d9"
+    }
+  ],
+  "real_CUPTI": {
+    "path": "/usr/local/cuda-11.7/extras/CUPTI/lib64/libcupti.so.11.7",
+    "sha256": "d23892b9f83727174a11b942375a7a17941198bd3b40b0da0f29e2a24abfe069"
+  },
+  "fixture": {
+    "status": "PASS",
+    "callbacks": 6,
+    "recorded": 6,
+    "write_errors": 0,
+    "CUDA_driver_mapped": false,
+    "GPU_tasks_started": 0
+  },
+  "limits": "Callback ABI fixtures only. No actual CUPTI initialization, GPU callback visibility or compatibility claim."
+}

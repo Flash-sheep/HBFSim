@@ -1,0 +1,12 @@
+{
+  "status": "USER_CONFIRMED",
+  "scope": "MINIMAL_CUDART11_PLAN.md as presented; isolated default-off compatibility implementation and fixed CPU validation only",
+  "plan_sha256": "7ceb358d6e3e64a0642a630fb3efb55363d16c850ae593f8d4b61228e6d2df99",
+  "user_verbatim": "\u6279\u51c6",
+  "not_authorized": [
+    "GPU launch",
+    "driver/global changes",
+    "push/merge"
+  ],
+  "recorded_at_utc": "2026-10-19T11:28:17.493818+00:00"
+}

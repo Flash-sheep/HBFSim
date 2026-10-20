@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "returncode": 0,
+  "command": [
+    "/var/tmp/hbfsim-yjl/llama2-layer15-env-20261019-v1/build-tools/cmake/data/bin/cmake",
+    "-P",
+    "/var/tmp/hbfsim-yjl/llama2-layer15-full-v1/check-torch-arch.cmake"
+  ],
+  "stdout": "-- EXACT_FLAGS=-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_80,code=compute_80\n",
+  "stderr": "",
+  "scope": "Fixed CPU configuration helper test only; framework compilation and actual embedded PTX not validated",
+  "torch_git": "e4ee3be4063b7c430974252fdf7db42273388d86",
+  "input_architecture": "8.0+PTX",
+  "input_cuda_version": "11.7",
+  "GPU_tasks_started": 0
+}
