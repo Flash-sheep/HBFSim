@@ -1,0 +1,68 @@
+from pathlib import Path
+import importlib.util,json,hashlib,traceback
+O=Path(__file__).resolve().parent
+spec=importlib.util.spec_from_file_location('stage',O/'gpu_stage.py');m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+results=[]
+def jsonl(p):return [json.loads(x) for x in p.read_text().splitlines() if x.strip()]
+try:
+    for c in m.CASES:
+        m.run(c)
+        label,mode,registration,profile,kind=c;d=m.OUT/'runs'/label
+        evidence={'case':label,'status':'PASS','real_h800':True,'kind':kind}
+        if kind=='capacity':
+            evidence['validation']='Existing live test checks unchanged; only missing profile fields filled'
+        else:
+            report=json.loads((d/'result.json').read_text())
+            assert report['checksum']==report['baseline_checksum']
+            evidence.update(checksum=report['checksum'],wall_ns=report['wall_ns'],requests=report['requests'],modeled_ns_fast=report['timing']['modeled_ns'])
+            if kind!='repo':
+                data=(d/'result.json.data.bin').read_bytes();assert len(data)==65536
+                base=m.OUT/'runs/baseline/result.json.data.bin'
+                assert data==base.read_bytes()
+                evidence['full_data_sha256']=hashlib.sha256(data).hexdigest()
+                evidence['gpu_event_ms']=float((d/'result.json.gpu-event-ms.txt').read_text())
+            if kind=='sanitizer':
+                assert 'ERROR SUMMARY: 0 errors' in (d/'stdout.log').read_text()+(d/'stderr.log').read_text()
+                evidence['memcheck_errors']=0
+            if mode!='baseline':
+                manifests=jsonl(d/'pass-manifests.jsonl');coverage=jsonl(d/'coverage.jsonl')
+                wanted=[x for x in manifests if x.get('kernel')=='hbf_access_kernel']
+                assert wanted and all(x.get('ptx_target')=='sm_90' and x.get('rewritten_instructions',0)>0 and x.get('unsupported_instructions')==0 for x in wanted)
+                admitted=[x for x in coverage if x.get('kernel')=='hbf_access_kernel']
+                assert admitted and all(x.get('allowed') and not x.get('opaque_unmodeled') for x in admitted)
+                evidence['coverage_decisions']=admitted
+                evidence['manifest_module_ids']=sorted({x['module_id'] for x in wanted})
+                if kind=='fixture':
+                    binding=json.loads((d/'result.json.binding.json').read_text());assert binding['status']==0
+                    access=json.loads((d/'result.json.access.json').read_text())
+                    assert access['status']=='COMPLETE' and access['module_count']>0 and access['disable_complete']
+                    a=access['aggregate'];assert a['supported_accesses']>0 and a['native_out_of_range_accesses']>0
+                    for key in ['failed_after_issue_accesses','unsupported_preissue_accesses','failed_preissue_accesses','translation_failed_accesses','unclassified_accesses','counter_overflow']:assert a[key]==0,(label,key,a[key])
+                    assert a['supported_accesses']==a['in_range_accesses']+a['native_out_of_range_accesses']
+                    assert a['modeled_admitted_accesses']==a['service_completed_accesses']
+                    if registration=='none':
+                        assert a['in_range_accesses']==a['modeled_admitted_accesses']==a['service_requests']==0
+                        assert all(v==0 for v in report['requests'].values()) and report['timing']['modeled_ns']==0
+                    else:
+                        assert a['modeled_admitted_accesses']>0 and a['service_requests']>0
+                        if mode=='fast':assert report['requests']['fast']>0 and report['timing']['modeled_ns']>0 and report['requests']['reference']==0
+                        else:
+                            assert report['requests']['reference']>0 and report['requests']['submitted']==report['requests']['completed']
+                            events=jsonl(d/'mqsim-events.jsonl');completed=[e for e in events if e['kind']==2]
+                            assert completed and all(e['modeled_completion_ns']>e['arrival_ns'] for e in completed)
+                            evidence['reference_modeled_work_ns']=sum(e['modeled_completion_ns']-e['arrival_ns'] for e in completed)
+                            evidence['reference_observed_completions']=len(completed)
+                    evidence['access_counters']=a
+        m.save(d/'VALIDATED.json',evidence);results.append(evidence)
+    indexed={x['case']:x for x in results}
+    for mode in ['fast','reference']:
+        full=indexed[mode+'-full-small']['access_counters'];part=indexed[mode+'-partial-small']['access_counters'];none=indexed[mode+'-none-small']['access_counters']
+        assert 0<part['modeled_admitted_accesses']<full['modeled_admitted_accesses']
+        assert full['native_out_of_range_accesses']<part['native_out_of_range_accesses']<none['native_out_of_range_accesses']
+    assert indexed['fast-full-large']['modeled_ns_fast']>indexed['fast-full-small']['modeled_ns_fast']
+    assert indexed['reference-full-large']['reference_modeled_work_ns']>indexed['reference-full-small']['reference_modeled_work_ns']
+    m.save(m.OUT/'VALIDATED-SUMMARY.json',{'status':'PASS','cases':results,'gpu_cases_passed':len(results),'wall_time_linearity_not_assumed':True})
+    print('All native v2 GPU cases validated',len(results),flush=True)
+except BaseException as error:
+    m.save(m.OUT/'BATCH-FAILED.json',{'status':'FAIL','completed_validations':results,'error':str(error),'traceback':traceback.format_exc()})
+    raise

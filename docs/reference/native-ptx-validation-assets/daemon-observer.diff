@@ -1,0 +1,51 @@
+--- /home/data/yjl/HBFSim/src/host_service/main.cpp
++++ /home/data/yjl/HBFSim/artifacts/h800-gpu-baseline-v1/hbfsimd_observed.cpp
+@@ -20,6 +20,7 @@
+ #include <chrono>
+ #include <cstdint>
+ #include <cstdlib>
++#include <cstdio>
+ #include <deque>
+ #include <filesystem>
+ #include <fcntl.h>
+@@ -138,6 +139,11 @@
+     try {
+         const auto arguments = parse_arguments(argc, argv);
+         const auto profile = hbfsim::load_profile(arguments.profile);
++        std::unique_ptr<std::FILE, decltype(&std::fclose)> media_log(nullptr, std::fclose);
++        if (const auto* path=std::getenv("HBFSIM_SOFTWARE_CHECK_MQSIM_TRACE")) {
++            media_log.reset(std::fopen(path,"wx"));
++            if (!media_log) throw std::runtime_error("cannot create exclusive MQSim observation log");
++        }
+         if (!std::filesystem::is_directory(arguments.report_dir)) {
+             throw std::runtime_error("report directory does not exist");
+         }
+@@ -219,6 +225,7 @@
+             }
+ #if defined(HBFSIM_ENABLE_MQSIM_RUNTIME)
+         engine = std::make_unique<hbfsim::MqsimOnlineEngine>(profile);
++        if (media_log) engine->enable_observations();
+         hbfsim::host_service::atomic_store(
+             control.header()->reserved0,
+             hbfsim::host_service::kControlCapabilityCapacityMedia,
+@@ -240,8 +247,18 @@
+                                  engine->current_time_ns());
+                              engine->submit(scheduled);
+                          },
+-                         .run_next_completion = [&engine] {
+-                             return engine->run_next_completion();
++                         .run_next_completion = [&engine, &media_log] {
++                             auto completion = engine->run_next_completion();
++                             if (media_log) {
++                                 for (const auto& e : engine->take_observations()) {
++                                     if (std::fprintf(media_log.get(), "{\"kind\":%d,\"request_id\":%llu,\"arrival_ns\":%llu,\"time_ns\":%llu,\"modeled_completion_ns\":%llu,\"bytes\":%u,\"outstanding\":%zu}\n",
++                                         static_cast<int>(e.kind), static_cast<unsigned long long>(e.request_id),
++                                         static_cast<unsigned long long>(e.arrival_ns), static_cast<unsigned long long>(e.time_ns),
++                                         static_cast<unsigned long long>(e.modeled_completion_ns), e.bytes, e.device_outstanding)<0)
++                                         throw std::runtime_error("MQSim observation write failed");
++                                 }
++                             }
++                             return completion;
+                          },
+             });
+ #else

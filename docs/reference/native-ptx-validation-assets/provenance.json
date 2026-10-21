@@ -1,0 +1,79 @@
+{
+  "source_commit": "58cb0d7674720c1ba5990da0e8d1455caa5155a5",
+  "purpose": "Text-only continuation attachments; source copies unchanged; example harness requires porting before use",
+  "public_abi_modified": false,
+  "files": [
+    {
+      "path": "sha256_namespace_compat.cpp",
+      "copied_from": "artifacts/h800-gpu-baseline-v1/sha256_namespace_compat.cpp",
+      "sha256": "ae4042f9a9ea81112b47b1e6afca69c9dd0508545b18facc56f491b336fcf8e4"
+    },
+    {
+      "path": "range_microbench.cpp",
+      "copied_from": "artifacts/h800-gpu-baseline-v1/range_microbench.cpp",
+      "sha256": "90522f6ff29e0f5ca2ae040a3ba14c142404f4fae3cec1c307781822886c4633"
+    },
+    {
+      "path": "hbfsimd_observed.cpp",
+      "copied_from": "artifacts/h800-gpu-baseline-v1/hbfsimd_observed.cpp",
+      "sha256": "26051cdedca5a6686a8eb5d1081317f9a33985791affef665bf121cab4b7c61c"
+    },
+    {
+      "path": "compat/boost/process/v1.hpp",
+      "copied_from": "artifacts/h800-gpu-baseline-v1/compat/boost/process/v1.hpp",
+      "sha256": "448798baf7c183628f625f22603841f1ba6b88d4d612d7e8231e7d6e55a424aa"
+    },
+    {
+      "path": "profiles/small.json",
+      "copied_from": "artifacts/h800-gpu-baseline-v1/profiles/small.json",
+      "sha256": "6efa1113c967d9007377591b85bdd27d15a82353126ef30ef6fecdd4218d06c5"
+    },
+    {
+      "path": "profiles/large.json",
+      "copied_from": "artifacts/h800-gpu-baseline-v1/profiles/large.json",
+      "sha256": "273ed3736185364edeae93b309ac989dd0d3a4f288c568c300f2a2964515eb15"
+    },
+    {
+      "path": "agent-trampoline-version.diff",
+      "copied_from": "artifacts/h800-gpu-baseline-v1/agent-trampoline-version.diff",
+      "sha256": "0547ac7aa5757a574a04dbf73c5119c0504497822c857b3ccb80fa5fedbff7f3"
+    },
+    {
+      "path": "range-microbench.diff",
+      "copied_from": "artifacts/h800-gpu-baseline-v1/fixture-final.diff",
+      "sha256": "81191a6eefca65e5b29cc44bdab6a7828f53232e3ed06cc838a936baf8f267db"
+    },
+    {
+      "path": "daemon-observer.diff",
+      "copied_from": "artifacts/h800-gpu-baseline-v1/daemon-observer.diff",
+      "sha256": "ecd578b585e6dea9b5431ee6c30b8e9fe8c02f8d8a25d22add95f3aad5aea74e"
+    },
+    {
+      "path": "dlmopen_probe.cpp",
+      "copied_from": "artifacts/h800-gpu-baseline-v1/dlmopen_probe.cpp",
+      "sha256": "1fadb1f4958ceaff38bdc4ec55d1647993c59f59f39ccba5dc684828f6ad5c3d"
+    },
+    {
+      "path": "sha_probe.cpp",
+      "copied_from": "artifacts/h800-gpu-baseline-v1/sha_probe.cpp",
+      "sha256": "361ea445a389133cc0dbec70e77dbf2c3d38ba0052d09d598147ceeef8c78c71"
+    },
+    {
+      "path": "gpu_stage.py.example",
+      "copied_from": "artifacts/h800-gpu-baseline-v2/gpu_stage.py",
+      "sha256": "27a63f21ec932ac32f264fea0790019ad18c94c4a5bfdd64d1e2b2323740b904"
+    },
+    {
+      "path": "run_batch.py.example",
+      "copied_from": "artifacts/h800-gpu-baseline-v2/run_batch.py",
+      "sha256": "7841a0b11ab8461ffee66ed65aa3fb7f4de25bf5430c2723bb345e33336b72d2"
+    }
+  ],
+  "documentation_additions": [
+    {
+      "path": "agent-ptx87.cmake",
+      "purpose": "Portable opt-in hook with isolated-source path and original/fixed identity guards; optional audited Frida cache",
+      "sha256": "8952bcb010f1439a43c8ecb9846ab58922684d62e966875d52cdf98e5d395f33"
+    }
+  ]
+}

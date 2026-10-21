@@ -1,0 +1,134 @@
+"""User-authorized bounded H800 software validation, native PTX only."""
+from pathlib import Path
+import argparse, datetime, hashlib, json, os, shutil, signal, subprocess, time, resource
+resource.setrlimit(resource.RLIMIT_CORE,(0,0))
+import psutil
+
+BASE=Path(__file__).resolve().parent
+OUT=BASE/'attempt-01'
+ROOT=BASE.parents[1]
+BUILD=BASE.parent/'h800-gpu-baseline-v1/build-view-native-v3'
+AGENT=BASE.parent/'h800-gpu-baseline-v1/build-bpftime-ptx87'
+UUID='GPU-ff8c56c2-bc5c-d7af-692e-8deb9ffa0588'
+CASES=[
+    ('repo-baseline','baseline','full','small','repo'),
+    ('baseline','baseline','none','small','fixture'),
+    ('fast-none-small','fast','none','small','fixture'),
+    ('fast-full-small','fast','full','small','fixture'),
+    ('fast-partial-small','fast','partial','small','fixture'),
+    ('fast-full-large','fast','full','large','fixture'),
+    ('repo-fast','fast','full','small','repo'),
+    ('reference-none-small','reference','none','small','fixture'),
+    ('reference-full-small','reference','full','small','fixture'),
+    ('reference-partial-small','reference','partial','small','fixture'),
+    ('reference-full-large','reference','full','large','fixture'),
+    ('capacity-live','','','','capacity'),
+    ('sanitizer-baseline','baseline','none','small','sanitizer'),
+]
+
+def save(path,obj):
+    with path.open('x') as f:json.dump(obj,f,indent=2);f.write('\n')
+
+def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+
+def case_command(case,directory):
+    label,mode,registration,profile,kind=case
+    if kind=='capacity':return [str(BUILD/'tests/gpu/capacity_runtime_live_test')]
+    binary=BUILD/'benchmarks/cuda/hbf_microbench' if kind=='repo' else OUT/'range_microbench'
+    cmd=[str(binary),'--pattern','mixed_rw','--mode',mode,'--bytes','65536','--iterations','16','--seed','1','--profile',str(OUT/'profiles'/(profile+'.json')),'--report-dir',str(directory/'report'),'--output',str(directory/'result.json')]
+    if kind!='repo':cmd+=['--registration',registration]
+    if kind=='sanitizer':cmd=['/usr/local/cuda-12.8/bin/compute-sanitizer','--tool','memcheck','--error-exitcode','99',*cmd]
+    if mode!='baseline':cmd=['bash',str(ROOT/'scripts/run_with_bpftime.sh'),'--',*cmd]
+    return cmd
+
+def prepare():
+    artifacts=[OUT/'range_microbench',OUT/'range_microbench.cpp',OUT/'hbfsimd_observed',OUT/'hbfsimd_observed.cpp',Path(__file__),BUILD/'libhbfsim_launch_gate.so',BUILD/'libptxpass_hbf.so',BUILD/'hbfsimd',BUILD/'benchmarks/cuda/hbf_microbench',BUILD/'benchmarks/cuda/hbf_microbench_kernel.ptx',BUILD/'microbench_probe.bpf.o',BUILD/'tests/gpu/capacity_runtime_live_test',AGENT/'runtime/agent/libbpftime-agent.so',AGENT/'runtime/syscall-server/libbpftime-syscall-server.so',AGENT/'hbfsim-bpftime.provenance',ROOT/'scripts/run_with_bpftime.sh',OUT/'profiles/small.json',OUT/'profiles/large.json']
+    manifest={'experiment_id':'H800-NATIVE-PTX-BASIC-SOFTWARE-v2-attempt01','version':2,
+      'authorization':{'status':'USER_AUTHORIZED_TASK_SCOPE','source':'Latest explicit user H800 basic GPU reproduction task','quotes':['本任务允许执行 H800 GPU 微基准','请自主完成环境检查、构建、最小必要修复、GPU 测试及结果记录'],'exact_manifest_hash_user_signature':'NOT_CLAIMED; this is an agent-derived bounded execution plan under the explicit stage authorization, not a formal paper experiment'},
+      'question':'Does the existing native SM90 PTX path execute transformed code and model only registered memory with unchanged results?',
+      'evidence':'Real GPU output, exact PTX binding, live GPU access counters, original coverage gate, fast device stats and actual MQSim observer events',
+      'git_head':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
+      'device':{'uuid':UUID,'name':'NVIDIA H800 PCIe','compute_capability':'9.0','driver':'580.82.07'},
+      'parameters':{'evidence_identity':'SCENARIO_ASSUMPTION functional profiles, not measured HBF physics','logical_data_bytes':65536,'iterations':16,'seed':1,'grid':[1,1,1],'block':[1,1,1],'registered_bytes':{'none':0,'partial':32768,'full':65536},'read_program_latency_ns':[1000,100000],'page_bytes':16384,'time_scale':1,'model_capacity_bytes':16*1024**3,'hbm_cache_bytes':64*1024**2,'futures':False,'sass_lifter':False},
+      'cases':[{'id':c[0],'command':case_command(c,OUT/'runs'/c[0]),'repetitions':1} for c in CASES],
+      'resource_plan':{'serial_gpu_cases':True,'expected_total_gpu_active_seconds':10,'expected_total_wall_seconds':180,'case_wall_timeout_seconds':90,'device_request_timeout_seconds':5,'max_gpu_memory_total_mib':4096,'gpu_start_temperature_max_c':70,'gpu_stop_temperature_c':80,'require_no_other_compute_apps':True,'startup_gpu_memory_max_mib':512,'host_aggregate_rss_stop_gib':8,'host_available_reserve_gib':32,'root_disk_reserve_gib':5,'nfs_disk_reserve_gib':20,'case_output_stop_mib':128},
+      'success':['All GPU outputs match CPU reference and baseline data bytes','Known PTX variant binding succeeds','Access snapshot COMPLETE and nonzero module count','Full/partial registrations produce modeled completed accesses and nonzero latency','None registration produces zero modeled requests and native accesses','Coverage gate unchanged; no unsafe or opaque positive case admission'],
+      'stop':['Device busy or thermal gate failure before launch','CUDA error, deadlock, timeout, resource reserve violation','Positive-path output or coverage mismatch stops dependent cases for diagnosis'],
+      'limits':['Issue-point waiting only','Small deterministic one-lane correctness fixture, not throughput or full Hopper memory-model calibration','Zero injection uses baseline/no registration; base profile forbids zero read/program latency','Reference observer logging perturbs host wall time; no exact simulator-overhead claim','CPU regression failures retained independently','Agent uses isolated trampoline version8.7 only; SHA compatibility changes no digest or PTX bytes; live VMM fixture fills eight previously missing required input fields'],
+      'artifacts':[{'path':str(p),'sha256':sha(p)} for p in artifacts]}
+    encoded=json.dumps(manifest,sort_keys=True,separators=(',',':')).encode()
+    manifest['canonical_content_sha256']=hashlib.sha256(encoded).hexdigest()
+    save(OUT/'gpu-manifest.json',manifest)
+    (OUT/'PREFLIGHT.md').write_text('# H800 native PTX bounded software validation v2 attempt01\n\n'+
+      '用户已明确授权本阶段 H800 小规模微基准。本文件记录代理在授权范围内选择的执行细节，不声称用户签署了此新 hash，也不复用旧 Llama2 待确认实验。\n\n'+
+      '原生 SM90 PTX，futures OFF，SASS OFF；单线程、64KiB、16次循环、seed1。串行执行原版 baseline/fast、none/full/partial 注册对照、1000/100000ns 的 fast/reference profile，以及小型 VMM 和 baseline memcheck。每点一次，非性能矩阵。\n\n'+
+      '证据：实际 GPU 数据与 CPU oracle/原生 baseline 一致；exact binder；GPU access accounting v2；原 coverage gate；fast modeled_ns；reference 的既有 MQSim observation。所有 profile 为软件情景参数，非实物 HBF 标定。\n\n'+
+      '设备 H800 PCIe / SM90 / '+UUID+'，驱动580.82.07。启动条件：无其它计算进程、利用率<=10%、显存<=512MiB、温度<=70°C；停止条件：温度>80°C、显存>4096MiB、RSS>8GiB、主机可用内存<32GiB、根盘<5GiB/NFS<20GiB、每点输出>128MiB或90s超时。仅终止本任务进程组。\n\n'+
+      '预计整个短检查墙时约180s、GPU活跃总计<10s；异常请求本地deadline5s。issue-point waiting，不声称 dependency-point 隐藏；不要求 wall time 随模型延迟线性变化。零注入为 baseline/no-registration 对照，不绕过 profile 的非零验证。\n\n'+
+      '完整命令、工件哈希、对照、观测和限制见 gpu-manifest.json。范围外的 LLM、SASS 修复、生产 ABI/调度重构均不执行。\n\n'+
+      '内容哈希：`'+manifest['canonical_content_sha256']+'`\n')
+    print('Prepared',manifest['canonical_content_sha256'])
+
+def gpu_state():
+    cmd=['nvidia-smi','--query-gpu=uuid,temperature.gpu,memory.used,utilization.gpu','--format=csv,noheader,nounits']
+    row=subprocess.check_output(cmd,text=True,timeout=10).strip().split(',')
+    uuid,temp,mem,util=[x.strip() for x in row]
+    apps=subprocess.check_output(['nvidia-smi','--query-compute-apps=pid','--format=csv,noheader,nounits'],text=True,timeout=10).strip()
+    return {'uuid':uuid,'temperature_c':int(temp),'memory_used_mib':int(mem),'utilization_percent':int(util),'compute_pids':[int(x) for x in apps.splitlines() if x.strip().isdigit()]}
+
+def run(case):
+    directory=OUT/'runs'/case[0];directory.mkdir(parents=True)
+    for name in ['report','tmp','cuda-cache']:(directory/name).mkdir()
+    manifest=json.loads((OUT/'gpu-manifest.json').read_text())
+    for a in manifest['artifacts']:assert sha(Path(a['path']))==a['sha256'],a['path']
+    state=gpu_state()
+    save(directory/'gpu-before.json',state)
+    if state['uuid']!=UUID or state['compute_pids'] or state['temperature_c']>70 or state['memory_used_mib']>512 or state['utilization_percent']>10:
+        save(directory/'NOT_RUN.json',{'reason':'GPU_START_GATE','state':state});raise RuntimeError('GPU start gate failed')
+    env={k:v for k,v in os.environ.items() if not k.startswith(('HBFSIM_','BPFTIME_')) and k!='LD_PRELOAD'}
+    env.update(SPDLOG_LEVEL='debug',PATH='/usr/lib/llvm-15/bin:/home/yjl/hbfsim-original-env-py311/bin:/usr/local/cuda-12.8/bin:'+env['PATH'],CUDA_VISIBLE_DEVICES=UUID,CUDA_CACHE_PATH=str(directory/'cuda-cache'),CUDA_CACHE_MAXSIZE=str(64*1024**2),TMPDIR=str(directory/'tmp'),OMP_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',MKL_NUM_THREADS='1',LD_LIBRARY_PATH='/usr/local/cuda-12.8/targets/x86_64-linux/lib',HBFSIM_BUILD_DIR=str(BUILD),HBFSIM_BPFTIME_BUILD_DIR=str(AGENT),HBFSIM_BPFTIME_PROBE=str(BUILD/'microbench_probe.bpf.o'),HBFSIM_CUDA_ROOT='/usr/local/cuda-12.8',HBFSIM_DAEMON_PATH=str(OUT/'hbfsimd_observed'),HBFSIM_SOFTWARE_CHECK_MQSIM_TRACE=str(directory/'mqsim-events.jsonl'),HBFSIM_INSTRUMENTATION_POLICY='strict',HBFSIM_COVERAGE_PATH=str(directory/'coverage.jsonl'),HBFSIM_PASS_MANIFEST_PATH=str(directory/'pass-manifests.jsonl'),BPFTIME_GLOBAL_SHM_NAME='hbfsim_h800_'+case[0].replace('-','_')+'_'+str(os.getpid()),BPFTIME_LOG_OUTPUT=str(directory/'bpftime.log'),BPFTIME_CUDA_ROOT='/usr/local/cuda-12.8',BPFTIME_SM_ARCH='sm_90',BPFTIME_CUDA_LATE_PTX_DIR=str(OUT/'native-ptx'))
+    cmd=case_command(case,directory)
+    save(directory/'metadata.json',{'case':case,'command':cmd,'manifest_content_sha256':manifest['canonical_content_sha256'],'environment':{k:v for k,v in env.items() if k.startswith(('HBFSIM_','BPFTIME_','CUDA_')) or k in ['LD_LIBRARY_PATH','TMPDIR','SPDLOG_LEVEL']},'started_utc':datetime.datetime.now(datetime.timezone.utc).isoformat()})
+    start=time.monotonic();reason=None;peak=0
+    with (directory/'stdout.log').open('x') as stdout,(directory/'stderr.log').open('x') as stderr,(directory/'telemetry.jsonl').open('x') as telemetry:
+        p=subprocess.Popen(cmd,cwd=ROOT,env=env,stdout=stdout,stderr=stderr,start_new_session=True)
+        save(directory/'RUNNING.json',{'pid':p.pid,'process_group':p.pid})
+        while p.poll() is None:
+            time.sleep(1)
+            s=gpu_state();telemetry.write(json.dumps(s)+'\n');telemetry.flush()
+            try:
+                family=[psutil.Process(p.pid),*psutil.Process(p.pid).children(recursive=True)]
+                rss=sum(x.memory_info().rss for x in family if x.is_running())
+            except psutil.NoSuchProcess:rss=0
+            peak=max(peak,rss)
+            if time.monotonic()-start>90:reason='TIMEOUT'
+            elif s['temperature_c']>80 or s['memory_used_mib']>4096:reason='GPU_RESOURCE_STOP'
+            elif rss>8*1024**3 or psutil.virtual_memory().available<32*1024**3:reason='HOST_MEMORY_STOP'
+            elif shutil.disk_usage('/home/yjl').free<5*1024**3 or shutil.disk_usage(OUT).free<20*1024**3:reason='DISK_RESERVE'
+            elif sum(f.stat().st_size for f in directory.rglob('*') if f.is_file())>128*1024**2:reason='CASE_OUTPUT_BUDGET'
+            if reason and p.poll() is None:
+                os.killpg(p.pid,signal.SIGTERM)
+                try:p.wait(timeout=5)
+                except subprocess.TimeoutExpired:os.killpg(p.pid,signal.SIGKILL)
+                break
+        rc=p.wait()
+    capture=directory/'ptx-dumps';capture.mkdir()
+    import re
+    logfile=directory/'bpftime.log'
+    if logfile.exists():
+        paths=re.findall(r'Writing patched PTX to (/tmp/bpftime-fatbin-work\.[A-Za-z0-9]+)',logfile.read_text(errors='replace'))
+        for index,path in enumerate(dict.fromkeys(paths)):
+            source=Path(path)
+            if source.is_dir():shutil.copytree(source,capture/str(index))
+    receipt={'returncode':rc,'stop_reason':reason,'wall_seconds':time.monotonic()-start,'peak_rss_bytes':peak,'gpu_execution':'REAL_H800_ATTEMPTED','case':case[0]}
+    save(directory/'exit.json',receipt)
+    if rc or reason:save(directory/'FAILED.json',receipt);raise RuntimeError('GPU case failed: '+case[0])
+    # Preserve raw outputs; detailed evidence validation is performed separately.
+    save(directory/'PROCESS_DONE.json',receipt)
+    print(case[0],rc,flush=True)
+
+if __name__=='__main__':
+    ap=argparse.ArgumentParser();ap.add_argument('--prepare-only',action='store_true');ap.add_argument('--case',choices=[c[0] for c in CASES]);args=ap.parse_args()
+    if args.prepare_only:prepare()
+    elif args.case:run(next(c for c in CASES if c[0]==args.case))
+    else:raise SystemExit('Select a prepared case explicitly')

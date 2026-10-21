@@ -1,0 +1,30 @@
+# Opt-in build-copy hook; never edits the pinned third_party/bpftime tree.
+if(NOT CMAKE_CURRENT_SOURCE_DIR MATCHES "/_deps/bpftime-hbfsim-src$")
+    message(FATAL_ERROR "This hook is restricted to the isolated bpftime source copy")
+endif()
+
+# Optional cache only. The existing Frida build retains its checksum validation.
+if(DEFINED ENV{HBFSIM_FRIDA_CACHE} AND NOT "$ENV{HBFSIM_FRIDA_CACHE}" STREQUAL "")
+    foreach(kind core gum)
+        set(archive "frida-${kind}-devkit-16.1.2-linux-x86_64.tar.xz")
+        if(NOT EXISTS "$ENV{HBFSIM_FRIDA_CACHE}/${archive}")
+            message(FATAL_ERROR "Missing cached Frida archive: ${archive}")
+        endif()
+        file(COPY "$ENV{HBFSIM_FRIDA_CACHE}/${archive}"
+             DESTINATION "${CMAKE_CURRENT_SOURCE_DIR}/third_party/frida")
+    endforeach()
+endif()
+
+set(trampoline "${CMAKE_CURRENT_SOURCE_DIR}/attach/nv_attach_impl/trampoline_ptx.h")
+file(SHA256 "${trampoline}" observed)
+if(observed STREQUAL "53de6c8109ee08321be59cfc388de6c802d69612cda6cea7e36d81822351e3ed")
+    file(READ "${trampoline}" text)
+    string(REPLACE ".version 8.1\n" ".version 8.7\n" text "${text}")
+    file(WRITE "${trampoline}" "${text}")
+elseif(NOT observed STREQUAL "2e8763802dbe7ae5261cdb37686081e551b298203a71a905916b3582c73cf611")
+    message(FATAL_ERROR "Unexpected trampoline identity; review source before applying compatibility fix")
+endif()
+file(SHA256 "${trampoline}" fixed)
+if(NOT fixed STREQUAL "2e8763802dbe7ae5261cdb37686081e551b298203a71a905916b3582c73cf611")
+    message(FATAL_ERROR "Trampoline compatibility patch did not produce expected bytes")
+endif()

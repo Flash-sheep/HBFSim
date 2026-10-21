@@ -1,0 +1,180 @@
+--- benchmarks/cuda/hbf_microbench.cu
++++ isolated/range_microbench.cpp
+@@ -1,6 +1,8 @@
+ #include <hbfsim/api.h>
+ 
+-#include <cuda_runtime_api.h>
++#include <cuda_runtime.h>
++#include <dlfcn.h>
++#include <thread>
+ #include <cuda.h>
+ 
+ #include <algorithm>
+@@ -29,6 +31,7 @@
+ struct Options {
+     std::string pattern{"sequential"};
+     std::string mode{"baseline"};
++    std::string registration{"full"};
+     std::string profile;
+     std::string report_dir;
+     std::string backing_dir{"/mnt/disk2"};
+@@ -68,44 +71,6 @@
+     return value ^ (value >> 31);
+ }
+ 
+-__device__ std::uint64_t device_splitmix(std::uint64_t value)
+-{
+-    value += 0x9e3779b97f4a7c15ULL;
+-    value = (value ^ (value >> 30)) * 0xbf58476d1ce4e5b9ULL;
+-    value = (value ^ (value >> 27)) * 0x94d049bb133111ebULL;
+-    return value ^ (value >> 31);
+-}
+-
+-__device__ std::uint64_t rotate_left(std::uint64_t value, unsigned shift)
+-{
+-    return (value << shift) | (value >> (64 - shift));
+-}
+-
+-}  // namespace
+-
+-extern "C" __global__ void hbf_access_kernel(
+-    std::uint64_t* data, const std::uint64_t* byte_offsets,
+-    std::uint64_t iterations, std::uint64_t seed, bool mixed_write,
+-    std::uint64_t* output)
+-{
+-    if (blockIdx.x != 0 || threadIdx.x != 0) {
+-        return;
+-    }
+-    std::uint64_t checksum = device_splitmix(seed ^ 0x48424653494dULL);
+-    for (std::uint64_t index = 0; index < iterations; ++index) {
+-        const auto word = byte_offsets[index] / sizeof(std::uint64_t);
+-        auto value = data[word];
+-        if (mixed_write && (index & 1U) != 0) {
+-            value ^= device_splitmix(seed + index);
+-            data[word] = value;
+-        }
+-        checksum = rotate_left(checksum ^ (value + index), 13);
+-    }
+-    *output = checksum;
+-}
+-
+-namespace {
+-
+ std::uint64_t parse_unsigned(std::string_view value, const char* name)
+ {
+     const std::string text(value);
+@@ -127,7 +92,8 @@
+             fail("missing value for " + argument);
+         }
+         const std::string value = argv[++index];
+-        if (argument == "--pattern") result.pattern = value;
++        if (argument == "--registration") result.registration = value;
++        else if (argument == "--pattern") result.pattern = value;
+         else if (argument == "--mode") result.mode = value;
+         else if (argument == "--profile") result.profile = value;
+         else if (argument == "--report-dir") result.report_dir = value;
+@@ -142,7 +108,7 @@
+         "sequential", "random", "strided", "pointer_chase", "mixed_rw"};
+     const std::unordered_set<std::string> modes{
+         "baseline", "timing", "reference", "fast", "hybrid", "capacity"};
+-    if (!patterns.contains(result.pattern) || !modes.contains(result.mode) ||
++    if ((result.registration != "none" && result.registration != "full" && result.registration != "partial") || !patterns.contains(result.pattern) || !modes.contains(result.mode) ||
+         result.bytes < sizeof(std::uint64_t) ||
+         result.bytes % sizeof(std::uint64_t) != 0 ||
+         result.iterations < 2 || result.profile.empty() ||
+@@ -284,7 +250,7 @@
+                   : options.mode == "hybrid" ? HBFSIM_MODEL_HYBRID
+                                                : HBFSIM_MODEL_REFERENCE,
+             .ring_capacity = 256,
+-            .request_timeout_ns = 30'000'000'000ULL,
++            .request_timeout_ns = 5'000'000'000ULL,
+         };
+         if (!baseline_mode &&
+             hbfsim_context_create(&context_options, &context) != HBFSIM_OK) {
+@@ -317,14 +283,14 @@
+             }
+             cuda_check(cudaMemcpy(data, host.data(), options.bytes,
+                                   cudaMemcpyHostToDevice), "initialize data");
+-            if (!baseline_mode) {
++            if (!baseline_mode && options.registration != "none") {
+                 const hbfsim_range_options range{
+                     .mode = HBFSIM_RANGE_MODE_TIMING,
+                     .permissions = HBFSIM_RANGE_READ_WRITE,
+                     .cache_policy = HBFSIM_CACHE_POLICY_NONE,
+                     .stream_id = 0,
+                 };
+-                if (hbfsim_register_device(context, data, options.bytes,
++                if (hbfsim_register_device(context, data, options.registration == "partial" ? options.bytes / 2 : options.bytes,
+                                            &range) != HBFSIM_OK) {
+                     fail("hbfsim_register_device failed");
+                 }
+@@ -349,17 +315,44 @@
+         driver_check(cuModuleGetFunction(&function, module,
+                                          "hbf_access_kernel"),
+                      "cuModuleGetFunction");
++        if (!baseline_mode) {
++            using Binder = int(*)(CUfunction,const char*,std::size_t,const char*);
++            auto bind = reinterpret_cast<Binder>(dlsym(RTLD_DEFAULT,"bpftime_nv_bind_ptx_variant"));
++            if (!bind) fail("exact PTX binder unavailable");
++            int status=1;
++            for (int i=0;i<1000 && status==1;++i) {
++                status=bind(function,ptx.data(),ptx.size(),"hbf_access_kernel");
++                if (status==1) std::this_thread::sleep_for(std::chrono::milliseconds(10));
++            }
++            if (status!=0) fail("exact original PTX binding failed: "+std::to_string(status));
++            std::ofstream(options.output+".binding.json") << "{\"status\":0,\"kernel\":\"hbf_access_kernel\",\"path\":\"bpftime_nv_bind_ptx_variant\"}\n";
++        }
+         auto iterations = options.iterations;
+         auto seed = options.seed;
+         bool mixed_write = options.pattern == "mixed_rw";
+         void* arguments[]{&data, &device_offsets, &iterations, &seed,
+                           &mixed_write, &device_output};
++        using AccountBegin = int(*)(std::uint64_t);
++        using AccountSnapshot = long long(*)(char*, std::size_t);
++        auto account_begin = reinterpret_cast<AccountBegin>(dlsym(RTLD_DEFAULT, "hbfsim_access_accounting_begin_v2"));
++        auto account_snapshot = reinterpret_cast<AccountSnapshot>(dlsym(RTLD_DEFAULT, "hbfsim_access_accounting_snapshot_v2"));
++        if (!baseline_mode && (!account_begin || !account_snapshot || account_begin(1) != 0)) fail("device access accounting unavailable");
++        cudaEvent_t event_begin, event_end;
++        cuda_check(cudaEventCreate(&event_begin), "create begin event");
++        cuda_check(cudaEventCreate(&event_end), "create end event");
++        cuda_check(cudaEventRecord(event_begin), "record begin event");
+         const auto begin = std::chrono::steady_clock::now();
+         driver_check(cuLaunchKernel(function, 1, 1, 1, 1, 1, 1, 0, nullptr,
+                                     arguments, nullptr),
+                      "cuLaunchKernel hbf_access_kernel");
++        cuda_check(cudaEventRecord(event_end), "record end event");
+         cuda_check(cudaDeviceSynchronize(), "synchronize hbf_access_kernel");
+         const auto end = std::chrono::steady_clock::now();
++        float elapsed_ms = 0;
++        cuda_check(cudaEventElapsedTime(&elapsed_ms, event_begin, event_end), "GPU elapsed time");
++        std::ofstream(options.output + ".gpu-event-ms.txt") << elapsed_ms << "\n";
++        cuda_check(cudaEventDestroy(event_begin), "destroy begin event");
++        cuda_check(cudaEventDestroy(event_end), "destroy end event");
+         std::uint64_t checksum = 0;
+         cuda_check(cudaMemcpy(&checksum, device_output, sizeof(checksum),
+                               cudaMemcpyDeviceToHost), "copy checksum");
+@@ -371,6 +364,24 @@
+             fail("hbfsim_flush failed");
+         }
+         if (checksum != expected) fail("GPU checksum differs from CPU reference");
++        std::vector<std::uint64_t> observed(options.bytes / sizeof(std::uint64_t));
++        cuda_check(cudaMemcpy(observed.data(), data, options.bytes, cudaMemcpyDeviceToHost), "read back all data");
++        auto expected_values = values;
++        for (std::uint64_t i=0; i<options.iterations; ++i)
++            if (mixed_write && (i&1U)) expected_values[offsets[i]] ^= splitmix(options.seed+i);
++        std::vector<std::uint64_t> expected_data(observed.size());
++        for (const auto& [offset,value] : expected_values) expected_data[offset / sizeof(std::uint64_t)] = value;
++        if (observed != expected_data) fail("GPU data differs from full CPU reference");
++        std::ofstream raw(options.output + ".data.bin", std::ios::binary);
++        raw.write(reinterpret_cast<const char*>(observed.data()), options.bytes);
++        if (!raw) fail("cannot write GPU output data");
++        if (!baseline_mode) {
++            const auto required=account_snapshot(nullptr,0);
++            if (required<=0 || required>1<<20) fail("invalid accounting snapshot size");
++            std::vector<char> snapshot(required);
++            if (account_snapshot(snapshot.data(),snapshot.size())!=required) fail("accounting snapshot failed");
++            std::ofstream(options.output + ".access.json") << snapshot.data() << "\n";
++        }
+         const auto span = *std::max_element(offsets.begin(), offsets.end()) -
+                           *std::min_element(offsets.begin(), offsets.end()) + 8;
+         write_report(options, checksum, expected,

@@ -36,6 +36,9 @@ this file says where each kind of document lives.
   context32 live-run readiness check, retained CPU receipts, and steps for trying another machine.
   GPU execution has not started; this is not a successful HBF workload result.
 - [`reference/`](reference/) — reference notes, including the CUDA architecture compatibility audit.
+  See the [native PTX GPU validation handoff](reference/native-ptx-gpu-validation.md)
+  for continuing the bounded H800/SM90 or A100/SM80 validation on another machine,
+  including isolated compatibility sources and the required live evidence.
 - [`ref_article/`](ref_article/) — the papers and specification captures HBFSim's claims are checked
   against. [`ref_article/README.md`](ref_article/README.md) records, for each one, the full citation,
   the open-access link, the file hash, and which part of it this project actually uses.
